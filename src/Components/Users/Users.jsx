@@ -96,8 +96,8 @@ function Users() {
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All Users</option>
-                        <option value="client">Clients</option>
-                        <option value="freelancer">Freelancers</option>
+                        <option value="teacher">Clients</option>
+                        <option value="student">Freelancers</option>
                     </select>
                 </div>
                 {filteredUsers.length === 0 ? (
@@ -139,9 +139,9 @@ function Users() {
                                         {user.telephone}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.userType === "client"
-                                            ? "Client"
-                                            : "Freelancer"}
+                                        {user.userType === "teacher"
+                                            ? "Teacher"
+                                            : "Student"}
                                     </td>
                                     <td className="border px-4 py-2">
                                         {/* {new Date(
@@ -155,7 +155,7 @@ function Users() {
                                         <button
                                             onClick={() => {
                                                 if (
-                                                    user.userType === "client"
+                                                    user.userType === "teacher"
                                                 ) {
                                                     navigate(
                                                         `/Users/Clients/${user.id}`

@@ -410,7 +410,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                         <img
                             src={
                                 "http://localhost:3000" +
-                                feedback?.Client?.profile_pic_link
+                                feedback?.Teacher?.profile_pic_link
                             }
                             className=" w-20 h-20 rounded-full  object-cover"
                             alt=""
@@ -456,7 +456,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             />
                         </div>
                         <div className="text-sm pt-1  font-semibold">
-                            {feedback?.Client?.firstName}
+                            {feedback?.Teacher?.firstName}
                         </div>
                     </div>
                 </div>
@@ -710,7 +710,7 @@ function Profile() {
                     </div>
                 )}
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Freelancer Profile
+                    Student Profile
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
                     {AcceptLoading ? (

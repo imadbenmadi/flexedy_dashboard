@@ -124,7 +124,7 @@ function Applications() {
                                         Project Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Client Company Name
+                                        Teacher Company Name
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Applications Number

@@ -138,8 +138,8 @@ function Payment() {
                 {project?.status === "Payed" ? (
                     <>
                         <div className="">
-                            <span className="text-green_v">Payed :</span> Client
-                            Payed the Project fees
+                            <span className="text-green_v">Payed :</span>{" "}
+                            Teacher Payed the Project fees
                         </div>
                     </>
                 ) : !project?.isPayment_ScreenShot_uploaded &&
@@ -148,7 +148,7 @@ function Payment() {
                     <>
                         <div className="">
                             <span className=" text-red-500">
-                                Client have not yet uploaded payment screenshot
+                                Teacher have not yet uploaded payment screenshot
                             </span>
                         </div>
                     </>
@@ -158,7 +158,7 @@ function Payment() {
                   !project?.isPayment_ScreenShot_Rejected ? (
                     <div className="">
                         <span className="text-green_v">
-                            Client uploaded the payment screenshot :
+                            Teacher uploaded the payment screenshot :
                         </span>{" "}
                         <span className=" text-gray_v">
                             Waiting for Payment Validation
@@ -174,7 +174,7 @@ function Payment() {
                                 Payment Rejected :
                             </span>{" "}
                             <span className=" text-gray_v">
-                                Waiting Client to reupload the Payment
+                                Waiting Teacher to reupload the Payment
                                 screenshot
                             </span>
                         </div>
@@ -209,7 +209,7 @@ function Payment() {
                         </div>
                         <div>
                             {" "}
-                            Client ccp number :{" "}
+                            Teacher ccp number :{" "}
                             <span className=" font-semibold">
                                 {project?.Client_CCP_number
                                     ? project?.Client_CCP_number

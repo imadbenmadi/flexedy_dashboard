@@ -403,7 +403,7 @@ function Feedback_Card({ feedback }) {
                         <img
                             src={
                                 "http://localhost:3000" +
-                                feedback?.Client?.profile_pic_link
+                                feedback?.Teacher?.profile_pic_link
                             }
                             className=" w-20 h-20 rounded-full object-cover"
                             alt=""
@@ -449,7 +449,7 @@ function Feedback_Card({ feedback }) {
                             />
                         </div>
                         <div className="text-sm pt-1  font-semibold">
-                            {feedback?.Client?.firstName}
+                            {feedback?.Teacher?.firstName}
                         </div>
                     </div>
                 </div>
@@ -541,7 +541,7 @@ function Freelancer_Profile() {
         return (
             <div className=" pt-6 pl-6">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Freelancer Profile
+                    Student Profile
                 </div>
                 <Hero user={user} />
                 {/* <Applications /> */}

@@ -115,8 +115,8 @@ function Freelancer_Process_item() {
                         <>
                             <div className="">
                                 <span className="text-green_v">Payed :</span>{" "}
-                                payment accepted. <br />a Freelancer is working
-                                on the project
+                                payment accepted. <br />a Student is working on
+                                the project
                             </div>
                         </>
                     ) : project?.status === "Payed" &&
@@ -124,16 +124,16 @@ function Freelancer_Process_item() {
                       !project?.isWorkRejected ? (
                         <div className="">
                             <span className="text-green_v">Uploaded :</span> The
-                            Freelancer Upload the files of the project .
+                            Student Upload the files of the project .
                         </div>
                     ) : project?.status === "Payed" &&
                       project?.isWorkUploaded &&
                       project?.isWorkRejected ? (
                         <div className="">
                             <span className="text-red-500">
-                                Rejection Sent to the Freelancer :
+                                Rejection Sent to the Student :
                             </span>{" "}
-                            freelancer is correcting the mentioned pointes .
+                            student is correcting the mentioned pointes .
                         </div>
                     ) : project?.status === "Rejected" ? (
                         <div className="">
@@ -155,7 +155,7 @@ function Freelancer_Process_item() {
                         <div className="">
                             <span className="text-gray_v">Accepted :</span>{" "}
                             <span className=" text-red-500">
-                                waiting client to pay the project fees.
+                                waiting teacher to pay the project fees.
                             </span>
                         </div>
                     ) : project?.isPayment_ScreenShot_uploaded &&
@@ -187,7 +187,7 @@ function Freelancer_Process_item() {
                                 Payment Rejected :
                             </span>{" "}
                             <span className=" text-gray_v">
-                                Payment Rejected , waiting for the Client to
+                                Payment Rejected , waiting for the Teacher to
                                 reupload the payment screenshot
                             </span>
                         </div>
@@ -196,7 +196,7 @@ function Freelancer_Process_item() {
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div>
                                 <span className="text-perpol_v">Accepted</span>{" "}
-                                Searching For the Freelancer
+                                Searching For the Student
                             </div>
                             <Link
                                 to={`/Projects_Applications/${project.id}`}
@@ -272,7 +272,7 @@ function Freelancer_Process_item() {
                             </div>
                             <div className="flex items-center justify-between w-full  font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Client Bugdget : {project?.Client_Budget}
+                                    Teacher Bugdget : {project?.Client_Budget}
                                 </div>
                             </div>{" "}
                             <div className="flex items-center justify-between w-full font-semibold">

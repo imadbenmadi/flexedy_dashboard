@@ -91,16 +91,16 @@ function Requests() {
                             <thead>
                                 <tr className="bg-gray-200 font-normal">
                                     <th className="px-4 py-2 rounded-tl-md">
-                                        Client Name
+                                        Teacher Name
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Company Name
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Client Email
+                                        Teacher Email
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Client Telephone
+                                        Teacher Telephone
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Project Title

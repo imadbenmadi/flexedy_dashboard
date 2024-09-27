@@ -171,8 +171,8 @@ function All_Projects() {
                                                             Payed :
                                                         </span>{" "}
                                                         payment accepted. <br />
-                                                        a Freelancer is working
-                                                        on the project
+                                                        a Student is working on
+                                                        the project
                                                     </div>
                                                 </>
                                             ) : project?.status === "Payed" &&
@@ -182,8 +182,8 @@ function All_Projects() {
                                                     <span className="text-green_v">
                                                         Uploaded :
                                                     </span>{" "}
-                                                    The Freelancer Upload the
-                                                    files of the project .
+                                                    The Student Upload the files
+                                                    of the project .
                                                 </div>
                                             ) : project?.status === "Payed" &&
                                               project?.isWorkUploaded &&
@@ -191,9 +191,9 @@ function All_Projects() {
                                                 <div className="">
                                                     <span className="text-red-500">
                                                         Rejection Sent to the
-                                                        Freelancer :
+                                                        Student :
                                                     </span>{" "}
-                                                    freelancer is correcting the
+                                                    student is correcting the
                                                     mentioned pointes .
                                                 </div>
                                             ) : project?.status ===
@@ -226,7 +226,7 @@ function All_Projects() {
                                                         Accepted :
                                                     </span>{" "}
                                                     <span className=" text-red-500">
-                                                        waiting client to pay
+                                                        waiting teacher to pay
                                                         the project fees
                                                     </span>
                                                 </div>
@@ -253,7 +253,7 @@ function All_Projects() {
                                                     </span>{" "}
                                                     <span className=" text-gray_v">
                                                         Payment Rejected ,
-                                                        waiting for the Client
+                                                        waiting for the Teacher
                                                         to reupload the payment
                                                         screenshot
                                                     </span>
@@ -269,7 +269,7 @@ function All_Projects() {
                                                     </span>
                                                     <span className="text-gray_v">
                                                         Payment Rejected ,
-                                                        waiting for the Client
+                                                        waiting for the Teacher
                                                         to reupload the payment
                                                         screenshot{" "}
                                                     </span>{" "}
@@ -281,7 +281,7 @@ function All_Projects() {
                                                     <span className="text-perpol_v">
                                                         Accepted
                                                     </span>{" "}
-                                                    Searching For the Freelancer
+                                                    Searching For the Student
                                                 </div>
                                             ) : project?.status ===
                                               "Pending" ? (

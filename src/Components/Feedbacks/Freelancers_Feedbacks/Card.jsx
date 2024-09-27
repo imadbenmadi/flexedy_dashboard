@@ -50,7 +50,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
         setadd_to_home_Loading(true);
         try {
             const response = await axios.post(
-                `http://localhost:3000/Admin/Feedbacks/Home_Feedbacks/Freelancer/${feedback?.id}`,
+                `http://localhost:3000/Admin/Feedbacks/Home_Feedbacks/Student/${feedback?.id}`,
                 {},
                 {
                     withCredentials: true,
@@ -94,7 +94,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
                         <img
                             src={
                                 "http://localhost:3000" +
-                                feedback?.Freelancer?.profile_pic_link
+                                feedback?.Student?.profile_pic_link
                             }
                             className=" w-20 h-20 rounded-full  object-cover"
                             alt=""
@@ -140,7 +140,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
                             />
                         </div>
                         <div className="text-sm pt-1  font-semibold">
-                            {feedback?.Freelancer?.firstName}
+                            {feedback?.Student?.firstName}
                         </div>
                     </div>
                 </div>

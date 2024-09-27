@@ -167,7 +167,7 @@ function List() {
                                 </div>
                                 <div className="flex items-center justify-between w-full  font-semibold">
                                     <div className="text-sm pt-1 text-gray_v">
-                                        Client Bugdget :{" "}
+                                        Teacher Bugdget :{" "}
                                         {Applicants[0]?.Project?.Client_Budget}
                                     </div>
                                 </div>{" "}
@@ -219,7 +219,7 @@ function List() {
                                 {Applicants.map((applicant) => {
                                     return (
                                         <List_Card
-                                            user={applicant.Freelancer}
+                                            user={applicant.Student}
                                             projectId={projectId}
                                             application={applicant}
                                         />

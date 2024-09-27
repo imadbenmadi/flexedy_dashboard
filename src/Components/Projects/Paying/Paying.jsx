@@ -102,7 +102,7 @@ function Applications() {
                                         Project Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Client Company Name
+                                        Teacher Company Name
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Payment Status
@@ -131,8 +131,8 @@ function Applications() {
                                                         <span className="text-green_v">
                                                             Payed :
                                                         </span>{" "}
-                                                        Client Payed the Project
-                                                        fees
+                                                        Teacher Payed the
+                                                        Project fees
                                                     </div>
                                                 </>
                                             ) : !project?.isPayment_ScreenShot_uploaded &&
@@ -141,7 +141,7 @@ function Applications() {
                                                 <>
                                                     <div className="">
                                                         <span className=" text-red-500">
-                                                            Client have not yet
+                                                            Teacher have not yet
                                                             uploaded payment
                                                             screenshot
                                                         </span>
@@ -153,7 +153,7 @@ function Applications() {
                                               !project?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
                                                     <span className="text-perpol_v">
-                                                        Client uploaded the
+                                                        Teacher uploaded the
                                                         payment screenshot :
                                                     </span>{" "}
                                                     <span className=" text-gray_v">
@@ -171,7 +171,7 @@ function Applications() {
                                                             Payment Rejected :
                                                         </span>{" "}
                                                         <span className=" text-gray_v">
-                                                            Waiting Client to
+                                                            Waiting Teacher to
                                                             reupload the Payment
                                                             screenshot
                                                         </span>

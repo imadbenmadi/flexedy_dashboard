@@ -195,7 +195,7 @@ function Freelancer_Process_item() {
                             Navigate(`/Users/Clients/${project?.ClientId}`);
                         }}
                     >
-                        Client Profile
+                        Teacher Profile
                     </div>
                     {AcceptLoading ? (
                         <div className=" small-loader mx-12"></div>
@@ -270,7 +270,7 @@ function Freelancer_Process_item() {
                             </div>
                             <div className="flex items-center justify-between w-full  font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Client Bugdget : {project?.Client_Budget}
+                                    Teacher Bugdget : {project?.Client_Budget}
                                 </div>
                             </div>{" "}
                             <div className="flex items-center justify-between w-full font-semibold">

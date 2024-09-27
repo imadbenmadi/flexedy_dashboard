@@ -24,7 +24,7 @@ function Reviews({ user }) {
         const fetchData = async () => {
             try {
                 let response;
-                if ((user.userType = "client"))
+                if ((user.userType = "teacher"))
                     response = await axios.get(
                         `http://localhost:3000/Admin/Users/Clients/${user.id}/Feedbacks`,
                         {
@@ -32,9 +32,9 @@ function Reviews({ user }) {
                             // validateStatus: () => true,
                         }
                     );
-                else if ((user.userType = "Freelancer"))
+                else if ((user.userType = "Student"))
                     response = await axios.get(
-                        `http://localhost:3000/Admin/Users/Freelancer/${user.id}/Feedbacks`,
+                        `http://localhost:3000/Admin/Users/Student/${user.id}/Feedbacks`,
                         {
                             withCredentials: true,
                             // validateStatus: () => true,
@@ -375,7 +375,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                         <img
                             src={
                                 "http://localhost:3000" +
-                                feedback?.Freelancer?.profile_pic_link
+                                feedback?.Student?.profile_pic_link
                             }
                             className=" w-20 h-20 rounded-full object-cover"
                             alt=""
@@ -421,7 +421,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             />
                         </div>
                         <div className="text-sm pt-1  font-semibold">
-                            {feedback?.Freelancer?.firstName}
+                            {feedback?.Student?.firstName}
                         </div>
                     </div>
                 </div>
@@ -511,7 +511,7 @@ function Client_Profile() {
         return (
             <div className=" pt-6 pl-6">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Client Profile
+                    Teacher Profile
                 </div>
                 <Hero user={user} />
                 {/* <Applications /> */}
