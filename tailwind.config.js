@@ -11,7 +11,7 @@ export default {
                 green_b: "#469F78",
                 Rose_v: "#EFCFF9",
                 Rose_b_v: "#CF74E9",
-                blue_v: "#D3E1FD",
+                blue_v: "#7ea7fb",
                 black_text: "#4b4b4b",
                 gray_v: "#454545",
                 gray_white: "#e6e6e6",

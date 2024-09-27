@@ -65,7 +65,7 @@ function Laptop() {
                         to={"/Home"}
                         className={` ${
                             Active_nav == "Home"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full `}
                     >
@@ -75,7 +75,7 @@ function Laptop() {
                         to={"/Users"}
                         className={` ${
                             Active_nav == "Users"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -93,7 +93,7 @@ function Laptop() {
                         to={"/All_Courses"}
                         className={` ${
                             Active_nav == "All_Courses"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -103,7 +103,7 @@ function Laptop() {
                         to={"/Courses_Requests"}
                         className={` ${
                             Active_nav == "Courses_Requests"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -113,7 +113,7 @@ function Laptop() {
                         to={"/Courses_Applications"}
                         className={` ${
                             Active_nav == "Courses_Applications"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -123,7 +123,7 @@ function Laptop() {
                         to={"/Courses_Accepted"}
                         className={` ${
                             Active_nav == "Courses_Accepted"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -133,7 +133,7 @@ function Laptop() {
                         to={"/Courses_Paying"}
                         className={` ${
                             Active_nav == "Courses_Paying"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -143,7 +143,7 @@ function Laptop() {
                         to={"/Courses_At_Work"}
                         className={` ${
                             Active_nav == "Courses_At_Work"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -161,7 +161,7 @@ function Laptop() {
                         to={"/Home_Feedbacks"}
                         className={` ${
                             Active_nav == "Home_Feedbacks"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -171,7 +171,7 @@ function Laptop() {
                         to={"/Feedbacks_Teachers"}
                         className={` ${
                             Active_nav == "Feedbacks_Teachers"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -181,7 +181,7 @@ function Laptop() {
                         to={"/Feedbacks_Students"}
                         className={` ${
                             Active_nav == "Feedbacks_Students"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -199,7 +199,7 @@ function Laptop() {
                         to={"/Messages"}
                         className={` ${
                             Active_nav == "Messages"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -217,7 +217,7 @@ function Laptop() {
                         to={"/Terms"}
                         className={` ${
                             Active_nav == "Terms"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
@@ -235,7 +235,7 @@ function Laptop() {
                         to={"/Contact"}
                         className={` ${
                             Active_nav == "Contact"
-                                ? "bg-blue_v text-gray_v px-4 "
+                                ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
