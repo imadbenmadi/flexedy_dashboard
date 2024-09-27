@@ -10,27 +10,27 @@ import { FaRegHandshake } from "react-icons/fa6";
 
 function Requests() {
     const navigate = useNavigate();
-    const [Projects, setProjects] = useState([]);
+    const [Courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    const [projectTypeFilter, setprojectTypeFilter] = useState("");
+    const [courseTypeFilter, setcourseTypeFilter] = useState("");
     const formatDate = (dateString) => {
         return dayjs(dateString).format("DD  MMMM  YYYY");
     };
     useEffect(() => {
         setLoading(true);
-        const fetchProjects = async () => {
+        const fetchCourses = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Projects/requests`,
+                    `http://localhost:3000/Admin/Courses/requests`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
                     }
                 );
                 if (response.status === 200) {
-                    setProjects(response.data.Projects);
+                    setCourses(response.data.Courses);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
@@ -44,7 +44,7 @@ function Requests() {
             }
         };
 
-        fetchProjects();
+        fetchCourses();
     }, []);
     if (loading) {
         return (
@@ -64,11 +64,11 @@ function Requests() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    flexedu Projects Requests
+                    flexedu Courses Requests
                 </div>
-                {Projects.length === 0 ? (
+                {Courses.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
-                        No Projects found
+                        No Courses found
                     </div>
                 ) : (
                     <div>
@@ -79,7 +79,7 @@ function Requests() {
                                 </div>
                                 <div className=" flex justify-between gap-2 mx-2 w-full">
                                     <div className="  font-semibold text-2xl">
-                                        {Projects.length}
+                                        {Courses.length}
                                     </div>
                                     <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <FaRegHandshake className=" shrink-0 text-2xl" />
@@ -103,7 +103,7 @@ function Requests() {
                                         Teacher Telephone
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Project Title
+                                        Course Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Created At
@@ -114,35 +114,35 @@ function Requests() {
                                 </tr>
                             </thead>
                             <tbody className="text-xs text-center font-semibold ">
-                                {Projects.map((project) => (
-                                    <tr key={project.id}>
+                                {Courses.map((course) => (
+                                    <tr key={course.id}>
                                         <td className="border px-4 py-2">
-                                            {`${project?.owner?.firstName} ${project?.owner?.lastName}`}
+                                            {`${course?.owner?.firstName} ${course?.owner?.lastName}`}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.owner?.company_Name}
+                                            {course?.owner?.company_Name}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.owner?.email}
+                                            {course?.owner?.email}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.owner?.telephone}
+                                            {course?.owner?.telephone}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.Title}
+                                            {course?.Title}
                                         </td>
 
                                         <td className="border px-4 py-2">
                                             {/* {new Date(
-                                            project.createdAt
+                                            course.createdAt
                                         ).toLocaleDateString()} */}
-                                            {formatDate(project?.createdAt)}
+                                            {formatDate(course?.createdAt)}
                                         </td>
                                         <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
                                                     navigate(
-                                                        `/Projects_Requests/${project.id}`
+                                                        `/Courses_Requests/${course.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"

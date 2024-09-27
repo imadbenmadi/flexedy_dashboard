@@ -11,7 +11,7 @@ function Payment() {
     const Navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [project, setProject] = useState(null);
+    const [course, setCourse] = useState(null);
     const [only_see, set_only_see] = useState(false);
     const [deletLoading, setDeleteLoading] = useState(false);
 
@@ -21,21 +21,21 @@ function Payment() {
     const [image_from_server, setimage_from_server] = useState(null);
     const [AcceptLoading, setAcceptLoading] = useState(false);
     const [RejectLoading, setRejectLoading] = useState(false);
-    const projectId = location.pathname.split("/")[2];
+    const courseId = location.pathname.split("/")[2];
     useEffect(() => {
         setLoading(true);
-        const fetchProjects = async () => {
+        const fetchCourses = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Payment/${projectId}`,
+                    `http://localhost:3000/Admin/Payment/${courseId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
                     }
                 );
                 if (response.status === 200) {
-                    const projectsData = response.data.project;
-                    setProject(projectsData);
+                    const coursesData = response.data.course;
+                    setCourse(coursesData);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     Navigate("/Login");
@@ -49,7 +49,7 @@ function Payment() {
             }
         };
 
-        fetchProjects();
+        fetchCourses();
     }, []);
     const handle_Accept = async () => {
         setAcceptLoading(true);
@@ -71,7 +71,7 @@ function Payment() {
                     "Payment Accepteed Successfully",
                     "success"
                 );
-                Navigate("/Projects_Paying");
+                Navigate("/Courses_Paying");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(
@@ -110,7 +110,7 @@ function Payment() {
                     "Payment Rejected Successfully",
                     "success"
                 );
-                Navigate("/Projects_Paying");
+                Navigate("/Courses_Paying");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(
@@ -132,19 +132,19 @@ function Payment() {
     return (
         <div className="py-6 px-4">
             <div className="text-xl font-semibold text-perpol_b pb-6">
-                Project Payment
+                Course Payment
             </div>
             <div className=" text-center font-semibold pb-12">
-                {project?.status === "Payed" ? (
+                {course?.status === "Payed" ? (
                     <>
                         <div className="">
                             <span className="text-green_v">Payed :</span>{" "}
-                            Teacher Payed the Project fees
+                            Teacher Payed the Course fees
                         </div>
                     </>
-                ) : !project?.isPayment_ScreenShot_uploaded &&
-                  project?.status === "Accepted" &&
-                  project?.FreelancerId ? (
+                ) : !course?.isPayment_ScreenShot_uploaded &&
+                  course?.status === "Accepted" &&
+                  course?.FreelancerId ? (
                     <>
                         <div className="">
                             <span className=" text-red-500">
@@ -152,10 +152,10 @@ function Payment() {
                             </span>
                         </div>
                     </>
-                ) : project?.isPayment_ScreenShot_uploaded &&
-                  project?.status === "Accepted" &&
-                  project?.FreelancerId &&
-                  !project?.isPayment_ScreenShot_Rejected ? (
+                ) : course?.isPayment_ScreenShot_uploaded &&
+                  course?.status === "Accepted" &&
+                  course?.FreelancerId &&
+                  !course?.isPayment_ScreenShot_Rejected ? (
                     <div className="">
                         <span className="text-green_v">
                             Teacher uploaded the payment screenshot :
@@ -164,10 +164,10 @@ function Payment() {
                             Waiting for Payment Validation
                         </span>
                     </div>
-                ) : project?.isPayment_ScreenShot_uploaded &&
-                  project?.status === "Accepted" &&
-                  project?.FreelancerId &&
-                  project?.isPayment_ScreenShot_Rejected ? (
+                ) : course?.isPayment_ScreenShot_uploaded &&
+                  course?.status === "Accepted" &&
+                  course?.FreelancerId &&
+                  course?.isPayment_ScreenShot_Rejected ? (
                     <>
                         <div className="">
                             <span className="text-red-500">
@@ -179,10 +179,10 @@ function Payment() {
                             </span>
                         </div>
                     </>
-                ) : project?.status === "Accepted" && !project?.FreelancerId ? (
+                ) : course?.status === "Accepted" && !course?.FreelancerId ? (
                     <div>
                         <span className="text-perpol_v">Accepted :</span>{" "}
-                        Wainting for freelancers to Apply for this project
+                        Wainting for freelancers to Apply for this course
                     </div>
                 ) : null}
             </div>
@@ -194,16 +194,16 @@ function Payment() {
                 <div>
                     <div className=" flex flex-col gap-4">
                         <div>
-                            Project fees :{" "}
+                            Course fees :{" "}
                             <span className=" font-semibold">
-                                {project?.Money ? project?.Money : "non set"}
+                                {course?.Money ? course?.Money : "non set"}
                             </span>
                         </div>
                         <div>
                             DeadLine :{" "}
                             <span className=" font-semibold">
-                                {project?.DeadLine
-                                    ? project?.DeadLine
+                                {course?.DeadLine
+                                    ? course?.DeadLine
                                     : "non set"}
                             </span>
                         </div>
@@ -211,35 +211,35 @@ function Payment() {
                             {" "}
                             Teacher ccp number :{" "}
                             <span className=" font-semibold">
-                                {project?.Client_CCP_number
-                                    ? project?.Client_CCP_number
+                                {course?.Client_CCP_number
+                                    ? course?.Client_CCP_number
                                     : "non set"}
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
-            {project?.Pyament_ScreenShot_Link && (
+            {course?.Pyament_ScreenShot_Link && (
                 <div className=" pt-8">
                     <div className=" flex justify-center w-full">
                         <a
                             href={
                                 "http://localhost:3000" +
-                                project?.Pyament_ScreenShot_Link
+                                course?.Pyament_ScreenShot_Link
                             }
                             target="_blank"
                         >
                             <img
                                 src={
                                     "http://localhost:3000" +
-                                    project?.Pyament_ScreenShot_Link
+                                    course?.Pyament_ScreenShot_Link
                                 }
                                 alt="Payment screen shot"
                                 className=" w-[300px] h-[300px] object-cover rounded-lg  "
                             />
                         </a>
                     </div>
-                    {!project?.isPayment_ScreenShot_Rejected && (
+                    {!course?.isPayment_ScreenShot_Rejected && (
                         <div className=" py-12 flex justify-center items-center gap-12 ">
                             {AcceptLoading ? (
                                 <div className=" small-loader mx-12"></div>

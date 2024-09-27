@@ -13,11 +13,11 @@ function Freelancer_Process_item() {
     const Navigate = useNavigate();
     // const [Rejections, SetRejections] = useState([]);
     const location = useLocation();
-    const projectId = location.pathname.split("/")[2];
+    const courseId = location.pathname.split("/")[2];
     const Naviagte = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [project, setProject] = useState([]);
+    const [course, setCourse] = useState([]);
     const [AcceptLoading, setAcceptLoading] = useState(false);
     const [RejectLoading, setRejectLoading] = useState(false);
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -37,11 +37,11 @@ function Freelancer_Process_item() {
     };
     useEffect(() => {
         setLoading(true);
-        const FetchProject = async ({ setProject, setLoading, setError }) => {
+        const FetchCourse = async ({ setCourse, setLoading, setError }) => {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Projects/requests/${projectId}`,
+                    `http://localhost:3000/Admin/Courses/requests/${courseId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -49,18 +49,18 @@ function Freelancer_Process_item() {
                 );
 
                 if (response.status == 200) {
-                    const Project = response.data.project;
-                    setProject(Project);
+                    const Course = response.data.course;
+                    setCourse(Course);
                     let contentState;
-                    if (Project.Description) {
-                        // Ensure project.Description is defined
-                        if (isDraftJSFormat(Project.Description)) {
+                    if (Course.Description) {
+                        // Ensure course.Description is defined
+                        if (isDraftJSFormat(Course.Description)) {
                             contentState = convertFromRaw(
-                                JSON.parse(Project.Description)
+                                JSON.parse(Course.Description)
                             );
                         } else {
                             contentState = ContentState.createFromText(
-                                Project.Description
+                                Course.Description
                             );
                         }
                         setEditorState(
@@ -82,7 +82,7 @@ function Freelancer_Process_item() {
             }
         };
 
-        FetchProject({ setProject, setLoading, setError }).then(() => {
+        FetchCourse({ setCourse, setLoading, setError }).then(() => {
             // fetchRejections({ SetRejections }).then(() => {
             setLoading(false);
             // });
@@ -108,60 +108,60 @@ function Freelancer_Process_item() {
         return (
             <div className=" w-full h-full relative py-6 px-4">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Project Details
+                    Course Details
                 </div>
                 <div className=" text-center font-semibold">
-                    {project?.status === "Payed" && !project?.isWorkUploaded ? (
+                    {course?.status === "Payed" && !course?.isWorkUploaded ? (
                         <>
                             <div className="">
                                 <span className="text-green_v">Payed :</span>{" "}
                                 payment accepted. <br />a Student is working on
-                                the project
+                                the course
                             </div>
                         </>
-                    ) : project?.status === "Payed" &&
-                      project?.isWorkUploaded &&
-                      !project?.isWorkRejected ? (
+                    ) : course?.status === "Payed" &&
+                      course?.isWorkUploaded &&
+                      !course?.isWorkRejected ? (
                         <div className="">
                             <span className="text-green_v">Uploaded :</span> The
-                            Student Upload the files of the project .
+                            Student Upload the files of the course .
                         </div>
-                    ) : project?.status === "Payed" &&
-                      project?.isWorkUploaded &&
-                      project?.isWorkRejected ? (
+                    ) : course?.status === "Payed" &&
+                      course?.isWorkUploaded &&
+                      course?.isWorkRejected ? (
                         <div className="">
                             <span className="text-red-500">
                                 Rejection Sent to the Student :
                             </span>{" "}
                             student is correcting the mentioned pointes .
                         </div>
-                    ) : project?.status === "Rejected" ? (
+                    ) : course?.status === "Rejected" ? (
                         <div className="">
                             <span className="text-red-600">Rejected :</span>{" "}
                             <span className=" text-gray_v">
-                                the project has been rejected.
+                                the course has been rejected.
                             </span>
                         </div>
-                    ) : project?.status === "Completed" ? (
+                    ) : course?.status === "Completed" ? (
                         <div className="">
                             <span className="text-green_v">Completed :</span>{" "}
                             <span className=" text-gray_v">
-                                the project has been closed.
+                                the course has been closed.
                             </span>
                         </div>
-                    ) : !project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId ? (
+                    ) : !course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId ? (
                         <div className="">
                             <span className="text-gray_v">Accepted :</span>{" "}
                             <span className=" text-red-500">
-                                waiting teacher to pay the project fees.
+                                waiting teacher to pay the course fees.
                             </span>
                         </div>
-                    ) : project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId &&
-                      !project?.isPayment_ScreenShot_Rejected ? (
+                    ) : course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId &&
+                      !course?.isPayment_ScreenShot_Rejected ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div className="">
                                 <span className="text-perpol_v">
@@ -172,16 +172,16 @@ function Freelancer_Process_item() {
                                 </span>
                             </div>
                             <Link
-                                to={`/Projects_Paying/${project.id}`}
+                                to={`/Courses_Paying/${course.id}`}
                                 className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
                             >
                                 Validate the Payment{" "}
                             </Link>
                         </div>
-                    ) : project?.isPayment_ScreenShot_uploaded &&
-                      project?.status === "Accepted" &&
-                      project?.FreelancerId &&
-                      project?.isPayment_ScreenShot_Rejected ? (
+                    ) : course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId &&
+                      course?.isPayment_ScreenShot_Rejected ? (
                         <div className="">
                             <span className="text-red-500">
                                 Payment Rejected :
@@ -191,97 +191,97 @@ function Freelancer_Process_item() {
                                 reupload the payment screenshot
                             </span>
                         </div>
-                    ) : project?.status === "Accepted" &&
-                      !project?.FreelancerId ? (
+                    ) : course?.status === "Accepted" &&
+                      !course?.FreelancerId ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div>
                                 <span className="text-perpol_v">Accepted</span>{" "}
                                 Searching For the Student
                             </div>
                             <Link
-                                to={`/Projects_Applications/${project.id}`}
+                                to={`/Courses_Applications/${course.id}`}
                                 className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
                             >
                                 View Applicants
                             </Link>
                         </div>
-                    ) : project?.status === "Pending" ? (
+                    ) : course?.status === "Pending" ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div>
                                 <span className="text-perpol_v">Pending</span>{" "}
                                 <span className="">waiting for validation</span>
                             </div>
                             <Link
-                                to={`/Projects_Requests/${project.id}`}
+                                to={`/Courses_Requests/${course.id}`}
                                 className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
                             >
-                                Validate the project
+                                Validate the course
                             </Link>
                         </div>
                     ) : null}
                 </div>
                 <div className="w-[90%] mx-auto max-w-[900px] pt-6">
                     <div className="font-semibold text-gray_v text-2xl">
-                        {project?.Title}
+                        {course?.Title}
                     </div>
 
                     <div className=" my-6 ">
                         <div className=" pb-2 font-semibold text-gray_v">
-                            Project Details
+                            Course Details
                         </div>
                         <div className=" border p-4 rounded-lg">
                             <div className=" flex gap-2 text-sm font-semibold">
-                                <div>Project Title : </div>
+                                <div>Course Title : </div>
                                 <div className=" text-gray_v">
-                                    {project?.Title}
+                                    {course?.Title}
                                 </div>
                             </div>
                             <div className="text-sm  mb-2 font-semibold text-white">
                                 <div className=" flex gap-2">
-                                    {project?.Field_is_Graphic_design && (
+                                    {course?.Field_is_Graphic_design && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Graphic Design
                                         </div>
                                     )}
-                                    {project?.Field_is_Content_creation && (
+                                    {course?.Field_is_Content_creation && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Content creation
                                         </div>
                                     )}
-                                    {project?.Field_is_SEO_SIM && (
+                                    {course?.Field_is_SEO_SIM && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             SEO/SMM
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            {project?.Frelancer_Experiance && (
+                            {course?.Frelancer_Experiance && (
                                 <div className="flex items-center justify-between w-full">
                                     <div className="text-sm pt-2 text-gray_v">
                                         requested frelancer experiance :{" "}
                                         <span className=" font-semibold">
-                                            {project?.Frelancer_Experiance}
+                                            {course?.Frelancer_Experiance}
                                         </span>
                                     </div>
                                 </div>
                             )}
                             <div className="flex items-center justify-between w-full pt-2 font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Expected Deadline : {project?.Expected_Time}
+                                    Expected Deadline : {course?.Expected_Time}
                                 </div>
                             </div>
                             <div className="flex items-center justify-between w-full  font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Teacher Bugdget : {project?.Client_Budget}
+                                    Teacher Bugdget : {course?.Client_Budget}
                                 </div>
                             </div>{" "}
                             <div className="flex items-center justify-between w-full font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
                                     Created at :{" "}
                                     {/* {new Date(
-                                        project?.createdAt
+                                        course?.createdAt
                                     ).toLocaleDateString()} */}
-                                    {formatDate(project?.createdAt)}
+                                    {formatDate(course?.createdAt)}
                                     {/* const formattedDate = */}
                                     {/* ; */}
                                 </div>
@@ -289,7 +289,7 @@ function Freelancer_Process_item() {
                         </div>
                         <div>
                             <div className="text-sm font-semibold pt-4">
-                                Project Description
+                                Course Description
                             </div>
                             <div className="text-sm font-semibold pl-6 py-6 text-gray_v">
                                 <Editor

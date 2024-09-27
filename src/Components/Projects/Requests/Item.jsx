@@ -13,11 +13,11 @@ function Freelancer_Process_item() {
     const Navigate = useNavigate();
     // const [Rejections, SetRejections] = useState([]);
     const location = useLocation();
-    const projectId = location.pathname.split("/")[2];
+    const courseId = location.pathname.split("/")[2];
     const Naviagte = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [project, setProject] = useState([]);
+    const [course, setCourse] = useState([]);
     const [AcceptLoading, setAcceptLoading] = useState(false);
     const [RejectLoading, setRejectLoading] = useState(false);
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -39,7 +39,7 @@ function Freelancer_Process_item() {
         setAcceptLoading(true);
         try {
             let response = await axios.post(
-                `http://localhost:3000/Admin/Projects/requests/${
+                `http://localhost:3000/Admin/Courses/requests/${
                     location.pathname.split("/")[2]
                 }/Accept`,
                 {},
@@ -52,10 +52,10 @@ function Freelancer_Process_item() {
             if (response.status == 200) {
                 Swal.fire(
                     "Success",
-                    "Project Request Accepteed Successfully",
+                    "Course Request Accepteed Successfully",
                     "success"
                 );
-                Navigate("/Projects_Requests");
+                Navigate("/Courses_Requests");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(
@@ -78,7 +78,7 @@ function Freelancer_Process_item() {
         setRejectLoading(true);
         try {
             let response = await axios.post(
-                `http://localhost:3000/Admin/Projects/requests/${
+                `http://localhost:3000/Admin/Courses/requests/${
                     location.pathname.split("/")[2]
                 }/Reject`,
                 {},
@@ -91,10 +91,10 @@ function Freelancer_Process_item() {
             if (response.status == 200) {
                 Swal.fire(
                     "Success",
-                    "Project Request Rejected Successfully",
+                    "Course Request Rejected Successfully",
                     "success"
                 );
-                Navigate("/Projects_Requests");
+                Navigate("/Courses_Requests");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(
@@ -115,11 +115,11 @@ function Freelancer_Process_item() {
     };
     useEffect(() => {
         setLoading(true);
-        const FetchProject = async ({ setProject, setLoading, setError }) => {
+        const FetchCourse = async ({ setCourse, setLoading, setError }) => {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Projects/requests/${projectId}`,
+                    `http://localhost:3000/Admin/Courses/requests/${courseId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -127,18 +127,18 @@ function Freelancer_Process_item() {
                 );
 
                 if (response.status == 200) {
-                    const Project = response.data.project;
-                    setProject(Project);
+                    const Course = response.data.course;
+                    setCourse(Course);
                     let contentState;
-                    if (Project.Description) {
-                        // Ensure project.Description is defined
-                        if (isDraftJSFormat(Project.Description)) {
+                    if (Course.Description) {
+                        // Ensure course.Description is defined
+                        if (isDraftJSFormat(Course.Description)) {
                             contentState = convertFromRaw(
-                                JSON.parse(Project.Description)
+                                JSON.parse(Course.Description)
                             );
                         } else {
                             contentState = ContentState.createFromText(
-                                Project.Description
+                                Course.Description
                             );
                         }
                         setEditorState(
@@ -160,7 +160,7 @@ function Freelancer_Process_item() {
             }
         };
 
-        FetchProject({ setProject, setLoading, setError }).then(() => {
+        FetchCourse({ setCourse, setLoading, setError }).then(() => {
             // fetchRejections({ SetRejections }).then(() => {
             setLoading(false);
             // });
@@ -186,13 +186,13 @@ function Freelancer_Process_item() {
         return (
             <div className=" w-full h-full relative py-6 px-4">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Projects Request
+                    Courses Request
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
                     <div
                         className=" bg-perpol_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
                         onClick={() => {
-                            Navigate(`/Users/Clients/${project?.ClientId}`);
+                            Navigate(`/Users/Clients/${course?.ClientId}`);
                         }}
                     >
                         Teacher Profile
@@ -204,7 +204,7 @@ function Freelancer_Process_item() {
                             className=" bg-green_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
                             onClick={handle_Accept}
                         >
-                            Accept Project
+                            Accept Course
                         </div>
                     )}
                     {RejectLoading ? (
@@ -214,72 +214,72 @@ function Freelancer_Process_item() {
                             className=" bg-red-500 py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
                             onClick={handle_Reject}
                         >
-                            Reject Project
+                            Reject Course
                         </div>
                     )}
                 </div>
                 <div className="w-[90%] mx-auto max-w-[900px] pt-6">
                     <div className="font-semibold text-gray_v text-2xl">
-                        {project?.Title}
+                        {course?.Title}
                     </div>
 
                     <div className=" my-6 ">
                         <div className=" pb-2 font-semibold text-gray_v">
-                            Project Details
+                            Course Details
                         </div>
                         <div className=" border p-4 rounded-lg">
                             <div className=" flex gap-2 text-sm font-semibold">
-                                <div>Project Title : </div>
+                                <div>Course Title : </div>
                                 <div className=" text-gray_v">
-                                    {project?.Title}
+                                    {course?.Title}
                                 </div>
                             </div>
                             <div className="text-sm  mb-2 font-semibold text-white">
                                 <div className=" flex gap-2">
-                                    {project?.Field_is_Graphic_design && (
+                                    {course?.Field_is_Graphic_design && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Graphic Design
                                         </div>
                                     )}
-                                    {project?.Field_is_Content_creation && (
+                                    {course?.Field_is_Content_creation && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Content creation
                                         </div>
                                     )}
-                                    {project?.Field_is_SEO_SIM && (
+                                    {course?.Field_is_SEO_SIM && (
                                         <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             SEO/SMM
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            {project?.Frelancer_Experiance && (
+                            {course?.Frelancer_Experiance && (
                                 <div className="flex items-center justify-between w-full">
                                     <div className="text-sm pt-2 text-gray_v">
                                         requested frelancer experiance :{" "}
                                         <span className=" font-semibold">
-                                            {project?.Frelancer_Experiance}
+                                            {course?.Frelancer_Experiance}
                                         </span>
                                     </div>
                                 </div>
                             )}
                             <div className="flex items-center justify-between w-full pt-2 font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Expected Deadline : {project?.Expected_Time}
+                                    Expected Deadline : {course?.Expected_Time}
                                 </div>
                             </div>
                             <div className="flex items-center justify-between w-full  font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
-                                    Teacher Bugdget : {project?.Client_Budget}
+                                    Teacher Bugdget : {course?.Client_Budget}
                                 </div>
                             </div>{" "}
                             <div className="flex items-center justify-between w-full font-semibold">
                                 <div className="text-sm pt-1 text-gray_v">
                                     Created at :{" "}
                                     {/* {new Date(
-                                        project?.createdAt
+                                        course?.createdAt
                                     ).toLocaleDateString()} */}
-                                    {formatDate(project?.createdAt)}
+                                    {formatDate(course?.createdAt)}
                                     {/* const formattedDate = */}
                                     {/* ; */}
                                 </div>
@@ -287,7 +287,7 @@ function Freelancer_Process_item() {
                         </div>
                         <div>
                             <div className="text-sm font-semibold pt-4">
-                                Project Description
+                                Course Description
                             </div>
                             <div className="text-sm font-semibold pl-6 py-6 text-gray_v">
                                 <Editor

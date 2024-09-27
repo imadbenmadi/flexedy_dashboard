@@ -6,19 +6,19 @@ import Default from "./Default";
 import Login from "./Components/Auth/Login/Login";
 
 import Users from "./Components/Users/Users";
-import Projects_Requests from "./Components/Projects/Requests/Requests.jsx";
+import Courses_Requests from "./Components/Courses/Requests/Requests.jsx";
 
-import Projects_Applications from "./Components/Projects/Applications/Applications.jsx";
-import Projects_Applications_Listof_Freelancers from "./Components/Projects/Applications/List.jsx";
-import Projects_Applications_Profile from "./Components/Projects/Applications/Profile.jsx";
+import Courses_Applications from "./Components/Courses/Applications/Applications.jsx";
+import Courses_Applications_Listof_Freelancers from "./Components/Courses/Applications/List.jsx";
+import Courses_Applications_Profile from "./Components/Courses/Applications/Profile.jsx";
 
-import Projects_Paying from "./Components/Projects/Paying/Paying.jsx";
-import Projects_Paying_item from "./Components/Projects/Paying/item.jsx";
+import Courses_Paying from "./Components/Courses/Paying/Paying.jsx";
+import Courses_Paying_item from "./Components/Courses/Paying/item.jsx";
 
-import All_Projects from "./Components/Projects/All_Projects/All_Projects.jsx";
-import All_Projects_item from "./Components/Projects/All_Projects/Item.jsx";
+import All_Courses from "./Components/Courses/All_Courses/All_Courses.jsx";
+import All_Courses_item from "./Components/Courses/All_Courses/Item.jsx";
 
-import Request_Project_Item from "./Components/Projects/Requests/Item.jsx";
+import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
 import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
 import Feedbacks_Freelancers from "./Components/Feedbacks/Freelancers_Feedbacks/Freelancers_Feedbacks.jsx";
 import Home_Feedbacks from "./Components/Feedbacks/Home_Feedbacks/Home_Feedbacks.jsx";
@@ -61,49 +61,49 @@ const routes = createBrowserRouter([
             },
 
             {
-                path: "/All_Projects",
-                element: <All_Projects />,
+                path: "/All_Courses",
+                element: <All_Courses />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/All_Projects/:id",
-                element: <All_Projects_item />,
+                path: "/All_Courses/:id",
+                element: <All_Courses_item />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Requests",
-                element: <Projects_Requests />,
+                path: "/Courses_Requests",
+                element: <Courses_Requests />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Requests/:id",
-                element: <Request_Project_Item />,
+                path: "/Courses_Requests/:id",
+                element: <Request_Course_Item />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Applications",
-                element: <Projects_Applications />,
+                path: "/Courses_Applications",
+                element: <Courses_Applications />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Applications/:projectId",
-                element: <Projects_Applications_Listof_Freelancers />,
+                path: "/Courses_Applications/:courseId",
+                element: <Courses_Applications_Listof_Freelancers />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Applications/:projectId/:freelancerId",
-                element: <Projects_Applications_Profile />,
+                path: "/Courses_Applications/:courseId/:freelancerId",
+                element: <Courses_Applications_Profile />,
                 errorElement: <ErrorElement />,
             },
 
             {
-                path: "/Projects_Paying",
-                element: <Projects_Paying />,
+                path: "/Courses_Paying",
+                element: <Courses_Paying />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Projects_Paying/:projectId",
-                element: <Projects_Paying_item />,
+                path: "/Courses_Paying/:courseId",
+                element: <Courses_Paying_item />,
                 errorElement: <ErrorElement />,
             },
 

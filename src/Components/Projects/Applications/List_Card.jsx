@@ -16,7 +16,7 @@ import { FaAngleUp } from "react-icons/fa";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-function List_Card({ user, projectId, application }) {
+function List_Card({ user, courseId, application }) {
     const location = useLocation();
     const userId = location.pathname.split("/")[2];
     const navigate = useNavigate();
@@ -112,7 +112,7 @@ function List_Card({ user, projectId, application }) {
                 text-white bg-perpol_v py-2 mt-4"
                     onClick={() => {
                         navigate(
-                            `/Projects_Applications/${projectId}/${user.id}`
+                            `/Courses_Applications/${courseId}/${user.id}`
                         );
                     }}
                 >

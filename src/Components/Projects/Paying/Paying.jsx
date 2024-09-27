@@ -10,7 +10,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
 function Applications() {
     const Navigate = useNavigate();
-    const [projects, setProjects] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -20,7 +20,7 @@ function Applications() {
 
     useEffect(() => {
         setLoading(true);
-        const fetchProjects = async () => {
+        const fetchCourses = async () => {
             try {
                 const response = await axios.get(
                     `http://localhost:3000/Admin/Payment`,
@@ -30,8 +30,8 @@ function Applications() {
                     }
                 );
                 if (response.status === 200) {
-                    const projectsData = response.data.projects;
-                    setProjects(projectsData);
+                    const coursesData = response.data.courses;
+                    setCourses(coursesData);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     Navigate("/Login");
@@ -45,7 +45,7 @@ function Applications() {
             }
         };
 
-        fetchProjects();
+        fetchCourses();
     }, []);
 
     if (loading) {
@@ -66,9 +66,9 @@ function Applications() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold text-perpol_b pb-6">
-                    Projects Payment
+                    Courses Payment
                 </div>
-                {!projects || projects.length === 0 ? (
+                {!courses || courses.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
                         No Payments found
                     </div>
@@ -77,17 +77,17 @@ function Applications() {
                         <div className="w-full flex gap-12 justify-center py-4">
                             <div className="max-w-[300px] border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                                 <div className="text-xs font-semibold pb-5 text-gray_v w-full">
-                                    Total Number of Projects:
+                                    Total Number of Courses:
                                 </div>
                                 <div className="flex justify-between gap-2 mx-2 w-full">
                                     <div className="font-semibold text-2xl">
-                                        {/* {projects.reduce(
-                                            (total, project) =>
+                                        {/* {courses.reduce(
+                                            (total, course) =>
                                                 total +
-                                                project.applicationsCount,
+                                                course.applicationsCount,
                                             0
                                         )} */}
-                                        {projects.length}
+                                        {courses.length}
                                     </div>
                                     <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <MdAttachMoney className="shrink-0 text-2xl" />
@@ -99,7 +99,7 @@ function Applications() {
                             <thead>
                                 <tr className="bg-gray-200 font-normal">
                                     <th className="px-4 py-2 border-l border-white rounded-tl-md">
-                                        Project Title
+                                        Course Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Teacher Company Name
@@ -108,7 +108,7 @@ function Applications() {
                                         Payment Status
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        project Created At
+                                        course Created At
                                     </th>
                                     <th className="px-4 py-2 border-l border-white rounded-tr-md">
                                         Action
@@ -116,28 +116,28 @@ function Applications() {
                                 </tr>
                             </thead>
                             <tbody className="text-xs text-center font-semibold">
-                                {projects.map((project) => (
-                                    <tr key={project?.id}>
+                                {courses.map((course) => (
+                                    <tr key={course?.id}>
                                         <td className="border px-4 py-2">
-                                            {project?.Title}
+                                            {course?.Title}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.owner?.company_Name}
+                                            {course?.owner?.company_Name}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.status === "Payed" ? (
+                                            {course?.status === "Payed" ? (
                                                 <>
                                                     <div className="">
                                                         <span className="text-green_v">
                                                             Payed :
                                                         </span>{" "}
-                                                        Teacher Payed the
-                                                        Project fees
+                                                        Teacher Payed the Course
+                                                        fees
                                                     </div>
                                                 </>
-                                            ) : !project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId ? (
+                                            ) : !course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId ? (
                                                 <>
                                                     <div className="">
                                                         <span className=" text-red-500">
@@ -147,10 +147,10 @@ function Applications() {
                                                         </span>
                                                     </div>
                                                 </>
-                                            ) : project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId &&
-                                              !project?.isPayment_ScreenShot_Rejected ? (
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              !course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
                                                     <span className="text-perpol_v">
                                                         Teacher uploaded the
@@ -161,10 +161,10 @@ function Applications() {
                                                         Validation
                                                     </span>
                                                 </div>
-                                            ) : project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId &&
-                                              project?.isPayment_ScreenShot_Rejected ? (
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              course?.isPayment_ScreenShot_Rejected ? (
                                                 <>
                                                     <div className="">
                                                         <span className="text-red-500">
@@ -177,26 +177,25 @@ function Applications() {
                                                         </span>
                                                     </div>
                                                 </>
-                                            ) : project?.status ===
-                                                  "Accepted" &&
-                                              !project?.FreelancerId ? (
+                                            ) : course?.status === "Accepted" &&
+                                              !course?.FreelancerId ? (
                                                 <div>
                                                     <span className="text-perpol_v">
                                                         Accepted :
                                                     </span>{" "}
                                                     Wainting for freelancers to
-                                                    Apply for this project
+                                                    Apply for this course
                                                 </div>
                                             ) : null}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {formatDate(project?.createdAt)}
+                                            {formatDate(course?.createdAt)}
                                         </td>
                                         <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
                                                     Navigate(
-                                                        `/Projects_Paying/${project?.id}`
+                                                        `/Courses_Paying/${course?.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"

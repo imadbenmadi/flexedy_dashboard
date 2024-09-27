@@ -9,9 +9,9 @@ dayjs.extend(customParseFormat);
 import { FaRegHandshake } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 
-function All_Projects() {
+function All_Courses() {
     const navigate = useNavigate();
-    const [Projects, setProjects] = useState([]);
+    const [Courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const formatDate = (dateString) => {
@@ -19,17 +19,17 @@ function All_Projects() {
     };
     useEffect(() => {
         setLoading(true);
-        const fetchProjects = async () => {
+        const fetchCourses = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Projects`,
+                    `http://localhost:3000/Admin/Courses`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
                     }
                 );
                 if (response.status === 200) {
-                    setProjects(response.data.Projects);
+                    setCourses(response.data.Courses);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
@@ -43,17 +43,17 @@ function All_Projects() {
             }
         };
 
-        fetchProjects();
+        fetchCourses();
     }, []);
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [ProjectsTypeFilter, setProjectsTypeFilter] = useState("");
-    const filteredProjectss = Projects.filter((projects) => {
-        const title = `${projects.Title}`.toLowerCase();
+    const [CoursesTypeFilter, setCoursesTypeFilter] = useState("");
+    const filteredCoursess = Courses.filter((courses) => {
+        const title = `${courses.Title}`.toLowerCase();
         return title.includes(searchQuery.toLowerCase());
-    }).filter((projects) => {
-        if (ProjectsTypeFilter) {
-            return projects.status === ProjectsTypeFilter;
+    }).filter((courses) => {
+        if (CoursesTypeFilter) {
+            return courses.status === CoursesTypeFilter;
         }
         return true;
     });
@@ -76,7 +76,7 @@ function All_Projects() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    flexedu Projects
+                    flexedu Courses
                 </div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
                     <div className="border p-2 mr-4 rounded-md flex items-center justify-between gap-2 text-sm font-semibold min-w-[300px]">
@@ -91,8 +91,8 @@ function All_Projects() {
                     </div>
 
                     <select
-                        value={ProjectsTypeFilter}
-                        onChange={(e) => setProjectsTypeFilter(e.target.value)}
+                        value={CoursesTypeFilter}
+                        onChange={(e) => setCoursesTypeFilter(e.target.value)}
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All</option>
@@ -103,9 +103,9 @@ function All_Projects() {
                         <option value="Pending">Pending</option>
                     </select>
                 </div>
-                {filteredProjectss.length === 0 ? (
+                {filteredCoursess.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
-                        No Projects found
+                        No Courses found
                     </div>
                 ) : (
                     <div>
@@ -113,7 +113,7 @@ function All_Projects() {
                             <thead>
                                 <tr className="bg-gray-200 font-normal">
                                     <th className="px-4 py-2 rounded-tl-md">
-                                        Project Title
+                                        Course Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Status{" "}
@@ -136,17 +136,17 @@ function All_Projects() {
                                 </tr>
                             </thead>
                             <tbody className="text-xs text-center font-semibold ">
-                                {filteredProjectss.map((project) => (
-                                    <tr key={project.id}>
+                                {filteredCoursess.map((course) => (
+                                    <tr key={course.id}>
                                         <td className="border px-4 py-2">
-                                            {`${project?.Title}`}
+                                            {`${course?.Title}`}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.status}
+                                            {course?.status}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.DeadLine ? (
-                                                project?.DeadLine
+                                            {course?.DeadLine ? (
+                                                course?.DeadLine
                                             ) : (
                                                 <div className="text-red-600">
                                                     No Deadline
@@ -154,8 +154,8 @@ function All_Projects() {
                                             )}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.Money ? (
-                                                project?.Money
+                                            {course?.Money ? (
+                                                course?.Money
                                             ) : (
                                                 <div className="text-red-600">
                                                     Not set
@@ -163,8 +163,8 @@ function All_Projects() {
                                             )}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {project?.status === "Payed" &&
-                                            !project?.isWorkUploaded ? (
+                                            {course?.status === "Payed" &&
+                                            !course?.isWorkUploaded ? (
                                                 <>
                                                     <div className="">
                                                         <span className="text-green_v">
@@ -172,22 +172,22 @@ function All_Projects() {
                                                         </span>{" "}
                                                         payment accepted. <br />
                                                         a Student is working on
-                                                        the project
+                                                        the course
                                                     </div>
                                                 </>
-                                            ) : project?.status === "Payed" &&
-                                              project?.isWorkUploaded &&
-                                              !project?.isWorkRejected ? (
+                                            ) : course?.status === "Payed" &&
+                                              course?.isWorkUploaded &&
+                                              !course?.isWorkRejected ? (
                                                 <div className="">
                                                     <span className="text-green_v">
                                                         Uploaded :
                                                     </span>{" "}
                                                     The Student Upload the files
-                                                    of the project .
+                                                    of the course .
                                                 </div>
-                                            ) : project?.status === "Payed" &&
-                                              project?.isWorkUploaded &&
-                                              project?.isWorkRejected ? (
+                                            ) : course?.status === "Payed" &&
+                                              course?.isWorkUploaded &&
+                                              course?.isWorkRejected ? (
                                                 <div className="">
                                                     <span className="text-red-500">
                                                         Rejection Sent to the
@@ -196,44 +196,44 @@ function All_Projects() {
                                                     student is correcting the
                                                     mentioned pointes .
                                                 </div>
-                                            ) : project?.status ===
+                                            ) : course?.status ===
                                               "Rejected" ? (
                                                 <div className="">
                                                     <span className="text-red-600">
                                                         Rejected :
                                                     </span>{" "}
                                                     <span className=" text-gray_v">
-                                                        the project has been
+                                                        the course has been
                                                         rejected.
                                                     </span>
                                                 </div>
-                                            ) : project?.status ===
+                                            ) : course?.status ===
                                               "Completed" ? (
                                                 <div className="">
                                                     <span className="text-green_v">
                                                         Completed :
                                                     </span>{" "}
                                                     <span className=" text-gray_v">
-                                                        the project has been
+                                                        the course has been
                                                         closed.
                                                     </span>
                                                 </div>
-                                            ) : !project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId ? (
+                                            ) : !course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId ? (
                                                 <div className="">
                                                     <span className="text-gray_v">
                                                         Accepted :
                                                     </span>{" "}
                                                     <span className=" text-red-500">
                                                         waiting teacher to pay
-                                                        the project fees
+                                                        the course fees
                                                     </span>
                                                 </div>
-                                            ) : project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId &&
-                                              !project?.isPayment_ScreenShot_Rejected ? (
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              !course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
                                                     <span className="text-perpol_v">
                                                         Accepted :
@@ -243,10 +243,10 @@ function All_Projects() {
                                                         Validation
                                                     </span>
                                                 </div>
-                                            ) : project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId &&
-                                              project?.isPayment_ScreenShot_Rejected ? (
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
                                                     <span className="text-red-500">
                                                         Payment Rejected :
@@ -258,10 +258,10 @@ function All_Projects() {
                                                         screenshot
                                                     </span>
                                                 </div>
-                                            ) : project?.isPayment_ScreenShot_uploaded &&
-                                              project?.status === "Accepted" &&
-                                              project?.FreelancerId &&
-                                              project?.isPayment_ScreenShot_Rejected ? (
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
                                                     <span className=" text-red-500">
                                                         the payment has been
@@ -274,17 +274,15 @@ function All_Projects() {
                                                         screenshot{" "}
                                                     </span>{" "}
                                                 </div>
-                                            ) : project?.status ===
-                                                  "Accepted" &&
-                                              !project?.FreelancerId ? (
+                                            ) : course?.status === "Accepted" &&
+                                              !course?.FreelancerId ? (
                                                 <div>
                                                     <span className="text-perpol_v">
                                                         Accepted
                                                     </span>{" "}
                                                     Searching For the Student
                                                 </div>
-                                            ) : project?.status ===
-                                              "Pending" ? (
+                                            ) : course?.status === "Pending" ? (
                                                 <div>
                                                     <span className="text-perpol_v">
                                                         Pending
@@ -294,20 +292,20 @@ function All_Projects() {
                                                     </span>
                                                 </div>
                                             ) : null}
-                                            {/* {project?.status} */}
+                                            {/* {course?.status} */}
                                         </td>
 
                                         <td className="border px-4 py-2">
                                             {/* {new Date(
-                                            project.createdAt
+                                            course.createdAt
                                         ).toLocaleDateString()} */}
-                                            {formatDate(project?.createdAt)}
+                                            {formatDate(course?.createdAt)}
                                         </td>
                                         <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
                                                     navigate(
-                                                        `/All_Projects/${project.id}`
+                                                        `/All_Courses/${course.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -326,4 +324,4 @@ function All_Projects() {
     }
 }
 
-export default All_Projects;
+export default All_Courses;

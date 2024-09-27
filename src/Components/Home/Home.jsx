@@ -108,13 +108,13 @@ function Home() {
         // Process freelancers and clients
         const freelancersByDate = processData(data?.freelancers);
         const clientsByDate = processData(data?.clients);
-        const projectsByDate = processData(data?.projects);
+        const coursesByDate = processData(data?.courses);
 
         const allDates = Array.from(
             new Set([
                 ...Object.keys(freelancersByDate),
                 ...Object.keys(clientsByDate),
-                ...Object.keys(projectsByDate),
+                ...Object.keys(coursesByDate),
             ])
         ).sort();
 
@@ -123,7 +123,7 @@ function Home() {
             (date) => freelancersByDate[date] || 0
         );
         const clientsData = allDates.map((date) => clientsByDate[date] || 0);
-        const projectsData = allDates.map((date) => projectsByDate[date] || 0);
+        const coursesData = allDates.map((date) => coursesByDate[date] || 0);
         const chart_data = {
             labels: allDates,
             datasets: [
@@ -140,8 +140,8 @@ function Home() {
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
                 {
-                    label: "Projects",
-                    data: projectsData,
+                    label: "Courses",
+                    data: coursesData,
                     borderColor: "rgb(60, 100, 235)",
                     backgroundColor: "rgba(60, 100, 235, 0.5)",
                 },
@@ -195,11 +195,11 @@ function Home() {
                     </div>
                     <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Total Projects:
+                            Total Courses:
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">
-                                {data?.projects_nbr}
+                                {data?.courses_nbr}
                             </div>
                             <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <MdOutlineWork className=" shrink-0 text-2xl" />

@@ -207,55 +207,55 @@ function PersonalInformations({ user }) {
                     <div className="flex flex-wrap gap-6">
                         {user?.PortfolioItems &&
                         user.PortfolioItems.length > 0 ? (
-                            user.PortfolioItems.map((project) => (
+                            user.PortfolioItems.map((course) => (
                                 <div
-                                    key={project.id}
+                                    key={course.id}
                                     className="w-full mx-auto md:mx-0 md:min-w-full break-words overflow-hidden flex flex-col gap-5 font-semibold border border-gray_white rounded-lg p-4"
                                 >
                                     <div className="font-semibold text-lg text-gray_v">
-                                        {project.title}
+                                        {course.title}
                                     </div>
                                     <div className="text-sm text-gray_v">
-                                        {project.description}
+                                        {course.description}
                                     </div>
                                     <div className="flex items-center gap-2 text-sm text-gray_v">
                                         <div>
                                             {/* {new Date(
-                                                project.startDate
+                                                course.startDate
                                             ).toLocaleDateString()} */}
-                                            {dayjs(project?.startDate).format(
+                                            {dayjs(course?.startDate).format(
                                                 "DD MMMM YYYY"
                                             )}
                                         </div>
                                         <div className="flex gap-2">
                                             <div> -</div>
-                                            {project.endDate && (
+                                            {course.endDate && (
                                                 <div>
                                                     {/* {new Date(
-                                                        project.endDate
+                                                        course.endDate
                                                     ).toLocaleDateString()} */}
                                                     {dayjs(
-                                                        project?.endDate
+                                                        course?.endDate
                                                     ).format("DD MMMM YYYY")}
                                                 </div>
                                             )}
                                         </div>
                                         <div className="font-semibold">
-                                            {project.stillWorking
+                                            {course.stillWorking
                                                 ? "Still Working"
                                                 : ""}
                                         </div>
                                     </div>
-                                    {project.livePreviewLink && (
+                                    {course.livePreviewLink && (
                                         <div className="flex gap-2">
                                             <div className="font-semibold text-gray_v">
                                                 Preview link:
                                             </div>
                                             <a
-                                                href={project.livePreviewLink}
+                                                href={course.livePreviewLink}
                                                 className="underline text-perpol_v"
                                             >
-                                                {project.livePreviewLink}
+                                                {course.livePreviewLink}
                                             </a>
                                         </div>
                                     )}

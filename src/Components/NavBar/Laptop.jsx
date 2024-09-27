@@ -86,23 +86,23 @@ function Laptop() {
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <MdOutlineWorkOutline className=" text-lg" />
-                    Projects
+                    Courses
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/All_Projects"}
+                        to={"/All_Courses"}
                         className={` ${
-                            Active_nav == "All_Projects"
+                            Active_nav == "All_Courses"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>All Projects</span>
+                        <span>All Courses</span>
                     </Link>
                     <Link
-                        to={"/Projects_Requests"}
+                        to={"/Courses_Requests"}
                         className={` ${
-                            Active_nav == "Projects_Requests"
+                            Active_nav == "Courses_Requests"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
@@ -110,9 +110,9 @@ function Laptop() {
                         <span>Request</span>
                     </Link>
                     <Link
-                        to={"/Projects_Applications"}
+                        to={"/Courses_Applications"}
                         className={` ${
-                            Active_nav == "Projects_Applications"
+                            Active_nav == "Courses_Applications"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
@@ -120,9 +120,9 @@ function Laptop() {
                         <span>Applications</span>
                     </Link>
                     {/* <Link
-                        to={"/Projects_Accepted"}
+                        to={"/Courses_Accepted"}
                         className={` ${
-                            Active_nav == "Projects_Accepted"
+                            Active_nav == "Courses_Accepted"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
@@ -130,9 +130,9 @@ function Laptop() {
                         <span>Accepted</span>
                     </Link> */}
                     <Link
-                        to={"/Projects_Paying"}
+                        to={"/Courses_Paying"}
                         className={` ${
-                            Active_nav == "Projects_Paying"
+                            Active_nav == "Courses_Paying"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
@@ -140,9 +140,9 @@ function Laptop() {
                         <span>Payment</span>
                     </Link>
                     {/* <Link
-                        to={"/Projects_At_Work"}
+                        to={"/Courses_At_Work"}
                         className={` ${
-                            Active_nav == "Projects_At_Work"
+                            Active_nav == "Courses_At_Work"
                                 ? "bg-blue_v text-gray_v px-4 "
                                 : "bg-white hover:text-perpol_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}

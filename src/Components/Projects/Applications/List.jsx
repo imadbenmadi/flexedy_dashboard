@@ -13,7 +13,7 @@ import { FaAngleUp } from "react-icons/fa";
 import List_Card from "./List_Card";
 function List() {
     const location = useLocation();
-    const projectId = location.pathname.split("/")[2];
+    const courseId = location.pathname.split("/")[2];
     const navigate = useNavigate();
     const [Applicants, setApplicants] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -39,10 +39,10 @@ function List() {
 
     useEffect(() => {
         setLoading(true);
-        const fetchProject = async () => {
+        const fetchCourse = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Applications/${projectId}`,
+                    `http://localhost:3000/Admin/Applications/${courseId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -54,15 +54,15 @@ function List() {
                     setApplicants(data);
                     let contentState;
 
-                    if (data && data[0]?.ProjectDescription) {
-                        // Ensure ProjectDescription is defined
-                        if (isDraftJSFormat(data[0]?.ProjectDescription)) {
+                    if (data && data[0]?.CourseDescription) {
+                        // Ensure CourseDescription is defined
+                        if (isDraftJSFormat(data[0]?.CourseDescription)) {
                             contentState = convertFromRaw(
-                                JSON.parse(data[0]?.ProjectDescription)
+                                JSON.parse(data[0]?.CourseDescription)
                             );
                         } else {
                             contentState = ContentState.createFromText(
-                                data[0]?.ProjectDescription
+                                data[0]?.CourseDescription
                             );
                         }
                         setEditorState(
@@ -84,7 +84,7 @@ function List() {
             }
         };
 
-        fetchProject();
+        fetchCourse();
     }, []);
     if (loading) {
         return (
@@ -104,7 +104,7 @@ function List() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold text-perpol_b pb-6">
-                    Project Requirements & Applicants
+                    Course Requirements & Applicants
                 </div>
                 {!Applicants || Applicants.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
@@ -114,30 +114,30 @@ function List() {
                     <div>
                         <div className=" my-6 md:mx-24 ">
                             <div className=" pb-2 font-semibold text-gray_v">
-                                Project Requirements
+                                Course Requirements
                             </div>
                             <div className=" border p-4 rounded-lg">
                                 <div className=" flex gap-2 text-sm font-semibold">
-                                    <div>Project Title : </div>
+                                    <div>Course Title : </div>
                                     <div className=" text-gray_v">
-                                        {Applicants[0]?.Project?.Title}
+                                        {Applicants[0]?.Course?.Title}
                                     </div>
                                 </div>
                                 <div className="text-sm  mb-2 font-semibold text-white">
                                     <div className=" flex gap-2">
-                                        {Applicants[0]?.Project
+                                        {Applicants[0]?.Course
                                             ?.Field_is_Graphic_design && (
                                             <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 Graphic Design
                                             </div>
                                         )}
-                                        {Applicants[0]?.Project
+                                        {Applicants[0]?.Course
                                             ?.Field_is_Content_creation && (
                                             <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 Content creation
                                             </div>
                                         )}
-                                        {Applicants[0]?.Project
+                                        {Applicants[0]?.Course
                                             ?.Field_is_SEO_SIM && (
                                             <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 SEO/SMM
@@ -145,14 +145,14 @@ function List() {
                                         )}
                                     </div>
                                 </div>
-                                {Applicants[0]?.Project
+                                {Applicants[0]?.Course
                                     ?.Frelancer_Experiance && (
                                     <div className="flex items-center justify-between w-full">
                                         <div className="text-sm pt-2 text-gray_v">
                                             requested frelancer experiance :{" "}
                                             <span className=" font-semibold">
                                                 {
-                                                    Applicants[0]?.Project
+                                                    Applicants[0]?.Course
                                                         ?.Frelancer_Experiance
                                                 }
                                             </span>
@@ -162,23 +162,23 @@ function List() {
                                 <div className="flex items-center justify-between w-full pt-2 font-semibold">
                                     <div className="text-sm pt-1 text-gray_v">
                                         Expected Deadline :{" "}
-                                        {Applicants[0]?.Project?.Expected_Time}
+                                        {Applicants[0]?.Course?.Expected_Time}
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between w-full  font-semibold">
                                     <div className="text-sm pt-1 text-gray_v">
                                         Teacher Bugdget :{" "}
-                                        {Applicants[0]?.Project?.Client_Budget}
+                                        {Applicants[0]?.Course?.Client_Budget}
                                     </div>
                                 </div>{" "}
                                 <div className="flex items-center justify-between w-full font-semibold">
                                     <div className="text-sm pt-1 text-gray_v">
                                         Created at :{" "}
                                         {/* {new Date(
-                                        project?.createdAt
+                                        course?.createdAt
                                     ).toLocaleDateString()} */}
                                         {formatDate(
-                                            Applicants[0]?.Project?.createdAt
+                                            Applicants[0]?.Course?.createdAt
                                         )}
                                         {/* const formattedDate = */}
                                         {/* ; */}
@@ -191,7 +191,7 @@ function List() {
                                         className="text-sm text-gray_v font-semibold select-none pt-4 text-center flex justify-center items-center cursor-pointer gap-2"
                                         onClick={Toogle_Show_desc}
                                     >
-                                        Hide Project Description
+                                        Hide Course Description
                                         <FaAngleUp />
                                     </div>
                                     <div className="text-sm font-semibold pl-6 py-6 text-gray_v">
@@ -206,7 +206,7 @@ function List() {
                                     className="text-sm text-gray_v font-semibold select-none pt-4 text-center flex justify-center items-center cursor-pointer gap-2"
                                     onClick={Toogle_Show_desc}
                                 >
-                                    Show Project Description
+                                    Show Course Description
                                     <FaAngleDown />
                                 </div>
                             )}
@@ -220,7 +220,7 @@ function List() {
                                     return (
                                         <List_Card
                                             user={applicant.Student}
-                                            projectId={projectId}
+                                            courseId={courseId}
                                             application={applicant}
                                         />
                                     );
