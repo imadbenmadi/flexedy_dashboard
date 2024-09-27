@@ -67,7 +67,7 @@ function Home_Feedbacks() {
         <div className=" py-6 px-4">
             <div className=" text-xl font-semibold text-perpol_b">
                 {" "}
-                Feedbacks in the Dzidcom Home page
+                Feedbacks in the flexedu Home page
             </div>
             {!Feedbacks ||
                 (Feedbacks.length == 0 && (

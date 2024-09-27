@@ -64,7 +64,7 @@ function Requests() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold  text-perpol_b pb-6">
-                    Dzidcom Projects Requests
+                    flexedu Projects Requests
                 </div>
                 {Projects.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
