@@ -95,14 +95,18 @@ function Home() {
         // Helper function to process data
         const processData = (items) => {
             const countByDate = {};
-            items.forEach((item) => {
-                const date = dayjs(item.createdAt).format("YYYY-MM-DD");
-                if (!countByDate[date]) {
-                    countByDate[date] = 0;
-                }
-                countByDate[date]++;
-            });
-            return countByDate;
+            if (!items) return countByDate;
+            else if (items.length === 0) return countByDate;
+            else {
+                items.forEach((item) => {
+                    const date = dayjs(item.createdAt).format("YYYY-MM-DD");
+                    if (!countByDate[date]) {
+                        countByDate[date] = 0;
+                    }
+                    countByDate[date]++;
+                });
+                return countByDate;
+            }
         };
 
         // Process freelancers and clients

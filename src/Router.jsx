@@ -15,8 +15,8 @@ import Courses_Applications_Profile from "./Components/Courses/Applications/Prof
 import Courses_Paying from "./Components/Courses/Paying/Paying.jsx";
 import Courses_Paying_item from "./Components/Courses/Paying/item.jsx";
 
-import All_Courses from "./Components/Courses/All_Courses/All_Courses.jsx";
-import All_Courses_item from "./Components/Courses/All_Courses/Item.jsx";
+import All_Courses from "./Components/Courses/All_Projects/All_Projects.jsx";
+import All_Courses_item from "./Components/Courses/All_Projects/Item.jsx";
 
 import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
 import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
