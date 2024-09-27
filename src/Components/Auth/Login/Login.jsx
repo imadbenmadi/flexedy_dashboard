@@ -77,7 +77,7 @@ function Login() {
     if (loading) {
         return (
             <div className=" w-screen h-screen flex flex-col items-center justify-center">
-                <img src={Logo} alt="" />
+                <img src={Logo} className=" w-[220px]" alt="" />
                 <span className="loader"></span>
             </div>
         );

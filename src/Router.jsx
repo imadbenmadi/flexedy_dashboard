@@ -23,8 +23,6 @@ import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients
 import Feedbacks_Freelancers from "./Components/Feedbacks/Freelancers_Feedbacks/Freelancers_Feedbacks.jsx";
 import Home_Feedbacks from "./Components/Feedbacks/Home_Feedbacks/Home_Feedbacks.jsx";
 
-import Terms from "./Components/Terms/Terms.jsx";
-
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
 import Not_Finished from "./Components/Not_Finished";
@@ -125,11 +123,6 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
 
-            {
-                path: "/Terms",
-                element: <Terms />,
-                errorElement: <ErrorElement />,
-            },
             {
                 path: "/Contact",
                 element: <Contact />,
