@@ -27,8 +27,8 @@ import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
 import Not_Finished from "./Components/Not_Finished";
 import ErrorElement from "./Components/ErrorElement";
-import Client_Profile from "./Components/Users/Client_Profile.jsx";
-import Freelancer_Profile from "./Components/Users/Freelancer_Profile.jsx";
+import Client_Profile from "./Components/Users/Teacher_Profile.jsx";
+import Freelancer_Profile from "./Components/Users/Student_Profile.jsx";
 const routes = createBrowserRouter([
     {
         path: "/",
