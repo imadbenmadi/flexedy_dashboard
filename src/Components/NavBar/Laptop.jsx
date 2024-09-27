@@ -66,7 +66,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Home"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full `}
                     >
                         <span>Statistics</span>
@@ -76,7 +76,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Users"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Users</span>
@@ -94,7 +94,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "All_Courses"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>All Courses</span>
@@ -104,7 +104,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Courses_Requests"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Request</span>
@@ -114,7 +114,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Courses_Applications"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Applications</span>
@@ -124,7 +124,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Courses_Accepted"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Accepted</span>
@@ -134,7 +134,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Courses_Paying"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Payment</span>
@@ -144,7 +144,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Courses_At_Work"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>At Work</span>
@@ -162,30 +162,30 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Home_Feedbacks"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>in Home</span>
                     </Link>
                     <Link
-                        to={"/Feedbacks_Clients"}
+                        to={"/Feedbacks_Teachers"}
                         className={` ${
-                            Active_nav == "Feedbacks_Clients"
+                            Active_nav == "Feedbacks_Teachers"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>Clients</span>
+                        <span>Teachers</span>
                     </Link>
                     <Link
-                        to={"/Feedbacks_Freelancers"}
+                        to={"/Feedbacks_Students"}
                         className={` ${
-                            Active_nav == "Feedbacks_Freelancers"
+                            Active_nav == "Feedbacks_Students"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>Freelancers</span>
+                        <span>Students</span>
                     </Link>
                 </div>
             </div>
@@ -200,7 +200,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Messages"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>All messages</span>
@@ -218,7 +218,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Terms"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span>Terms of service</span>
@@ -236,7 +236,7 @@ function Laptop() {
                         className={` ${
                             Active_nav == "Contact"
                                 ? "bg-blue_v text-gray_v px-4 "
-                                : "bg-white hover:text-perpol_v"
+                                : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
                         <span> Messages</span>

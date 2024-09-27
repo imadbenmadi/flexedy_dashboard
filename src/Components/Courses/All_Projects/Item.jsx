@@ -107,7 +107,7 @@ function Freelancer_Process_item() {
     else
         return (
             <div className=" w-full h-full relative py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-green_b pb-6">
                     Course Details
                 </div>
                 <div className=" text-center font-semibold">
@@ -164,9 +164,7 @@ function Freelancer_Process_item() {
                       !course?.isPayment_ScreenShot_Rejected ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div className="">
-                                <span className="text-perpol_v">
-                                    Accepted :
-                                </span>{" "}
+                                <span className="text-green_v">Accepted :</span>{" "}
                                 <span className=" text-gray_v">
                                     Waiting for payment Validation{" "}
                                 </span>
@@ -195,7 +193,7 @@ function Freelancer_Process_item() {
                       !course?.FreelancerId ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div>
-                                <span className="text-perpol_v">Accepted</span>{" "}
+                                <span className="text-green_v">Accepted</span>{" "}
                                 Searching For the Student
                             </div>
                             <Link
@@ -208,7 +206,7 @@ function Freelancer_Process_item() {
                     ) : course?.status === "Pending" ? (
                         <div className=" flex justify-center items-center flex-col gap-4">
                             <div>
-                                <span className="text-perpol_v">Pending</span>{" "}
+                                <span className="text-green_v">Pending</span>{" "}
                                 <span className="">waiting for validation</span>
                             </div>
                             <Link
@@ -239,17 +237,17 @@ function Freelancer_Process_item() {
                             <div className="text-sm  mb-2 font-semibold text-white">
                                 <div className=" flex gap-2">
                                     {course?.Field_is_Graphic_design && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Graphic Design
                                         </div>
                                     )}
                                     {course?.Field_is_Content_creation && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Content creation
                                         </div>
                                     )}
                                     {course?.Field_is_SEO_SIM && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             SEO/SMM
                                         </div>
                                     )}

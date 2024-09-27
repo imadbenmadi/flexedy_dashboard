@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import handleLogin from "./Post_Login";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
-import Logo from '../../../../public/Logo.png'
+import Logo from "../../../../public/Logo.png";
 function Login() {
     const Navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -180,7 +180,7 @@ function Login() {
                                         ) : (
                                             <button
                                                 type="submit"
-                                                className=" bg-perpol_v py-2 mt-4 rounded-2xl text-white font-semibold "
+                                                className=" bg-green_v py-2 mt-4 rounded-2xl text-white font-semibold "
                                                 disabled={isSubmitting}
                                             >
                                                 Get Started

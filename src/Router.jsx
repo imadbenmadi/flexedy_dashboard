@@ -9,7 +9,7 @@ import Users from "./Components/Users/Users";
 import Courses_Requests from "./Components/Courses/Requests/Requests.jsx";
 
 import Courses_Applications from "./Components/Courses/Applications/Applications.jsx";
-import Courses_Applications_Listof_Freelancers from "./Components/Courses/Applications/List.jsx";
+import Courses_Applications_Listof_Students from "./Components/Courses/Applications/List.jsx";
 import Courses_Applications_Profile from "./Components/Courses/Applications/Profile.jsx";
 
 import Courses_Paying from "./Components/Courses/Paying/Paying.jsx";
@@ -19,8 +19,8 @@ import All_Courses from "./Components/Courses/All_Projects/All_Projects.jsx";
 import All_Courses_item from "./Components/Courses/All_Projects/Item.jsx";
 
 import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
-import Feedbacks_Clients from "./Components/Feedbacks/Clients_Freedbacks/Clients_Freedbacks.jsx";
-import Feedbacks_Freelancers from "./Components/Feedbacks/Freelancers_Feedbacks/Freelancers_Feedbacks.jsx";
+import Feedbacks_Teachers from "./Components/Feedbacks/Teachers_Freedbacks/Teachers_Freedbacks.jsx";
+import Feedbacks_Students from "./Components/Feedbacks/Students_Feedbacks/Students_Feedbacks.jsx";
 import Home_Feedbacks from "./Components/Feedbacks/Home_Feedbacks/Home_Feedbacks.jsx";
 
 import Contact from "./Components/Contact/Contact.jsx";
@@ -50,12 +50,12 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Users/Clients/:userId",
+                path: "/Users/Teachers/:userId",
                 element: <Client_Profile />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Users/Freelancers/:userId",
+                path: "/Users/Students/:userId",
                 element: <Freelancer_Profile />,
                 errorElement: <ErrorElement />,
             },
@@ -87,7 +87,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: "/Courses_Applications/:courseId",
-                element: <Courses_Applications_Listof_Freelancers />,
+                element: <Courses_Applications_Listof_Students />,
                 errorElement: <ErrorElement />,
             },
             {
@@ -113,13 +113,13 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Feedbacks_Clients",
-                element: <Feedbacks_Clients />,
+                path: "/Feedbacks_Teachers",
+                element: <Feedbacks_Teachers />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Feedbacks_Freelancers",
-                element: <Feedbacks_Freelancers />,
+                path: "/Feedbacks_Students",
+                element: <Feedbacks_Students />,
                 errorElement: <ErrorElement />,
             },
 

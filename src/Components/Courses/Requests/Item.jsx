@@ -185,14 +185,14 @@ function Freelancer_Process_item() {
     else
         return (
             <div className=" w-full h-full relative py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-green_b pb-6">
                     Courses Request
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
                     <div
-                        className=" bg-perpol_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
+                        className=" bg-green_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
                         onClick={() => {
-                            Navigate(`/Users/Clients/${course?.ClientId}`);
+                            Navigate(`/Users/Teachers/${course?.ClientId}`);
                         }}
                     >
                         Teacher Profile
@@ -237,17 +237,17 @@ function Freelancer_Process_item() {
                             <div className="text-sm  mb-2 font-semibold text-white">
                                 <div className=" flex gap-2">
                                     {course?.Field_is_Graphic_design && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Graphic Design
                                         </div>
                                     )}
                                     {course?.Field_is_Content_creation && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             Content creation
                                         </div>
                                     )}
                                     {course?.Field_is_SEO_SIM && (
-                                        <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                             SEO/SMM
                                         </div>
                                     )}

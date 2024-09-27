@@ -26,7 +26,7 @@ function Reviews({ user }) {
                 let response;
                 if ((user.userType = "teacher"))
                     response = await axios.get(
-                        `http://localhost:3000/Admin/Users/Clients/${user.id}/Feedbacks`,
+                        `http://localhost:3000/Admin/Users/Teachers/${user.id}/Feedbacks`,
                         {
                             withCredentials: true,
                             // validateStatus: () => true,
@@ -367,7 +367,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
         <div
             key={feedback?.id}
             className="flex flex-col md;flex-row justify-between py-4 px-7  border-2 
-                         border-perpol_v rounded-lg  mt-6 text-gray_v"
+                         border-green_v rounded-lg  mt-6 text-gray_v"
         >
             <div className="w-full md:w-full shrink-0">
                 <div className="flex gap-4 ">
@@ -431,7 +431,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment}
                             <span
                                 onClick={Toogle_Show_More}
-                                className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                className=" text-green_v cursor-pointer flex items-center gap-1  "
                             >
                                 {" "}
                                 Show Less <FaAngleUp />
@@ -443,7 +443,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment.length > 500 && (
                                 <div
                                     onClick={Toogle_Show_More}
-                                    className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                    className=" text-green_v cursor-pointer flex items-center gap-1  "
                                 >
                                     {" "}
                                     Show More <FaAngleDown />
@@ -470,7 +470,7 @@ function Client_Profile() {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Users/Freelancers/${userId}`,
+                    `http://localhost:3000/Admin/Users/Students/${userId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -510,7 +510,7 @@ function Client_Profile() {
     } else
         return (
             <div className=" pt-6 pl-6">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-green_b pb-6">
                     Teacher Profile
                 </div>
                 <Hero user={user} />

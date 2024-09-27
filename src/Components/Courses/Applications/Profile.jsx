@@ -25,7 +25,7 @@ function Reviews({ user }) {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Users/Freelancers/${user.id}/Feedbacks`,
+                    `http://localhost:3000/Admin/Users/Students/${user.id}/Feedbacks`,
                     {
                         withCredentials: true,
                         // validateStatus: () => true,
@@ -164,7 +164,7 @@ function PersonalInformations({ user }) {
                             user.Skills.map((skill) => (
                                 <div key={skill.id}>
                                     <div
-                                        className=" bg-perpol_v text-xl w-fit py-1
+                                        className=" bg-green_v text-xl w-fit py-1
                                                      px-2 text-white rounded-lg "
                                     >
                                         {skill.skill}
@@ -254,7 +254,7 @@ function PersonalInformations({ user }) {
                                             </div>
                                             <a
                                                 href={course.livePreviewLink}
-                                                className="underline text-perpol_v"
+                                                className="underline text-green_v"
                                             >
                                                 {course.livePreviewLink}
                                             </a>
@@ -402,7 +402,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
         <div
             key={feedback?.id}
             className="flex flex-col md;flex-row justify-between py-4 px-7  border-2 
-                         border-perpol_v rounded-lg  mt-6 text-gray_v"
+                         border-green_v rounded-lg  mt-6 text-gray_v"
         >
             <div className="w-full md:w-full shrink-0">
                 <div className="flex gap-4 ">
@@ -466,7 +466,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment}
                             <span
                                 onClick={Toogle_Show_More}
-                                className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                className=" text-green_v cursor-pointer flex items-center gap-1  "
                             >
                                 {" "}
                                 Show Less <FaAngleUp />
@@ -478,7 +478,7 @@ function Feedback_Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment.length > 500 && (
                                 <div
                                     onClick={Toogle_Show_More}
-                                    className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                    className=" text-green_v cursor-pointer flex items-center gap-1  "
                                 >
                                     {" "}
                                     Show More <FaAngleDown />
@@ -593,7 +593,7 @@ function Profile() {
         const fetchUser = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Users/Freelancers/${userId}`,
+                    `http://localhost:3000/Admin/Users/Students/${userId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -709,7 +709,7 @@ function Profile() {
                         </div>
                     </div>
                 )}
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-green_b pb-6">
                     Student Profile
                 </div>
                 <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">

@@ -132,13 +132,13 @@ function Home() {
             labels: allDates,
             datasets: [
                 {
-                    label: "Freelancers",
+                    label: "Students",
                     data: freelancersData,
                     borderColor: "rgb(255, 99, 132)",
                     backgroundColor: "rgba(255, 99, 132, 0.5)",
                 },
                 {
-                    label: "Clients",
+                    label: "Teachers",
                     data: clientsData,
                     borderColor: "rgb(53, 162, 235)",
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -154,7 +154,7 @@ function Home() {
 
         return (
             <div>
-                <div className=" text-perpol_b text-2xl font-semibold pt-6 pl-6">
+                <div className=" text-green_b text-2xl font-semibold pt-6 pl-6">
                     Home page
                 </div>
                 <div className=" flex justify-center items-center flex-wrap gap-6 mx-6 my-6">
@@ -173,7 +173,7 @@ function Home() {
                     </div>
                     <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Freelancers:
+                            Students:
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">
@@ -186,7 +186,7 @@ function Home() {
                     </div>
                     <div className=" border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                         <div className=" text-xs font-semibold pb-2 text-gray_v w-full">
-                            Clients:
+                            Teachers:
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">

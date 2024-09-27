@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Card from "./Card";
 
-function Freelancers_Feedbacks() {
+function Teachers_Freedbacks() {
     const Navigate = useNavigate();
 
     const [Feedbacks, setFeedbacks] = useState(false);
@@ -22,7 +22,7 @@ function Freelancers_Feedbacks() {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Feedbacks/Freelancers`,
+                    `http://localhost:3000/Admin/Feedbacks/Teachers`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -65,12 +65,12 @@ function Freelancers_Feedbacks() {
         );
     return (
         <div className=" py-6 px-4">
-            <div className=" text-xl font-semibold text-perpol_b">
+            <div className=" text-xl font-semibold text-green_b">
                 {" "}
-                Freelancers Feedbacks to Clients
+                Teachers Feedbacks to Students
             </div>
             {!Feedbacks ||
-                (Feedbacks.length == 0 && (
+                (Feedbacks?.length == 0 && (
                     <div className="text-md font-semibold text-gray_v text-center pt-12">
                         No Feedbacks
                     </div>
@@ -88,7 +88,7 @@ function Freelancers_Feedbacks() {
                     );
                 })}
             {/* <div className=" mt-6 "></div>
-            <div className=" py-4 px-7  border-2  border-perpol_v rounded-lg  ">
+            <div className=" py-4 px-7  border-2  border-green_v rounded-lg  ">
                 <div></div>
                 <div></div>
                 <div></div>
@@ -98,4 +98,4 @@ function Freelancers_Feedbacks() {
     );
 }
 
-export default Freelancers_Feedbacks;
+export default Teachers_Freedbacks;

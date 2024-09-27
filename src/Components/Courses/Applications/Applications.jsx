@@ -64,7 +64,7 @@ function Applications() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold text-perpol_b pb-6">
+                <div className="text-xl font-semibold text-green_b pb-6">
                     Courses Applications
                 </div>
                 {!courses || courses.length === 0 ? (

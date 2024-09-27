@@ -103,7 +103,7 @@ function List() {
     } else
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold text-perpol_b pb-6">
+                <div className="text-xl font-semibold text-green_b pb-6">
                     Course Requirements & Applicants
                 </div>
                 {!Applicants || Applicants.length === 0 ? (
@@ -127,19 +127,19 @@ function List() {
                                     <div className=" flex gap-2">
                                         {Applicants[0]?.Course
                                             ?.Field_is_Graphic_design && (
-                                            <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                            <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 Graphic Design
                                             </div>
                                         )}
                                         {Applicants[0]?.Course
                                             ?.Field_is_Content_creation && (
-                                            <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                            <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 Content creation
                                             </div>
                                         )}
                                         {Applicants[0]?.Course
                                             ?.Field_is_SEO_SIM && (
-                                            <div className="bg-perpol_v text-md rounded-lg py-1 mt-2 px-3 ">
+                                            <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
                                                 SEO/SMM
                                             </div>
                                         )}

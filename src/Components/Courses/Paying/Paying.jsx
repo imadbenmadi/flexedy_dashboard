@@ -65,7 +65,7 @@ function Applications() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold text-perpol_b pb-6">
+                <div className="text-xl font-semibold text-green_b pb-6">
                     Courses Payment
                 </div>
                 {!courses || courses.length === 0 ? (
@@ -152,7 +152,7 @@ function Applications() {
                                               course?.FreelancerId &&
                                               !course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
-                                                    <span className="text-perpol_v">
+                                                    <span className="text-green_v">
                                                         Teacher uploaded the
                                                         payment screenshot :
                                                     </span>{" "}
@@ -180,7 +180,7 @@ function Applications() {
                                             ) : course?.status === "Accepted" &&
                                               !course?.FreelancerId ? (
                                                 <div>
-                                                    <span className="text-perpol_v">
+                                                    <span className="text-green_v">
                                                         Accepted :
                                                     </span>{" "}
                                                     Wainting for freelancers to

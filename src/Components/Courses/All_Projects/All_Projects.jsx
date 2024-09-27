@@ -75,7 +75,7 @@ function All_Courses() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b pb-6">
+                <div className="text-xl font-semibold  text-green_b pb-6">
                     flexedu Courses
                 </div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
@@ -235,7 +235,7 @@ function All_Courses() {
                                               course?.FreelancerId &&
                                               !course?.isPayment_ScreenShot_Rejected ? (
                                                 <div className="">
-                                                    <span className="text-perpol_v">
+                                                    <span className="text-green_v">
                                                         Accepted :
                                                     </span>{" "}
                                                     <span className=" text-gray_v">
@@ -277,14 +277,14 @@ function All_Courses() {
                                             ) : course?.status === "Accepted" &&
                                               !course?.FreelancerId ? (
                                                 <div>
-                                                    <span className="text-perpol_v">
+                                                    <span className="text-green_v">
                                                         Accepted
                                                     </span>{" "}
                                                     Searching For the Student
                                                 </div>
                                             ) : course?.status === "Pending" ? (
                                                 <div>
-                                                    <span className="text-perpol_v">
+                                                    <span className="text-green_v">
                                                         Pending
                                                     </span>{" "}
                                                     <span className="">

@@ -51,7 +51,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
         <div
             key={feedback?.id}
             className="flex flex-col md;flex-row justify-between py-4 px-7  border-2 
-                         border-perpol_v rounded-lg  mt-6 text-gray_v"
+                         border-green_v rounded-lg  mt-6 text-gray_v"
         >
             <div className="w-full md:w-full shrink-0">
                 <div className="flex gap-4 ">
@@ -112,7 +112,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment}
                             <span
                                 onClick={Toogle_Show_More}
-                                className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                className=" text-green_v cursor-pointer flex items-center gap-1  "
                             >
                                 {" "}
                                 Show Less <FaAngleUp />
@@ -124,7 +124,7 @@ function Card({ feedback, Feedbacks, setFeedbacks }) {
                             {feedback?.Comment.length > 500 && (
                                 <div
                                     onClick={Toogle_Show_More}
-                                    className=" text-perpol_v cursor-pointer flex items-center gap-1  "
+                                    className=" text-green_v cursor-pointer flex items-center gap-1  "
                                 >
                                     {" "}
                                     Show More <FaAngleDown />

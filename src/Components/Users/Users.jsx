@@ -75,7 +75,7 @@ function Users() {
     } else {
         return (
             <div className="py-6 px-4">
-                <div className="text-xl font-semibold  text-perpol_b">
+                <div className="text-xl font-semibold  text-green_b">
                     flexedu Users
                 </div>
                 <div className="mt-4 flex flex-col md:flex-row gap-4 justify-center md:justify-end md:mr-6 md:gap-6 text-gray-600">
@@ -96,8 +96,8 @@ function Users() {
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
                     >
                         <option value="">All Users</option>
-                        <option value="teacher">Clients</option>
-                        <option value="student">Freelancers</option>
+                        <option value="teacher">Teachers</option>
+                        <option value="student">Students</option>
                     </select>
                 </div>
                 {filteredUsers.length === 0 ? (
@@ -158,11 +158,11 @@ function Users() {
                                                     user.userType === "teacher"
                                                 ) {
                                                     navigate(
-                                                        `/Users/Clients/${user.id}`
+                                                        `/Users/Teachers/${user.id}`
                                                     );
                                                 } else {
                                                     navigate(
-                                                        `/Users/Freelancers/${user.id}`
+                                                        `/Users/Students/${user.id}`
                                                     );
                                                 }
                                             }}

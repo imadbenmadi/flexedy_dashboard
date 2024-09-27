@@ -109,7 +109,7 @@ function List_Card({ user, courseId, application }) {
                 <div
                     className=" w-full rounded-xl text-sm font-semibold text-center
                  cursor-pointer
-                text-white bg-perpol_v py-2 mt-4"
+                text-white bg-green_v py-2 mt-4"
                     onClick={() => {
                         navigate(
                             `/Courses_Applications/${courseId}/${user.id}`

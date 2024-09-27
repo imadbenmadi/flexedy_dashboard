@@ -65,7 +65,7 @@ function Home_Feedbacks() {
         );
     return (
         <div className=" py-6 px-4">
-            <div className=" text-xl font-semibold text-perpol_b">
+            <div className=" text-xl font-semibold text-green_b">
                 {" "}
                 Feedbacks in the flexedu Home page
             </div>
@@ -88,7 +88,7 @@ function Home_Feedbacks() {
                     );
                 })}
             {/* <div className=" mt-6 "></div>
-            <div className=" py-4 px-7  border-2  border-perpol_v rounded-lg  ">
+            <div className=" py-4 px-7  border-2  border-green_v rounded-lg  ">
                 <div></div>
                 <div></div>
                 <div></div>
