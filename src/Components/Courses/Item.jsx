@@ -26,7 +26,32 @@ function Course() {
     function toggleDescription() {
         setShowDescription(!showDescription);
     }
-
+    const [delete_loading, setDeleteLoading] = useState(false);
+    const DeleteCourse = async () => {
+        setDeleteLoading(true);
+        try {
+            const response = await axios.delete(
+                `http://localhost:3000/Admin/Courses/${CourseId}`,
+                {
+                    withCredentials: true,
+                    validateStatus: () => true,
+                }
+            );
+            console.log(response);
+            if (response.status == 200) {
+                Swal.fire("Success", "Course Deleted Successfully", "success");
+                setDeleteLoading(false);
+                Naviagte("/Courses");
+            } else {
+                Swal.fire("Error", response.data.error, "error");
+                setDeleteLoading(false);
+            }
+        } catch (error) {
+            console.log(error);
+            Swal.fire("Error", error.message, "error");
+            setDeleteLoading(false);
+        }
+    };
     useEffect(() => {
         setLoading(true);
         const FetchCourse = async ({ setCourse, setLoading, setError }) => {
@@ -41,8 +66,8 @@ function Course() {
                 );
 
                 if (response.status == 200) {
-                    const course = response.data.Course;
-                    setCourse(course);
+                    const Course = response.data.Course;
+                    setCourse(Course);
                 } else if (response.status == 401) {
                     Swal.fire("Error", "you should login again", "error");
                     Naviagte("/Login");
@@ -258,6 +283,20 @@ function Course() {
                                     >
                                         Edite Course
                                     </Link>
+                                </div>
+                                <div>
+                                    {delete_loading ? (
+                                        <div className="flex justify-center ">
+                                            <span className="small-loader"></span>
+                                        </div>
+                                    ) : (
+                                        <div
+                                            onClick={() => DeleteCourse()}
+                                            className="flex items-center justify-center font-bold p-2 mt-6 bg-red-500 text-white cursor-pointer  rounded-lg"
+                                        >
+                                            Delete Course
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
