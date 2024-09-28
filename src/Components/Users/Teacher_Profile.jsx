@@ -103,6 +103,34 @@ function PersonalInformations({ user }) {
             <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
                 <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
                     <div className=" text-xl underline font-semibold">
+                        First Name :
+                    </div>
+                    <div>
+                        {user?.firstName ? (
+                            user.firstName
+                        ) : (
+                            <div className="text-sm">none</div>
+                        )}
+                    </div>
+                </div>
+            </div>
+            <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
+                <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
+                    <div className=" text-xl underline font-semibold">
+                        Last Name :
+                    </div>
+                    <div>
+                        {user?.lastName ? (
+                            user.lastName
+                        ) : (
+                            <div className="text-sm">none</div>
+                        )}
+                    </div>
+                </div>
+            </div>
+            <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
+                <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
+                    <div className=" text-xl underline font-semibold">
                         Email :
                     </div>
                     <div>
@@ -130,111 +158,6 @@ function PersonalInformations({ user }) {
                 </div>
             </div>
 
-            <div className=" font-semibold text-gray_v text-lg flex items-center justify-between">
-                <div className="flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
-                    <div className=" text-xl underline font-semibold  ">
-                        {" "}
-                        National Card Number{"    "}
-                    </div>
-                    {user?.nationalCardNumber ? (
-                        user.nationalCardNumber
-                    ) : (
-                        <div className="text-sm">none</div>
-                    )}{" "}
-                </div>
-            </div>
-            <div className=" w-full bg-gray_white h-[1px]"> </div>
-            <div className=" text-lg text-gray_v font-semibold flex items-start justify-between ">
-                <div>
-                    <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
-                        <div className=" text-xl underline font-semibold">
-                            Company :
-                        </div>
-                        <div>
-                            <div>
-                                {user?.company_Name ? (
-                                    user.company_Name
-                                ) : (
-                                    <div className="text-sm">none</div>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" text-sm font-normal pt-4">
-                        {user?.company_about ? user.company_about : null}
-                    </div>
-                </div>
-            </div>
-            <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
-                <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
-                    <div className=" text-xl underline font-semibold">
-                        Work Field :
-                    </div>
-                    <div>
-                        <div>
-                            {user?.company_WorkField ? (
-                                user.company_WorkField
-                            ) : (
-                                <div className="text-sm">none</div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className=" text-lg text-gray_v font-semibold flex  justify-between ">
-                <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
-                    <div className=" text-xl underline font-semibold">
-                        Website :
-                    </div>
-                    <div>
-                        {user?.company_Website ? (
-                            <a
-                                className=" text-purple-400 underline"
-                                href={user.company_Website}
-                            >
-                                {user.company_Website}
-                            </a>
-                        ) : (
-                            <div className="text-sm">none</div>
-                        )}
-                    </div>
-                </div>
-            </div>
-
-            <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
-                <div className=" flex flex-col md:flex-row md:items-center justify-center gap-2 md:gap-6">
-                    <div className=" text-xl underline font-semibold">
-                        Adress :
-                    </div>
-                    <div>
-                        {user?.company_Adress ? (
-                            user.company_Adress
-                        ) : (
-                            <div className="text-sm">none</div>
-                        )}
-                    </div>
-                </div>
-            </div>
-            <div className=" text-lg text-gray_v font-semibold flex items-center justify-between ">
-                <div className=" flex flex-row md:items-center justify-center gap-2 md:gap-6">
-                    <div className=" text-base  font-semibold">
-                        Created At :
-                    </div>
-                    <div>
-                        {user?.company_creationDate ? (
-                            // new Date(
-                            //     user.company_creationDate
-                            // ).toLocaleDateString()
-                            // formatDate(user?.company_creationDate)
-                            dayjs(user?.company_creationDate).format(
-                                "DD  MMMM  YYYY"
-                            )
-                        ) : (
-                            <div className="text-sm">none</div>
-                        )}
-                    </div>
-                </div>
-            </div>
             {user?.facebook_Link ||
             user?.instgram_Link ||
             user?.linkedIn_Link ? (
@@ -306,7 +229,7 @@ function Hero({ user }) {
     const Navigate = useNavigate();
     return (
         <div className="flex flex-row  items-start justify-around pb-10 ">
-            <div className="  flex  justify-center max-w-[350px] gap-6 md:gap-12">
+            <div className="  flex flex-col  justify-center max-w-[350px] gap-6 md:gap-12">
                 {user?.profile_pic_link ? (
                     <img
                         src={"http://localhost:3000/" + user.profile_pic_link}
@@ -325,10 +248,6 @@ function Hero({ user }) {
                     />
                 )}
                 <div className=" flex items-center justify-center flex-col mb-6">
-                    <div className=" text-xl font-semibold mb-4 text-gray_v">
-                        <span>{user?.firstName}</span>{" "}
-                        <span>{user?.lastName}</span>
-                    </div>
                     {/* <div className=" text-yellow-400 flex w-full text-xl gap-1">
                         <FaStar />
                         <FaStar />
