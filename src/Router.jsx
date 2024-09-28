@@ -19,9 +19,6 @@ import All_Courses from "./Components/Courses/All_Projects/All_Projects.jsx";
 import All_Courses_item from "./Components/Courses/All_Projects/Item.jsx";
 
 import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
-import Feedbacks_Teachers from "./Components/Feedbacks/Teachers_Freedbacks/Teachers_Freedbacks.jsx";
-import Feedbacks_Students from "./Components/Feedbacks/Students_Feedbacks/Students_Feedbacks.jsx";
-import Home_Feedbacks from "./Components/Feedbacks/Home_Feedbacks/Home_Feedbacks.jsx";
 
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
@@ -104,22 +101,6 @@ const routes = createBrowserRouter([
             {
                 path: "/Courses_Paying/:courseId",
                 element: <Courses_Paying_item />,
-                errorElement: <ErrorElement />,
-            },
-
-            {
-                path: "/Home_Feedbacks",
-                element: <Home_Feedbacks />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Feedbacks_Teachers",
-                element: <Feedbacks_Teachers />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Feedbacks_Students",
-                element: <Feedbacks_Students />,
                 errorElement: <ErrorElement />,
             },
 
