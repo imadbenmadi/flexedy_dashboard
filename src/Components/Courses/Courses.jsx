@@ -28,6 +28,8 @@ function Courses() {
                         validateStatus: () => true,
                     }
                 );
+                console.log(response);
+
                 if (response.status === 200) {
                     setCourses(response.data.Courses);
                 } else if (response.status === 401) {
@@ -90,7 +92,7 @@ function Courses() {
                         />
                     </div>
 
-                    <select
+                    {/* <select
                         value={CoursesTypeFilter}
                         onChange={(e) => setCoursesTypeFilter(e.target.value)}
                         className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
@@ -101,7 +103,7 @@ function Courses() {
                         <option value="Completed">Completed</option>
                         <option value="Accepted">Accepted</option>
                         <option value="Pending">Pending</option>
-                    </select>
+                    </select> */}
                 </div>
                 {filteredCoursess.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
@@ -116,16 +118,17 @@ function Courses() {
                                         Course Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Status{" "}
+                                        Category{" "}
+                                    </th>
+
+                                    <th className="px-4 py-2 border-l border-white">
+                                        Price{" "}
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        DeadLine{" "}
+                                        Vedios number{" "}
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Fees{" "}
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        Status Description{" "}
+                                        Rate{" "}
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Created At
@@ -142,157 +145,22 @@ function Courses() {
                                             {`${course?.Title}`}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.status}
+                                            {course?.Category}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.DeadLine ? (
-                                                course?.DeadLine
+                                            {course?.Price}
+                                        </td>
+                                        <td className="border px-4 py-2">
+                                            {course?.Vedios_count ? (
+                                                course?.Vedios_count
                                             ) : (
                                                 <div className="text-red-600">
-                                                    No Deadline
+                                                    0
                                                 </div>
                                             )}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.Money ? (
-                                                course?.Money
-                                            ) : (
-                                                <div className="text-red-600">
-                                                    Not set
-                                                </div>
-                                            )}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {course?.status === "Payed" &&
-                                            !course?.isWorkUploaded ? (
-                                                <>
-                                                    <div className="">
-                                                        <span className="text-green_v">
-                                                            Payed :
-                                                        </span>{" "}
-                                                        payment accepted. <br />
-                                                        a Student is working on
-                                                        the course
-                                                    </div>
-                                                </>
-                                            ) : course?.status === "Payed" &&
-                                              course?.isWorkUploaded &&
-                                              !course?.isWorkRejected ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Uploaded :
-                                                    </span>{" "}
-                                                    The Student Upload the files
-                                                    of the course .
-                                                </div>
-                                            ) : course?.status === "Payed" &&
-                                              course?.isWorkUploaded &&
-                                              course?.isWorkRejected ? (
-                                                <div className="">
-                                                    <span className="text-red-500">
-                                                        Rejection Sent to the
-                                                        Student :
-                                                    </span>{" "}
-                                                    student is correcting the
-                                                    mentioned pointes .
-                                                </div>
-                                            ) : course?.status ===
-                                              "Rejected" ? (
-                                                <div className="">
-                                                    <span className="text-red-600">
-                                                        Rejected :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        the course has been
-                                                        rejected.
-                                                    </span>
-                                                </div>
-                                            ) : course?.status ===
-                                              "Completed" ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Completed :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        the course has been
-                                                        closed.
-                                                    </span>
-                                                </div>
-                                            ) : !course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId ? (
-                                                <div className="">
-                                                    <span className="text-gray_v">
-                                                        Accepted :
-                                                    </span>{" "}
-                                                    <span className=" text-red-500">
-                                                        waiting teacher to pay
-                                                        the course fees
-                                                    </span>
-                                                </div>
-                                            ) : course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId &&
-                                              !course?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Accepted :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        Waiting for payment
-                                                        Validation
-                                                    </span>
-                                                </div>
-                                            ) : course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId &&
-                                              course?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className="text-red-500">
-                                                        Payment Rejected :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        Payment Rejected ,
-                                                        waiting for the Teacher
-                                                        to reupload the payment
-                                                        screenshot
-                                                    </span>
-                                                </div>
-                                            ) : course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId &&
-                                              course?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className=" text-red-500">
-                                                        the payment has been
-                                                        rejected :{" "}
-                                                    </span>
-                                                    <span className="text-gray_v">
-                                                        Payment Rejected ,
-                                                        waiting for the Teacher
-                                                        to reupload the payment
-                                                        screenshot{" "}
-                                                    </span>{" "}
-                                                </div>
-                                            ) : course?.status === "Accepted" &&
-                                              !course?.FreelancerId ? (
-                                                <div>
-                                                    <span className="text-green_v">
-                                                        Accepted
-                                                    </span>{" "}
-                                                    Searching For the Student
-                                                </div>
-                                            ) : course?.status === "Pending" ? (
-                                                <div>
-                                                    <span className="text-green_v">
-                                                        Pending
-                                                    </span>{" "}
-                                                    <span className="">
-                                                        waiting for validation
-                                                    </span>
-                                                </div>
-                                            ) : null}
-                                            {/* {course?.status} */}
+                                            {course?.Rate}
                                         </td>
 
                                         <td className="border px-4 py-2">
