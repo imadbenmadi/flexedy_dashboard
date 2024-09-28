@@ -141,7 +141,8 @@ function Course() {
                                                 <div>
                                                     {Course?.Price ? (
                                                         <div className="text-sm text-gray_v font-semibold">
-                                                            {Course?.Price} DA
+                                                            {Course?.Price}
+                                                            {" DA"}
                                                         </div>
                                                     ) : null}
                                                 </div>

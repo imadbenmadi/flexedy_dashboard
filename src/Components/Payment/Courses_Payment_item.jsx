@@ -13,7 +13,7 @@ function Payment() {
     const [rejectLoading, setRejectLoading] = useState(false);
 
     const courseId = location.pathname.split("/")[2];
-
+    
     useEffect(() => {
         setLoading(true);
         const fetchCourseDetails = async () => {
@@ -49,7 +49,9 @@ function Payment() {
         try {
             const response = await axios.post(
                 `http://localhost:3000/Admin/Payment/${courseId}/Accept`,
-                {},
+                {
+                    studentId: course.StudentId,
+                },
                 {
                     withCredentials: true,
                     validateStatus: () => true,
@@ -86,7 +88,9 @@ function Payment() {
         try {
             const response = await axios.post(
                 `http://localhost:3000/Admin/Payment/${courseId}/Reject`,
-                {},
+                {
+                    studentId: course.StudentId,
+                },
                 {
                     withCredentials: true,
                     validateStatus: () => true,
@@ -142,7 +146,7 @@ function Payment() {
                         </div>
                         <div>
                             <strong>Course Price:</strong> $
-                            {course?.Price || "0"}
+                            {course?.Price + " DA"|| "0"}
                         </div>
                         <div>
                             <strong>Status:</strong>{" "}

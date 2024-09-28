@@ -148,7 +148,7 @@ function Courses() {
                                             {course?.Category}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.Price}
+                                            {course?.Price}{" DA"}
                                         </td>
                                         <td className="border px-4 py-2">
                                             {course?.Vedios_count ? (
