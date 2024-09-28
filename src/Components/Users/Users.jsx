@@ -45,15 +45,16 @@ function Users() {
 
     const filteredUsers = users
         .filter((user) => {
-            const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+            const fullName =
+                `${user?.firstName} ${user?.lastName}`.toLowerCase();
             return (
                 fullName.includes(searchQuery.toLowerCase()) ||
-                user.email.toLowerCase().includes(searchQuery.toLowerCase())
+                user?.email.toLowerCase().includes(searchQuery.toLowerCase())
             );
         })
         .filter((user) => {
             if (userTypeFilter) {
-                return user.userType === userTypeFilter;
+                return user?.userType === userTypeFilter;
             }
             return true;
         });
@@ -130,22 +131,22 @@ function Users() {
                         </thead>
                         <tbody className="text-xs text-center font-semibold">
                             {filteredUsers.map((user) => (
-                                <tr key={user.id}>
-                                    <td className="border px-4 py-2">{`${user.firstName} ${user.lastName}`}</td>
+                                <tr key={user?.id}>
+                                    <td className="border px-4 py-2">{`${user?.firstName} ${user?.lastName}`}</td>
                                     <td className="border px-4 py-2">
-                                        {user.email}
+                                        {user?.email}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.telephone}
+                                        {user?.telephone}
                                     </td>
                                     <td className="border px-4 py-2">
-                                        {user.userType === "teacher"
+                                        {user?.userType === "teacher"
                                             ? "Teacher"
                                             : "Student"}
                                     </td>
                                     <td className="border px-4 py-2">
                                         {/* {new Date(
-                                            user.createdAt
+                                            user?.createdAt
                                         ).toLocaleDateString()} */}
                                         {dayjs(user?.createdAt).format(
                                             "DD MMMM YYYY"
@@ -155,14 +156,14 @@ function Users() {
                                         <button
                                             onClick={() => {
                                                 if (
-                                                    user.userType === "teacher"
+                                                    user?.userType === "teacher"
                                                 ) {
                                                     navigate(
-                                                        `/Users/Teachers/${user.id}`
+                                                        `/Users/Teachers/${user?.id}`
                                                     );
                                                 } else {
                                                     navigate(
-                                                        `/Users/Students/${user.id}`
+                                                        `/Users/Students/${user?.id}`
                                                     );
                                                 }
                                             }}

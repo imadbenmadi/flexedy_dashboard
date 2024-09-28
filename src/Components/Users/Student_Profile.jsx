@@ -20,7 +20,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.firstName ? (
-                            user.firstName
+                            user?.firstName
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -34,7 +34,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.LastName ? (
-                            user.LastName
+                            user?.LastName
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -48,7 +48,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.email ? (
-                            user.email
+                            user?.email
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -66,7 +66,7 @@ function Hero({ user }) {
             <div className="  flex  justify-center max-w-[350px] gap-6 md:gap-12">
                 {user?.profile_pic_link ? (
                     <img
-                        src={"http://localhost:3000/" + user.profile_pic_link}
+                        src={"http://localhost:3000/" + user?.profile_pic_link}
                         onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = user_default;

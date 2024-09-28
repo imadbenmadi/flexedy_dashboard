@@ -24,17 +24,17 @@ function Reviews({ user }) {
         const fetchData = async () => {
             try {
                 let response;
-                if ((user.userType = "teacher"))
+                if ((user?.userType = "teacher"))
                     response = await axios.get(
-                        `http://localhost:3000/Admin/Users/Teachers/${user.id}/Feedbacks`,
+                        `http://localhost:3000/Admin/Users/Teachers/${user?.id}/Feedbacks`,
                         {
                             withCredentials: true,
                             // validateStatus: () => true,
                         }
                     );
-                else if ((user.userType = "Student"))
+                else if ((user?.userType = "Student"))
                     response = await axios.get(
-                        `http://localhost:3000/Admin/Users/Student/${user.id}/Feedbacks`,
+                        `http://localhost:3000/Admin/Users/Student/${user?.id}/Feedbacks`,
                         {
                             withCredentials: true,
                             // validateStatus: () => true,
@@ -107,7 +107,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.firstName ? (
-                            user.firstName
+                            user?.firstName
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -121,7 +121,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.lastName ? (
-                            user.lastName
+                            user?.lastName
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -135,7 +135,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.email ? (
-                            user.email
+                            user?.email
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -150,7 +150,7 @@ function PersonalInformations({ user }) {
                     </div>
                     <div>
                         {user?.telephone ? (
-                            user.telephone
+                            user?.telephone
                         ) : (
                             <div className="text-sm">none</div>
                         )}
@@ -169,7 +169,7 @@ function PersonalInformations({ user }) {
                                     className=" text-blue-500 text-5xl cursor-pointer  "
                                     onClick={() => {
                                         window.location.href =
-                                            user.facebook_Link;
+                                            user?.facebook_Link;
                                     }}
                                 />
                             )}
@@ -178,7 +178,7 @@ function PersonalInformations({ user }) {
                                     className=" text-red-500 text-5xl cursor-pointer  "
                                     onClick={() => {
                                         window.location.href =
-                                            user.instagram_Link;
+                                            user?.instagram_Link;
                                     }}
                                 />
                             )}
@@ -187,7 +187,7 @@ function PersonalInformations({ user }) {
                                     className=" text-blue-500 text-5xl cursor-pointer  "
                                     onClick={() => {
                                         window.location.href =
-                                            user.linkedin_Link;
+                                            user?.linkedin_Link;
                                     }}
                                 />
                             )}
@@ -204,14 +204,14 @@ function PersonalInformations({ user }) {
                         <div className=" flex items-center justify-center gap-4 ">
                             {user?.Rate ? (
                                 <>
-                                    <div className=" ">{user.Rate}</div>
+                                    <div className=" ">{user?.Rate}</div>
                                     {/* <div className=" text-yellow-400 flex gap-1">
-                                        {[...Array(Math.floor(user.Rate))].map(
+                                        {[...Array(Math.floor(user?.Rate))].map(
                                             (_, index) => (
                                                 <FaStar key={index} />
                                             )
                                         )}
-                                        {user.Rate % 1 !== 0 && <FaStarHalf />}
+                                        {user?.Rate % 1 !== 0 && <FaStarHalf />}
                                     </div> */}
                                     <FaStar className="text-yellow-400 " />
                                 </>
@@ -232,7 +232,7 @@ function Hero({ user }) {
             <div className="  flex flex-col  justify-center max-w-[350px] gap-6 md:gap-12">
                 {user?.profile_pic_link ? (
                     <img
-                        src={"http://localhost:3000/" + user.profile_pic_link}
+                        src={"http://localhost:3000/" + user?.profile_pic_link}
                         onError={(e) => {
                             e.target.onerror = null;
                             e.target.src = user_default;
@@ -259,12 +259,12 @@ function Hero({ user }) {
                         {user?.Rate ? (
                             <>
                                 <div className=" text-yellow-400 flex gap-1">
-                                    {[...Array(Math.floor(user.Rate))].map(
+                                    {[...Array(Math.floor(user?.Rate))].map(
                                         (_, index) => (
                                             <FaStar key={index} />
                                         )
                                     )}
-                                    {user.Rate % 1 !== 0 && <FaStarHalf />}
+                                    {user?.Rate % 1 !== 0 && <FaStarHalf />}
                                 </div>
                             </>
                         ) : null}

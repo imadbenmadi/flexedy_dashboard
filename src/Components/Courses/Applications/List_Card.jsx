@@ -47,7 +47,7 @@ function List_Card({ user, courseId, application }) {
                             <img
                                 src={
                                     "http://localhost:3000/" +
-                                    user.profile_pic_link
+                                    user?.profile_pic_link
                                 }
                                 onError={(e) => {
                                     e.target.onerror = null;
@@ -74,11 +74,13 @@ function List_Card({ user, courseId, application }) {
                                     <>
                                         <div className=" text-yellow-400 flex gap-1">
                                             {[
-                                                ...Array(Math.floor(user.Rate)),
+                                                ...Array(
+                                                    Math.floor(user?.Rate)
+                                                ),
                                             ].map((_, index) => (
                                                 <FaStar key={index} />
                                             ))}
-                                            {user.Rate % 1 !== 0 && (
+                                            {user?.Rate % 1 !== 0 && (
                                                 <FaStarHalf />
                                             )}
                                         </div>
@@ -112,7 +114,7 @@ function List_Card({ user, courseId, application }) {
                 text-white bg-green_v py-2 mt-4"
                     onClick={() => {
                         navigate(
-                            `/Courses_Applications/${courseId}/${user.id}`
+                            `/Courses_Applications/${courseId}/${user?.id}`
                         );
                     }}
                 >
