@@ -15,8 +15,8 @@ function Upload_Vedio() {
     const [videoAvailable, setVideoAvailable] = useState(true); // Track if video is available
     const videoRef = useRef(null);
     const location = useLocation();
-    const CourseId = location.pathname.split("/")[3];
-    const VedioId = location.pathname.split("/")[5];
+    const CourseId = location.pathname.split("/")[2];
+    const VedioId = location.pathname.split("/")[4];
 
     useEffect(() => {
         const fetchVideo = async () => {
@@ -61,7 +61,7 @@ function Upload_Vedio() {
         setDeleteLoading(true);
         try {
             const response = await axios.delete(
-                `http://localhost:3000/upload/Courses/${videoData.Course?.id}/Vedios/${videoData.id}`,
+                `http://localhost:3000/Admin/upload/Courses/${videoData.Course?.id}/Vedios/${videoData.id}`,
                 {
                     withCredentials: true,
                     validateStatus: () => true,

@@ -13,6 +13,7 @@ import Summaries_Payment from "./Components/Payment/Summaries_Payment.jsx";
 import Summaries_Payment_item from "./Components/Payment/Summaries_Payment_item.jsx";
 
 import Courses from "./Components/Courses/Courses.jsx";
+import Course_Edit from "./Components/Courses/Edit.jsx";
 import Courses_item from "./Components/Courses/Item.jsx";
 import Courses_Vedio from "./Components/Courses/Vedio.jsx";
 import Summaries from "./Components/Summaries/Summaries.jsx";
@@ -66,8 +67,14 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
             {
+                path: "/Courses/:id/Edit",
+                element: <Course_Edit />,
+                errorElement: <ErrorElement />,
+            },
+            {
                 path: "/Courses/:id/Vedios/:vedioId",
                 element: <Courses_Vedio />,
+                errorElement: <ErrorElement />,
                 errorElement: <ErrorElement />,
             },
             {
@@ -90,6 +97,7 @@ const routes = createBrowserRouter([
                 path: "/Courses_Payment/:courseId",
                 element: <Courses_Payment_item />,
                 errorElement: <ErrorElement />,
+                errorElement: <ErrorElement />,
             },
             {
                 path: "/Summaries_Payment",
@@ -99,6 +107,7 @@ const routes = createBrowserRouter([
             {
                 path: "/Summaries_Payment/:courseId",
                 element: <Summaries_Payment_item />,
+                errorElement: <ErrorElement />,
                 errorElement: <ErrorElement />,
             },
 

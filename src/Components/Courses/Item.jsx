@@ -241,16 +241,15 @@ function Course() {
                                         )}
                                     </div>
                                 </div>
-                                {/* <div className=" w-[10%]  ">
-                                    <Link
-                                        to={`/Courses/${Course?.id}/Edit`}
-                                        className=" flex items-center justify-center font-bold p-2 mt-6 bg-gray-500 text-white cursor-pointer  rounded-lg "
-                                    >
-                                        Edite Course
-                                    </Link>
-                                </div> */}
                             </div>
-
+                            <div className=" w-fit  ">
+                                <Link
+                                    to={`/Courses/${Course?.id}/Edit`}
+                                    className=" flex items-center justify-center font-bold p-2 mt-6 bg-gray-500 text-white cursor-pointer  rounded-lg "
+                                >
+                                    Edite Course
+                                </Link>
+                            </div>
                             <div>
                                 <div className=" flex flex-col gap-4">
                                     {Course?.Course_Videos &&

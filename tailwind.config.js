@@ -16,6 +16,7 @@ export default {
                 gray_v: "#454545",
                 gray_white: "#e6e6e6",
                 image_animation_v: "#b6b2b22e",
+                perpol_v: "#429661",
             },
         },
     },
