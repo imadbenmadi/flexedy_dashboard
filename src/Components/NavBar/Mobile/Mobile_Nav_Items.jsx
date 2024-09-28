@@ -96,15 +96,15 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                         </div>{" "}
                         <div className=" flex flex-col gap-2 pl-2 ">
                             <Link
-                                to={"/All_Courses"}
+                                to={"/Courses"}
                                 onClick={Toogle_Menu_Bar}
                                 className={` ${
-                                    Active_nav == "All_Courses"
+                                    Active_nav == "Courses"
                                         ? "bg-blue_v text-gray_v px-4 "
                                         : "bg-white hover:text-green_v"
                                 }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                             >
-                                <span>All Courses</span>
+                                <span>Courses</span>
                             </Link>
                             <Link
                                 to={"/Courses_Requests"}

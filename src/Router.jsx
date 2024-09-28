@@ -15,8 +15,8 @@ import Courses_Applications_Profile from "./Components/Courses/Applications/Prof
 import Courses_Paying from "./Components/Courses/Paying/Paying.jsx";
 import Courses_Paying_item from "./Components/Courses/Paying/item.jsx";
 
-import All_Courses from "./Components/Courses/All_Projects/All_Projects.jsx";
-import All_Courses_item from "./Components/Courses/All_Projects/Item.jsx";
+import Courses from "./Components/Courses/All_Projects/Courses.jsx";
+import Courses_item from "./Components/Courses/All_Projects/Item.jsx";
 
 import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
 
@@ -58,13 +58,13 @@ const routes = createBrowserRouter([
             },
 
             {
-                path: "/All_Courses",
-                element: <All_Courses />,
+                path: "/Courses",
+                element: <Courses />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/All_Courses/:id",
-                element: <All_Courses_item />,
+                path: "/Courses/:id",
+                element: <Courses_item />,
                 errorElement: <ErrorElement />,
             },
             {

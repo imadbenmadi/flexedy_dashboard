@@ -90,14 +90,14 @@ function Laptop() {
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/All_Courses"}
+                        to={"/Courses"}
                         className={` ${
-                            Active_nav == "All_Courses"
+                            Active_nav == "Courses"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>All Courses</span>
+                        <span>Courses</span>
                     </Link>
                     <Link
                         to={"/Courses_Requests"}
@@ -139,14 +139,14 @@ function Laptop() {
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/All_Courses"}
+                        to={"/Courses"}
                         className={` ${
-                            Active_nav == "All_Courses"
+                            Active_nav == "Courses"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>All Courses</span>
+                        <span>Courses</span>
                     </Link>
                     <Link
                         to={"/Courses_Requests"}
@@ -188,14 +188,14 @@ function Laptop() {
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/All_Courses"}
+                        to={"/Courses"}
                         className={` ${
-                            Active_nav == "All_Courses"
+                            Active_nav == "Courses"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>All Courses</span>
+                        <span>Courses</span>
                     </Link>
                     <Link
                         to={"/Courses_Requests"}

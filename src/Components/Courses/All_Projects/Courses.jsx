@@ -9,7 +9,7 @@ dayjs.extend(customParseFormat);
 import { FaRegHandshake } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 
-function All_Courses() {
+function Courses() {
     const navigate = useNavigate();
     const [Courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -305,7 +305,7 @@ function All_Courses() {
                                             <button
                                                 onClick={() => {
                                                     navigate(
-                                                        `/All_Courses/${course.id}`
+                                                        `/Courses/${course.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -324,4 +324,4 @@ function All_Courses() {
     }
 }
 
-export default All_Courses;
+export default Courses;
