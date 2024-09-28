@@ -82,7 +82,7 @@ function Upload_Vedio() {
     };
     if (loading) {
         return (
-            <div className="w-screen h-[80vh] flex flex-col items-center justify-center">
+            <div className="w-full h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
@@ -90,7 +90,7 @@ function Upload_Vedio() {
 
     if (error) {
         return (
-            <div className="w-screen h-[80vh] flex items-center justify-center">
+            <div className="w-full h-[80vh] flex items-center justify-center">
                 <div className="text-red-600 font-semibold">
                     {error.message || "An error occurred"}
                     {delete_loading ? (
@@ -113,7 +113,7 @@ function Upload_Vedio() {
 
     if (!videoData) {
         return (
-            <div className="w-screen h-[80vh] flex items-center justify-center">
+            <div className="w-full h-[80vh] flex items-center justify-center">
                 <div className="text-gray-600 font-semibold">
                     Video data is missing
                     {delete_loading ? (
@@ -135,7 +135,7 @@ function Upload_Vedio() {
     }
 
     return (
-        <div className="w-screen h-screen">
+        <div className="w-full h-screen">
             {/* Only show video player if the video is available */}
             {videoAvailable ? (
                 <div className="w-full h-[80vh] bg-black">
@@ -153,7 +153,7 @@ function Upload_Vedio() {
                     </video>
                 </div>
             ) : (
-                <div className="w-screen h-[80vh] flex items-center justify-center">
+                <div className="w-full h-[80vh] flex items-center justify-center">
                     <div className="text-red-600 font-semibold">
                         Video is not available
                     </div>

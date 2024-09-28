@@ -87,7 +87,7 @@ function Home() {
         );
     } else if (error) {
         return (
-            <div className=" w-screen h-screen flex items-center justify-center">
+            <div className=" w-full h-screen flex items-center justify-center">
                 <div className="text-red-600 font-semibold">
                     {error.message}
                 </div>

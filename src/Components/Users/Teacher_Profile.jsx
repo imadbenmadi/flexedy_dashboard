@@ -67,7 +67,7 @@ function Reviews({ user }) {
     }, []);
     if (Loading)
         return (
-            <div className=" w-screen flex items-center justify-center pb-6">
+            <div className=" w-full flex items-center justify-center pb-6">
                 <span className="small-loader    m-auto"></span>;
             </div>
         );

@@ -91,14 +91,14 @@ function Freelancer_Process_item() {
 
     if (loading) {
         return (
-            <div className=" w-screen h-[80vh] flex flex-col items-center justify-center">
+            <div className=" w-full h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
     }
     // else if (error)
     //     return (
-    //         <div className=" w-screen h-screen flex items-center justify-center">
+    //         <div className=" w-full h-screen flex items-center justify-center">
     //             <div className="text-red-600 font-semibold">
     //                 {error.message}
     //             </div>
