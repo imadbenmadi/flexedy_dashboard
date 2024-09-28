@@ -7,12 +7,15 @@ import { TbLogout2 } from "react-icons/tb";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Logo from "../../../../public/Logo.png";
 import { GoHome } from "react-icons/go";
 import { MdOutlineWorkOutline } from "react-icons/md";
 import { FaRegComment } from "react-icons/fa6";
 import { BiMessageDetail } from "react-icons/bi";
 import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
+import { MdPayment } from "react-icons/md";
+import { IoMdPaper } from "react-icons/io";
 
 function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
     const Navigate = useNavigate();
@@ -90,55 +93,73 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                         </div>
                     </div>
                     <div>
-                        <div className=" font-semibold pb-4 flex items-center gap-2">
+                        <div className=" font-semibold pb-4  flex gap-2 items-center ">
                             <MdOutlineWorkOutline className=" text-lg" />
                             Courses
-                        </div>{" "}
+                        </div>
                         <div className=" flex flex-col gap-2 pl-2 ">
                             <Link
-                                to={"/Courses"}
                                 onClick={Toogle_Menu_Bar}
+                                to={"/Courses"}
                                 className={` ${
                                     Active_nav == "Courses"
-                                        ? "bg-blue_v text-gray_v px-4 "
+                                        ? "bg-blue_v text-white px-4 "
                                         : "bg-white hover:text-green_v"
                                 }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                             >
                                 <span>Courses</span>
                             </Link>
-                            <Link
-                                to={"/Courses_Requests"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Courses_Requests"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-green_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Request</span>
-                            </Link>
-                            <Link
-                                to={"/Courses_Applications"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Courses_Applications"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-green_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Applications</span>
-                            </Link>
+                        </div>
+                    </div>
 
+                    <div>
+                        <div className=" font-semibold pb-4  flex gap-2 items-center ">
+                            <IoMdPaper className=" text-lg" />
+                            Summaries
+                        </div>
+                        <div className=" flex flex-col gap-2 pl-2 ">
                             <Link
-                                to={"/Courses_Payment"}
                                 onClick={Toogle_Menu_Bar}
+                                to={"/Summaries"}
+                                className={` ${
+                                    Active_nav == "Summaries"
+                                        ? "bg-blue_v text-white px-4 "
+                                        : "bg-white hover:text-green_v"
+                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                            >
+                                <span>Summaries</span>
+                            </Link>
+                        </div>
+                    </div>
+                    <div>
+                        <div className=" font-semibold pb-4  flex gap-2 items-center ">
+                            <MdPayment className=" text-lg" />
+                            Payment
+                        </div>
+                        <div className=" flex flex-col  gap-2 pl-2 ">
+                            <Link
+                                onClick={Toogle_Menu_Bar}
+                                to={"/Courses_Payment"}
                                 className={` ${
                                     Active_nav == "Courses_Payment"
-                                        ? "bg-blue_v text-gray_v px-4 "
+                                        ? "bg-blue_v text-white px-4 "
                                         : "bg-white hover:text-green_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full  `}
                             >
-                                <span>Payment</span>
+                                <span>Courses Payment</span>
+                            </Link>
+                        </div>
+                        <div className=" flex flex-col gap-2 pl-2 ">
+                            <Link
+                                onClick={Toogle_Menu_Bar}
+                                to={"/Summaries_Payment"}
+                                className={` ${
+                                    Active_nav == "Summaries_Payment"
+                                        ? "bg-blue_v text-white px-4 "
+                                        : "bg-white hover:text-green_v"
+                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full  `}
+                            >
+                                <span>Summaries Payment</span>
                             </Link>
                         </div>
                     </div>

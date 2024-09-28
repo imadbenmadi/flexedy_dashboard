@@ -14,7 +14,8 @@ import Summaries_Payment_item from "./Components/Payment/Summaries_Payment_item.
 
 import Courses from "./Components/Courses/Courses.jsx";
 import Courses_item from "./Components/Courses/Item.jsx";
-
+import Summaries from "./Components/Summaries/Summaries.jsx";
+import Summaries_item from "./Components/Summaries/Item.jsx";
 
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
@@ -59,8 +60,18 @@ const routes = createBrowserRouter([
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Courses/:id",
-                element: <Courses_item />,
+                path: "/Summaries/:id",
+                element: <Summaries_item />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Summaries",
+                element: <Summaries />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Summaries/:id",
+                element: <Summaries_item />,
                 errorElement: <ErrorElement />,
             },
 

@@ -103,16 +103,7 @@ function Laptop() {
                     </Link>
                 </div>
             </div>
-            {/* <Link
-                to={"/Courses_Payment"}
-                className={` ${
-                    Active_nav == "Courses_Payment"
-                        ? "bg-blue_v text-white px-4 "
-                        : "bg-white hover:text-green_v"
-                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-            >
-                <span>Payment</span>
-            </Link> */}
+            
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <IoMdPaper className=" text-lg" />
@@ -136,7 +127,7 @@ function Laptop() {
                     <MdPayment className=" text-lg" />
                     Payment
                 </div>
-                <div className=" flex flex-col gap-2 pl-2 ">
+                <div className=" flex flex-col  gap-2 pl-2 ">
                     <Link
                         to={"/Courses_Payment"}
                         className={` ${
