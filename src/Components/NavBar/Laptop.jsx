@@ -119,7 +119,7 @@ function Laptop() {
                     >
                         <span>Applications</span>
                     </Link>
-                 
+
                     <Link
                         to={"/Courses_Paying"}
                         className={` ${
@@ -130,7 +130,104 @@ function Laptop() {
                     >
                         <span>Payment</span>
                     </Link>
-                    
+                </div>
+            </div>
+            <div>
+                <div className=" font-semibold pb-4  flex gap-2 items-center ">
+                    <MdOutlineWorkOutline className=" text-lg" />
+                    Courses
+                </div>
+                <div className=" flex flex-col gap-2 pl-2 ">
+                    <Link
+                        to={"/All_Courses"}
+                        className={` ${
+                            Active_nav == "All_Courses"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>All Courses</span>
+                    </Link>
+                    <Link
+                        to={"/Courses_Requests"}
+                        className={` ${
+                            Active_nav == "Courses_Requests"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Request</span>
+                    </Link>
+                    <Link
+                        to={"/Courses_Applications"}
+                        className={` ${
+                            Active_nav == "Courses_Applications"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Applications</span>
+                    </Link>
+
+                    <Link
+                        to={"/Courses_Paying"}
+                        className={` ${
+                            Active_nav == "Courses_Paying"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Payment</span>
+                    </Link>
+                </div>
+            </div>
+            <div>
+                <div className=" font-semibold pb-4  flex gap-2 items-center ">
+                    <MdOutlineWorkOutline className=" text-lg" />
+                    Courses
+                </div>
+                <div className=" flex flex-col gap-2 pl-2 ">
+                    <Link
+                        to={"/All_Courses"}
+                        className={` ${
+                            Active_nav == "All_Courses"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>All Courses</span>
+                    </Link>
+                    <Link
+                        to={"/Courses_Requests"}
+                        className={` ${
+                            Active_nav == "Courses_Requests"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Request</span>
+                    </Link>
+                    <Link
+                        to={"/Courses_Applications"}
+                        className={` ${
+                            Active_nav == "Courses_Applications"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Applications</span>
+                    </Link>
+
+                    <Link
+                        to={"/Courses_Paying"}
+                        className={` ${
+                            Active_nav == "Courses_Paying"
+                                ? "bg-blue_v text-white px-4 "
+                                : "bg-white hover:text-green_v"
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                    >
+                        <span>Payment</span>
+                    </Link>
                 </div>
             </div>
 
