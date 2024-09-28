@@ -63,6 +63,8 @@ function Home() {
                         withCredentials: true,
                     }
                 );
+                console.log(response);
+
                 if (response.status === 200) {
                     setData(response.data);
                 } else {
@@ -109,37 +111,35 @@ function Home() {
             }
         };
 
-        // Process freelancers and clients
-        const freelancersByDate = processData(data?.freelancers);
-        const clientsByDate = processData(data?.clients);
+        // Process Students and Teachers
+        const StudentsByDate = processData(data?.Students);
+        const TeachersByDate = processData(data?.Teachers);
         const coursesByDate = processData(data?.courses);
 
         const allDates = Array.from(
             new Set([
-                ...Object.keys(freelancersByDate),
-                ...Object.keys(clientsByDate),
+                ...Object.keys(StudentsByDate),
+                ...Object.keys(TeachersByDate),
                 ...Object.keys(coursesByDate),
             ])
         ).sort();
 
         // Create datasets
-        const freelancersData = allDates.map(
-            (date) => freelancersByDate[date] || 0
-        );
-        const clientsData = allDates.map((date) => clientsByDate[date] || 0);
+        const StudentsData = allDates.map((date) => StudentsByDate[date] || 0);
+        const TeachersData = allDates.map((date) => TeachersByDate[date] || 0);
         const coursesData = allDates.map((date) => coursesByDate[date] || 0);
         const chart_data = {
             labels: allDates,
             datasets: [
                 {
                     label: "Students",
-                    data: freelancersData,
+                    data: StudentsData,
                     borderColor: "rgb(255, 99, 132)",
                     backgroundColor: "rgba(255, 99, 132, 0.5)",
                 },
                 {
                     label: "Teachers",
-                    data: clientsData,
+                    data: TeachersData,
                     borderColor: "rgb(53, 162, 235)",
                     backgroundColor: "rgba(53, 162, 235, 0.5)",
                 },
@@ -164,7 +164,7 @@ function Home() {
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">
-                                {data?.freelancers_nbr + data?.clients_nbr}
+                                {data?.Students_nbr + data?.Teachers_nbr}
                             </div>
                             <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <LiaUsersSolid className=" shrink-0 text-2xl" />
@@ -177,7 +177,7 @@ function Home() {
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">
-                                {data?.freelancers_nbr}
+                                {data?.Students_nbr}
                             </div>
                             <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <SiFreelancer className=" shrink-0 text-2xl" />
@@ -190,7 +190,7 @@ function Home() {
                         </div>
                         <div className=" flex justify-between gap-2 mx-2 w-full">
                             <div className="  font-semibold text-2xl">
-                                {data?.clients_nbr}
+                                {data?.Teachers_nbr}
                             </div>
                             <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                 <FaUserTie className=" shrink-0 text-2xl" />
