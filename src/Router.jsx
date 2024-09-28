@@ -16,6 +16,8 @@ import Courses from "./Components/Courses/Courses.jsx";
 import Course_Edit from "./Components/Courses/Edit.jsx";
 import Courses_item from "./Components/Courses/Item.jsx";
 import Courses_Vedio from "./Components/Courses/Vedio.jsx";
+import Upload_Vedio from "./Components/Courses/Upload_Vedio.jsx";
+
 import Summaries from "./Components/Summaries/Summaries.jsx";
 import Summaries_item from "./Components/Summaries/Item.jsx";
 
@@ -69,6 +71,11 @@ const routes = createBrowserRouter([
             {
                 path: "/Courses/:id/Edit",
                 element: <Course_Edit />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Courses/:id/Add",
+                element: <Upload_Vedio />,
                 errorElement: <ErrorElement />,
             },
             {
