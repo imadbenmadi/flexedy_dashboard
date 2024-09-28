@@ -10,7 +10,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { Link } from "react-router-dom";
 function Applications() {
     const Navigate = useNavigate();
-    const [courses, setCourses] = useState([]);
+    const [payments, setPayments] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -20,7 +20,7 @@ function Applications() {
 
     useEffect(() => {
         setLoading(true);
-        const fetchCourses = async () => {
+        const fetchPayments = async () => {
             try {
                 const response = await axios.get(
                     `http://localhost:3000/Admin/Payment`,
@@ -29,9 +29,11 @@ function Applications() {
                         validateStatus: () => true,
                     }
                 );
+                // console.log(response);
+
                 if (response.status === 200) {
-                    const coursesData = response.data.courses;
-                    setCourses(coursesData);
+                    const paymentsData = response.data.courses_Purcase_Requests;
+                    setPayments(paymentsData);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     Navigate("/Login");
@@ -45,7 +47,7 @@ function Applications() {
             }
         };
 
-        fetchCourses();
+        fetchPayments();
     }, []);
 
     if (loading) {
@@ -66,9 +68,9 @@ function Applications() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold text-green_b pb-6">
-                    Courses Payment
+                    Payments Payment
                 </div>
-                {!courses || courses.length === 0 ? (
+                {!payments || payments.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
                         No Payments found
                     </div>
@@ -77,17 +79,17 @@ function Applications() {
                         <div className="w-full flex gap-12 justify-center py-4">
                             <div className="max-w-[300px] border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
                                 <div className="text-xs font-semibold pb-5 text-gray_v w-full">
-                                    Total Number of Courses:
+                                    Total Number of Payment Requests:
                                 </div>
                                 <div className="flex justify-between gap-2 mx-2 w-full">
                                     <div className="font-semibold text-2xl">
-                                        {/* {courses.reduce(
-                                            (total, course) =>
+                                        {/* {payments.reduce(
+                                            (total, payment) =>
                                                 total +
-                                                course.applicationsCount,
+                                                payment.applicationsCount,
                                             0
                                         )} */}
-                                        {courses.length}
+                                        {payments.length}
                                     </div>
                                     <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
                                         <MdAttachMoney className="shrink-0 text-2xl" />
@@ -99,16 +101,16 @@ function Applications() {
                             <thead>
                                 <tr className="bg-gray-200 font-normal">
                                     <th className="px-4 py-2 border-l border-white rounded-tl-md">
-                                        Course Title
+                                        Payment Id
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Teacher Company Name
+                                        Payment Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Payment Status
+                                        Student CPP
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        course Created At
+                                        Created At
                                     </th>
                                     <th className="px-4 py-2 border-l border-white rounded-tr-md">
                                         Action
@@ -116,86 +118,26 @@ function Applications() {
                                 </tr>
                             </thead>
                             <tbody className="text-xs text-center font-semibold">
-                                {courses.map((course) => (
-                                    <tr key={course?.id}>
+                                {payments.map((payment) => (
+                                    <tr key={payment?.id}>
                                         <td className="border px-4 py-2">
-                                            {course?.Title}
+                                            {payment?.Course?.id}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.owner?.company_Name}
+                                            {payment?.Course?.Title}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.status === "Payed" ? (
-                                                <>
-                                                    <div className="">
-                                                        <span className="text-green_v">
-                                                            Payed :
-                                                        </span>{" "}
-                                                        Teacher Payed the Course
-                                                        fees
-                                                    </div>
-                                                </>
-                                            ) : !course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId ? (
-                                                <>
-                                                    <div className="">
-                                                        <span className=" text-red-500">
-                                                            Teacher have not yet
-                                                            uploaded payment
-                                                            screenshot
-                                                        </span>
-                                                    </div>
-                                                </>
-                                            ) : course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId &&
-                                              !course?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Teacher uploaded the
-                                                        payment screenshot :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        Waiting for Payment
-                                                        Validation
-                                                    </span>
-                                                </div>
-                                            ) : course?.isPayment_ScreenShot_uploaded &&
-                                              course?.status === "Accepted" &&
-                                              course?.FreelancerId &&
-                                              course?.isPayment_ScreenShot_Rejected ? (
-                                                <>
-                                                    <div className="">
-                                                        <span className="text-red-500">
-                                                            Payment Rejected :
-                                                        </span>{" "}
-                                                        <span className=" text-gray_v">
-                                                            Waiting Teacher to
-                                                            reupload the Payment
-                                                            screenshot
-                                                        </span>
-                                                    </div>
-                                                </>
-                                            ) : course?.status === "Accepted" &&
-                                              !course?.FreelancerId ? (
-                                                <div>
-                                                    <span className="text-green_v">
-                                                        Accepted :
-                                                    </span>{" "}
-                                                    Wainting for freelancers to
-                                                    Apply for this course
-                                                </div>
-                                            ) : null}
+                                            {payment?.CCP_number}
                                         </td>
+
                                         <td className="border px-4 py-2">
-                                            {formatDate(course?.createdAt)}
+                                            {formatDate(payment?.createdAt)}
                                         </td>
                                         <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
                                                     Navigate(
-                                                        `/Courses_Payment/${course?.id}`
+                                                        `/Courses_Payment/${payment?.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"
