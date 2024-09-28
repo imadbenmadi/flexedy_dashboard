@@ -128,17 +128,7 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             >
                                 <span>Applications</span>
                             </Link>
-                            {/* <Link
-                                to={"/Courses_Accepted"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Courses_Accepted"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-green_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>Accepted</span>
-                            </Link> */}
+
                             <Link
                                 to={"/Courses_Paying"}
                                 onClick={Toogle_Menu_Bar}
@@ -150,17 +140,6 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             >
                                 <span>Payment</span>
                             </Link>
-                            {/* <Link
-                                to={"/Courses_At_Work"}
-                                onClick={Toogle_Menu_Bar}
-                                className={` ${
-                                    Active_nav == "Courses_At_Work"
-                                        ? "bg-blue_v text-gray_v px-4 "
-                                        : "bg-white hover:text-green_v"
-                                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                            >
-                                <span>At Work</span>
-                            </Link> */}
                         </div>
                     </div>
 

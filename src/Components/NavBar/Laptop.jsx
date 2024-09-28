@@ -119,16 +119,7 @@ function Laptop() {
                     >
                         <span>Applications</span>
                     </Link>
-                    {/* <Link
-                        to={"/Courses_Accepted"}
-                        className={` ${
-                            Active_nav == "Courses_Accepted"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Accepted</span>
-                    </Link> */}
+                 
                     <Link
                         to={"/Courses_Paying"}
                         className={` ${
@@ -139,16 +130,7 @@ function Laptop() {
                     >
                         <span>Payment</span>
                     </Link>
-                    {/* <Link
-                        to={"/Courses_At_Work"}
-                        className={` ${
-                            Active_nav == "Courses_At_Work"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>At Work</span>
-                    </Link> */}
+                    
                 </div>
             </div>
 
