@@ -6,9 +6,10 @@ import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 import { SiFreelancer } from "react-icons/si";
-
+import { MdAttachMoney } from "react-icons/md";
+import { Link } from "react-router-dom";
 function Applications() {
-    const navigate = useNavigate();
+    const Navigate = useNavigate();
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -22,7 +23,7 @@ function Applications() {
         const fetchCourses = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Applications`,
+                    `http://localhost:3000/Admin/Payment`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -33,7 +34,7 @@ function Applications() {
                     setCourses(coursesData);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
-                    navigate("/Login");
+                    Navigate("/Login");
                 } else {
                     setError(response.data);
                 }
@@ -65,11 +66,11 @@ function Applications() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold text-green_b pb-6">
-                    Courses Applications
+                    Courses Payment
                 </div>
                 {!courses || courses.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
-                        No Applications found
+                        No Payments found
                     </div>
                 ) : (
                     <div>
@@ -86,36 +87,13 @@ function Applications() {
                                                 course.applicationsCount,
                                             0
                                         )} */}
-                                        {!courses
-                                            ? 0
-                                            : courses.length > 0
-                                            ? courses.length
-                                            : 0}
+                                        {courses.length}
                                     </div>
                                     <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                        <SiFreelancer className="shrink-0 text-2xl" />
+                                        <MdAttachMoney className="shrink-0 text-2xl" />
                                     </div>
                                 </div>
                             </div>{" "}
-                            <div className="max-w-[300px] border shadow-md py-6 px-6 flex flex-col items-center justify-start rounded-md md:min-w-[200px]">
-                                <div className="text-xs font-semibold pb-5 text-gray_v w-full">
-                                    Total Number of Applications:
-                                </div>
-                                <div className="flex justify-between gap-2 mx-2 w-full">
-                                    <div className="font-semibold text-2xl">
-                                        {courses.reduce(
-                                            (total, course) =>
-                                                total +
-                                                course?.applicationsCount,
-                                            0
-                                        )}
-                                        {/* {courses.length} */}
-                                    </div>
-                                    <div className="shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                        <SiFreelancer className="shrink-0 text-2xl" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <table className="table-auto w-full mt-4 text-sm">
                             <thead>
@@ -127,7 +105,7 @@ function Applications() {
                                         Teacher Company Name
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Applications Number
+                                        Payment Status
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         course Created At
@@ -141,13 +119,74 @@ function Applications() {
                                 {courses.map((course) => (
                                     <tr key={course?.id}>
                                         <td className="border px-4 py-2">
-                                            {course?.title}
+                                            {course?.Title}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.companyName}
+                                            {course?.owner?.company_Name}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.applicationsCount}
+                                            {course?.status === "Payed" ? (
+                                                <>
+                                                    <div className="">
+                                                        <span className="text-green_v">
+                                                            Payed :
+                                                        </span>{" "}
+                                                        Teacher Payed the Course
+                                                        fees
+                                                    </div>
+                                                </>
+                                            ) : !course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId ? (
+                                                <>
+                                                    <div className="">
+                                                        <span className=" text-red-500">
+                                                            Teacher have not yet
+                                                            uploaded payment
+                                                            screenshot
+                                                        </span>
+                                                    </div>
+                                                </>
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              !course?.isPayment_ScreenShot_Rejected ? (
+                                                <div className="">
+                                                    <span className="text-green_v">
+                                                        Teacher uploaded the
+                                                        payment screenshot :
+                                                    </span>{" "}
+                                                    <span className=" text-gray_v">
+                                                        Waiting for Payment
+                                                        Validation
+                                                    </span>
+                                                </div>
+                                            ) : course?.isPayment_ScreenShot_uploaded &&
+                                              course?.status === "Accepted" &&
+                                              course?.FreelancerId &&
+                                              course?.isPayment_ScreenShot_Rejected ? (
+                                                <>
+                                                    <div className="">
+                                                        <span className="text-red-500">
+                                                            Payment Rejected :
+                                                        </span>{" "}
+                                                        <span className=" text-gray_v">
+                                                            Waiting Teacher to
+                                                            reupload the Payment
+                                                            screenshot
+                                                        </span>
+                                                    </div>
+                                                </>
+                                            ) : course?.status === "Accepted" &&
+                                              !course?.FreelancerId ? (
+                                                <div>
+                                                    <span className="text-green_v">
+                                                        Accepted :
+                                                    </span>{" "}
+                                                    Wainting for freelancers to
+                                                    Apply for this course
+                                                </div>
+                                            ) : null}
                                         </td>
                                         <td className="border px-4 py-2">
                                             {formatDate(course?.createdAt)}
@@ -155,8 +194,8 @@ function Applications() {
                                         <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
-                                                    navigate(
-                                                        `/Courses_Applications/${course?.id}`
+                                                    Navigate(
+                                                        `/Courses_Payment/${course?.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"

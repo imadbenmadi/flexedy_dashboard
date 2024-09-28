@@ -14,6 +14,8 @@ import { FaRegComment } from "react-icons/fa6";
 import { BiMessageDetail } from "react-icons/bi";
 import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
+import { MdPayment } from "react-icons/md";
+import { IoMdPaper } from "react-icons/io";
 
 function Laptop() {
     const Navigate = useNavigate();
@@ -99,134 +101,63 @@ function Laptop() {
                     >
                         <span>Courses</span>
                     </Link>
+                </div>
+            </div>
+            {/* <Link
+                to={"/Courses_Payment"}
+                className={` ${
+                    Active_nav == "Courses_Payment"
+                        ? "bg-blue_v text-white px-4 "
+                        : "bg-white hover:text-green_v"
+                }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+            >
+                <span>Payment</span>
+            </Link> */}
+            <div>
+                <div className=" font-semibold pb-4  flex gap-2 items-center ">
+                    <IoMdPaper className=" text-lg" />
+                    Summaries
+                </div>
+                <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/Courses_Requests"}
+                        to={"/Summaries"}
                         className={` ${
-                            Active_nav == "Courses_Requests"
+                            Active_nav == "Summaries"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
                         }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
                     >
-                        <span>Request</span>
-                    </Link>
-                    <Link
-                        to={"/Courses_Applications"}
-                        className={` ${
-                            Active_nav == "Courses_Applications"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Applications</span>
-                    </Link>
-
-                    <Link
-                        to={"/Courses_Paying"}
-                        className={` ${
-                            Active_nav == "Courses_Paying"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Payment</span>
+                        <span>Summaries</span>
                     </Link>
                 </div>
             </div>
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
-                    <MdOutlineWorkOutline className=" text-lg" />
-                    Courses
+                    <MdPayment className=" text-lg" />
+                    Payment
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/Courses"}
+                        to={"/Courses_Payment"}
                         className={` ${
-                            Active_nav == "Courses"
+                            Active_nav == "Courses_Payment"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full  `}
                     >
-                        <span>Courses</span>
+                        <span>Courses Payment</span>
                     </Link>
-                    <Link
-                        to={"/Courses_Requests"}
-                        className={` ${
-                            Active_nav == "Courses_Requests"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Request</span>
-                    </Link>
-                    <Link
-                        to={"/Courses_Applications"}
-                        className={` ${
-                            Active_nav == "Courses_Applications"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Applications</span>
-                    </Link>
-
-                    <Link
-                        to={"/Courses_Paying"}
-                        className={` ${
-                            Active_nav == "Courses_Paying"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Payment</span>
-                    </Link>
-                </div>
-            </div>
-            <div>
-                <div className=" font-semibold pb-4  flex gap-2 items-center ">
-                    <MdOutlineWorkOutline className=" text-lg" />
-                    Courses
                 </div>
                 <div className=" flex flex-col gap-2 pl-2 ">
                     <Link
-                        to={"/Courses"}
+                        to={"/Summaries_Payment"}
                         className={` ${
-                            Active_nav == "Courses"
+                            Active_nav == "Summaries_Payment"
                                 ? "bg-blue_v text-white px-4 "
                                 : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
+                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[180px] rounded-full  `}
                     >
-                        <span>Courses</span>
-                    </Link>
-                    <Link
-                        to={"/Courses_Requests"}
-                        className={` ${
-                            Active_nav == "Courses_Requests"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Request</span>
-                    </Link>
-                    <Link
-                        to={"/Courses_Applications"}
-                        className={` ${
-                            Active_nav == "Courses_Applications"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Applications</span>
-                    </Link>
-
-                    <Link
-                        to={"/Courses_Paying"}
-                        className={` ${
-                            Active_nav == "Courses_Paying"
-                                ? "bg-blue_v text-white px-4 "
-                                : "bg-white hover:text-green_v"
-                        }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
-                    >
-                        <span>Payment</span>
+                        <span>Summaries Payment</span>
                     </Link>
                 </div>
             </div>

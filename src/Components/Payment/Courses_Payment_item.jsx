@@ -71,7 +71,7 @@ function Payment() {
                     "Payment Accepteed Successfully",
                     "success"
                 );
-                Navigate("/Courses_Paying");
+                Navigate("/Courses_Payment");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(
@@ -110,7 +110,7 @@ function Payment() {
                     "Payment Rejected Successfully",
                     "success"
                 );
-                Navigate("/Courses_Paying");
+                Navigate("/Courses_Payment");
             } else if (response.status == 401) window.location.href = "Login";
             else {
                 Swal.fire(

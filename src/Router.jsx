@@ -6,19 +6,15 @@ import Default from "./Default";
 import Login from "./Components/Auth/Login/Login";
 
 import Users from "./Components/Users/Users";
-import Courses_Requests from "./Components/Courses/Requests/Requests.jsx";
 
-import Courses_Applications from "./Components/Courses/Applications/Applications.jsx";
-import Courses_Applications_Listof_Students from "./Components/Courses/Applications/List.jsx";
-import Courses_Applications_Profile from "./Components/Courses/Applications/Profile.jsx";
+import Courses_Payment from "./Components/Payment/Courses_Payment.jsx";
+import Courses_Payment_item from "./Components/Payment/Courses_Payment_item.jsx";
+import Summaries_Payment from "./Components/Payment/Summaries_Payment.jsx";
+import Summaries_Payment_item from "./Components/Payment/Summaries_Payment_item.jsx";
 
-import Courses_Paying from "./Components/Courses/Paying/Paying.jsx";
-import Courses_Paying_item from "./Components/Courses/Paying/item.jsx";
+import Courses from "./Components/Courses/Courses.jsx";
+import Courses_item from "./Components/Courses/Item.jsx";
 
-import Courses from "./Components/Courses/All_Projects/Courses.jsx";
-import Courses_item from "./Components/Courses/All_Projects/Item.jsx";
-
-import Request_Course_Item from "./Components/Courses/Requests/Item.jsx";
 
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
@@ -67,40 +63,25 @@ const routes = createBrowserRouter([
                 element: <Courses_item />,
                 errorElement: <ErrorElement />,
             },
-            {
-                path: "/Courses_Requests",
-                element: <Courses_Requests />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses_Requests/:id",
-                element: <Request_Course_Item />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses_Applications",
-                element: <Courses_Applications />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses_Applications/:courseId",
-                element: <Courses_Applications_Listof_Students />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses_Applications/:courseId/:freelancerId",
-                element: <Courses_Applications_Profile />,
-                errorElement: <ErrorElement />,
-            },
 
             {
-                path: "/Courses_Paying",
-                element: <Courses_Paying />,
+                path: "/Courses_Payment",
+                element: <Courses_Payment />,
                 errorElement: <ErrorElement />,
             },
             {
-                path: "/Courses_Paying/:courseId",
-                element: <Courses_Paying_item />,
+                path: "/Courses_Payment/:courseId",
+                element: <Courses_Payment_item />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Summaries_Payment",
+                element: <Summaries_Payment />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Summaries_Payment/:courseId",
+                element: <Summaries_Payment_item />,
                 errorElement: <ErrorElement />,
             },
 

@@ -24,7 +24,7 @@ function Reviews({ user }) {
         const fetchData = async () => {
             try {
                 let response;
-                if ((user?.userType = "teacher"))
+                if ((user.userType = "teacher"))
                     response = await axios.get(
                         `http://localhost:3000/Admin/Users/Teachers/${user?.id}/Feedbacks`,
                         {
@@ -32,7 +32,7 @@ function Reviews({ user }) {
                             // validateStatus: () => true,
                         }
                     );
-                else if ((user?.userType = "Student"))
+                else if ((user.userType = "Student"))
                     response = await axios.get(
                         `http://localhost:3000/Admin/Users/Student/${user?.id}/Feedbacks`,
                         {

@@ -8,7 +8,7 @@ import { Editor, EditorState, convertFromRaw, ContentState } from "draft-js";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-
+import { Link } from "react-router-dom";
 function Freelancer_Process_item() {
     const Navigate = useNavigate();
     // const [Rejections, SetRejections] = useState([]);
@@ -33,84 +33,6 @@ function Freelancer_Process_item() {
             return parsed.blocks && parsed.entityMap;
         } catch (e) {
             return false;
-        }
-    };
-    const handle_Accept = async () => {
-        setAcceptLoading(true);
-        try {
-            let response = await axios.post(
-                `http://localhost:3000/Admin/Courses/requests/${
-                    location.pathname.split("/")[2]
-                }/Accept`,
-                {},
-                // Reason,
-                {
-                    withCredentials: true,
-                    // validateStatus: () => true,
-                }
-            );
-            if (response.status == 200) {
-                Swal.fire(
-                    "Success",
-                    "Course Request Accepteed Successfully",
-                    "success"
-                );
-                Navigate("/Courses_Requests");
-            } else if (response.status == 401) window.location.href = "Login";
-            else {
-                Swal.fire(
-                    "Error!",
-                    `Something Went Wrong ,please trye again latter, ${response.data.message} `,
-                    "error"
-                );
-            }
-        } catch (error) {
-            Swal.fire(
-                "Error!",
-                `Something Went Wrong ,please trye again latter`,
-                "error"
-            );
-        } finally {
-            setAcceptLoading(false);
-        }
-    };
-    const handle_Reject = async () => {
-        setRejectLoading(true);
-        try {
-            let response = await axios.post(
-                `http://localhost:3000/Admin/Courses/requests/${
-                    location.pathname.split("/")[2]
-                }/Reject`,
-                {},
-                // Reason,
-                {
-                    withCredentials: true,
-                    // validateStatus: () => true,
-                }
-            );
-            if (response.status == 200) {
-                Swal.fire(
-                    "Success",
-                    "Course Request Rejected Successfully",
-                    "success"
-                );
-                Navigate("/Courses_Requests");
-            } else if (response.status == 401) window.location.href = "Login";
-            else {
-                Swal.fire(
-                    "Error!",
-                    `Something Went Wrong ,please trye again latter, ${response.data.message} `,
-                    "error"
-                );
-            }
-        } catch (error) {
-            Swal.fire(
-                "Error!",
-                `Something Went Wrong ,please trye again latter`,
-                "error"
-            );
-        } finally {
-            setRejectLoading(false);
         }
     };
     useEffect(() => {
@@ -186,37 +108,115 @@ function Freelancer_Process_item() {
         return (
             <div className=" w-full h-full relative py-6 px-4">
                 <div className="text-xl font-semibold  text-green_b pb-6">
-                    Courses Request
+                    Course Details
                 </div>
-                <div className=" flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-                    <div
-                        className=" bg-green_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
-                        onClick={() => {
-                            Navigate(`/Users/Teachers/${course?.ClientId}`);
-                        }}
-                    >
-                        Teacher Profile
-                    </div>
-                    {AcceptLoading ? (
-                        <div className=" small-loader mx-12"></div>
-                    ) : (
-                        <div
-                            className=" bg-green_v py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
-                            onClick={handle_Accept}
-                        >
-                            Accept Course
+                <div className=" text-center font-semibold">
+                    {course?.status === "Payed" && !course?.isWorkUploaded ? (
+                        <>
+                            <div className="">
+                                <span className="text-green_v">Payed :</span>{" "}
+                                payment accepted. <br />a Student is working on
+                                the course
+                            </div>
+                        </>
+                    ) : course?.status === "Payed" &&
+                      course?.isWorkUploaded &&
+                      !course?.isWorkRejected ? (
+                        <div className="">
+                            <span className="text-green_v">Uploaded :</span> The
+                            Student Upload the files of the course .
                         </div>
-                    )}
-                    {RejectLoading ? (
-                        <div className=" small-loader mx-12"></div>
-                    ) : (
-                        <div
-                            className=" bg-red-500 py-2 px-4 rounded-lg text-white font-semibold cursor-pointer"
-                            onClick={handle_Reject}
-                        >
-                            Reject Course
+                    ) : course?.status === "Payed" &&
+                      course?.isWorkUploaded &&
+                      course?.isWorkRejected ? (
+                        <div className="">
+                            <span className="text-red-500">
+                                Rejection Sent to the Student :
+                            </span>{" "}
+                            student is correcting the mentioned pointes .
                         </div>
-                    )}
+                    ) : course?.status === "Rejected" ? (
+                        <div className="">
+                            <span className="text-red-600">Rejected :</span>{" "}
+                            <span className=" text-gray_v">
+                                the course has been rejected.
+                            </span>
+                        </div>
+                    ) : course?.status === "Completed" ? (
+                        <div className="">
+                            <span className="text-green_v">Completed :</span>{" "}
+                            <span className=" text-gray_v">
+                                the course has been closed.
+                            </span>
+                        </div>
+                    ) : !course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId ? (
+                        <div className="">
+                            <span className="text-gray_v">Accepted :</span>{" "}
+                            <span className=" text-red-500">
+                                waiting teacher to pay the course fees.
+                            </span>
+                        </div>
+                    ) : course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId &&
+                      !course?.isPayment_ScreenShot_Rejected ? (
+                        <div className=" flex justify-center items-center flex-col gap-4">
+                            <div className="">
+                                <span className="text-green_v">Accepted :</span>{" "}
+                                <span className=" text-gray_v">
+                                    Waiting for payment Validation{" "}
+                                </span>
+                            </div>
+                            <Link
+                                to={`/Courses_Payment/${course.id}`}
+                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
+                            >
+                                Validate the Payment{" "}
+                            </Link>
+                        </div>
+                    ) : course?.isPayment_ScreenShot_uploaded &&
+                      course?.status === "Accepted" &&
+                      course?.FreelancerId &&
+                      course?.isPayment_ScreenShot_Rejected ? (
+                        <div className="">
+                            <span className="text-red-500">
+                                Payment Rejected :
+                            </span>{" "}
+                            <span className=" text-gray_v">
+                                Payment Rejected , waiting for the Teacher to
+                                reupload the payment screenshot
+                            </span>
+                        </div>
+                    ) : course?.status === "Accepted" &&
+                      !course?.FreelancerId ? (
+                        <div className=" flex justify-center items-center flex-col gap-4">
+                            <div>
+                                <span className="text-green_v">Accepted</span>{" "}
+                                Searching For the Student
+                            </div>
+                            <Link
+                                to={`/Courses_Applications/${course.id}`}
+                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
+                            >
+                                View Applicants
+                            </Link>
+                        </div>
+                    ) : course?.status === "Pending" ? (
+                        <div className=" flex justify-center items-center flex-col gap-4">
+                            <div>
+                                <span className="text-green_v">Pending</span>{" "}
+                                <span className="">waiting for validation</span>
+                            </div>
+                            <Link
+                                to={`/Courses_Requests/${course.id}`}
+                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
+                            >
+                                Validate the course
+                            </Link>
+                        </div>
+                    ) : null}
                 </div>
                 <div className="w-[90%] mx-auto max-w-[900px] pt-6">
                     <div className="font-semibold text-gray_v text-2xl">

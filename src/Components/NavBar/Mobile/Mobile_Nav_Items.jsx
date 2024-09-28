@@ -130,10 +130,10 @@ function Mobile_Nav_Items({ MobileNav_Open, Toogle_Menu_Bar }) {
                             </Link>
 
                             <Link
-                                to={"/Courses_Paying"}
+                                to={"/Courses_Payment"}
                                 onClick={Toogle_Menu_Bar}
                                 className={` ${
-                                    Active_nav == "Courses_Paying"
+                                    Active_nav == "Courses_Payment"
                                         ? "bg-blue_v text-gray_v px-4 "
                                         : "bg-white hover:text-green_v"
                                 }  transition-all duration-150  cursor-pointer py-1 select-none  w-[150px] rounded-full  `}
