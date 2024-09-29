@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import { useNavigate, Link } from "react-router-dom";
 
 function Upload_Video() {
-
     const [videoFile, setVideoFile] = useState(null); // Store the selected file
     const [dragging, setDragging] = useState(false); // Track drag status
     const fileInputRef = useRef(null); // Ref to access file input

@@ -57,7 +57,7 @@ function Card({ Message, Messages, setMessages }) {
                 <div className="flex flex-col gap-4  text-gray_v font-semibold text-sm ">
                     <div className=" flex items-center gap-2">
                         <FiUser className=" text-xl" />
-                        {Message?.Name }
+                        {Message?.Name}
                     </div>
                     <div className=" flex items-center gap-2 ">
                         <MdOutlineMailOutline className=" text-xl" />

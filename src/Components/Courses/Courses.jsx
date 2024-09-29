@@ -148,11 +148,12 @@ function Courses() {
                                             {course?.Category}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.Price}{" DA"}
+                                            {course?.Price}
+                                            {" DA"}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.Vedios_count ? (
-                                                course?.Vedios_count
+                                            {course?.Course_Video ? (
+                                                course?.Course_Video.length
                                             ) : (
                                                 <div className="text-red-600">
                                                     0

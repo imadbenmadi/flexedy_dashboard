@@ -274,7 +274,8 @@ function Summaries() {
                                                         screenshot{" "}
                                                     </span>{" "}
                                                 </div>
-                                            ) : summary?.status === "Accepted" &&
+                                            ) : summary?.status ===
+                                                  "Accepted" &&
                                               !summary?.FreelancerId ? (
                                                 <div>
                                                     <span className="text-green_v">
@@ -282,7 +283,8 @@ function Summaries() {
                                                     </span>{" "}
                                                     Searching For the Student
                                                 </div>
-                                            ) : summary?.status === "Pending" ? (
+                                            ) : summary?.status ===
+                                              "Pending" ? (
                                                 <div>
                                                     <span className="text-green_v">
                                                         Pending
