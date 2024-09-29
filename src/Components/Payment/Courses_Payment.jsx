@@ -23,7 +23,7 @@ function Applications() {
         const fetchPayments = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Payment`,
+                    `http://localhost:3000/Admin/Payment/Courses`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,

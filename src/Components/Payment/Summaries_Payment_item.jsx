@@ -27,7 +27,7 @@ function Payment() {
         const fetchCourses = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Payment/${courseId}`,
+                    `http://localhost:3000/Admin/Payment/Courses/${courseId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
@@ -55,7 +55,7 @@ function Payment() {
         setAcceptLoading(true);
         try {
             let response = await axios.post(
-                `http://localhost:3000/Admin/Payment/${
+                `http://localhost:3000/Admin/Payment/Courses/${
                     location.pathname.split("/")[2]
                 }/Accept`,
                 {},
@@ -94,7 +94,7 @@ function Payment() {
         setRejectLoading(true);
         try {
             let response = await axios.post(
-                `http://localhost:3000/Admin/Payment/${
+                `http://localhost:3000/Admin/Payment/Courses/${
                     location.pathname.split("/")[2]
                 }/Reject`,
                 {},
