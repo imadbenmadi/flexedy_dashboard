@@ -29,10 +29,10 @@ function Applications() {
                         validateStatus: () => true,
                     }
                 );
-                // console.log(response);
+                console.log(response);
 
                 if (response.status === 200) {
-                    const paymentsData = response.data.summaries_Purcase_Requests;
+                    const paymentsData = response.data.summary_Purcase_Requests;
                     setPayments(paymentsData);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
@@ -101,10 +101,10 @@ function Applications() {
                             <thead>
                                 <tr className="bg-gray-200 font-normal">
                                     <th className="px-4 py-2 border-l border-white rounded-tl-md">
-                                        Payment Id
+                                        Summary Id
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Payment Title
+                                        Summary Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Student CPP
