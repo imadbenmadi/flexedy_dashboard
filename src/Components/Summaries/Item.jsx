@@ -52,15 +52,15 @@ function Freelancer_Process_item() {
                     const Summary = response.data.summary;
                     setSummary(Summary);
                     let contentState;
-                    if (Summary.Description) {
+                    if (Summary?.Description) {
                         // Ensure summary.Description is defined
-                        if (isDraftJSFormat(Summary.Description)) {
+                        if (isDraftJSFormat(Summary?.Description)) {
                             contentState = convertFromRaw(
-                                JSON.parse(Summary.Description)
+                                JSON.parse(Summary?.Description)
                             );
                         } else {
                             contentState = ContentState.createFromText(
-                                Summary.Description
+                                Summary?.Description
                             );
                         }
                         setEditorState(
