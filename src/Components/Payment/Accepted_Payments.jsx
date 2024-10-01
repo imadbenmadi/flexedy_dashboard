@@ -87,7 +87,9 @@ function Accepted_Payments() {
                     ...coursesPayments,
                     ...summariesPayments,
                 ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                console.log(combinedData);
+                console.log("coursesResponse", coursesResponse);
+                console.log("summariesResponse", summariesResponse);
+                console.log("combinedData", combinedData);
 
                 setData(combinedData); // Set combined and sorted data
                 setFilteredData(combinedData); // Set initial filtered data
@@ -181,7 +183,16 @@ function Accepted_Payments() {
                                         Payment Id
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Payment Title
+                                        Course/Payment Id
+                                    </th>
+                                    <th className="px-4 py-2 border-l border-white">
+                                        Student Email
+                                    </th>
+                                    <th className="px-4 py-2 border-l border-white">
+                                        Amount (Price)
+                                    </th>
+                                    <th className="px-4 py-2 border-l border-white">
+                                        Category
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Student CPP
@@ -189,19 +200,32 @@ function Accepted_Payments() {
                                     <th className="px-4 py-2 border-l border-white">
                                         Created At
                                     </th>
-                                    <th className="px-4 py-2 border-l border-white rounded-tr-md">
+                                    {/* <th className="px-4 py-2 border-l border-white rounded-tr-md">
                                         Action
-                                    </th>
+                                    </th> */}
                                 </tr>
                             </thead>
                             <tbody className="text-xs text-center font-semibold">
                                 {filteredData.map((payment) => (
                                     <tr key={payment?.id}>
                                         <td className="border px-4 py-2">
-                                            {payment?.Course?.id}
+                                            {payment?.id}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {payment?.Course?.Title}
+                                            {payment?.type === "summary"
+                                                ? payment?.Summary?.id
+                                                : payment?.Course?.id}
+                                        </td>
+                                        <td className="border px-4 py-2">
+                                            {payment?.Student?.email}
+                                        </td>
+                                        <td className="border px-4 py-2">
+                                            {payment?.Price} DA
+                                        </td>
+                                        <td className="border px-4 py-2">
+                                            {payment?.type === "summary"
+                                                ? "Summary"
+                                                : "Course"}
                                         </td>
                                         <td className="border px-4 py-2">
                                             {payment?.CCP_number}
@@ -209,18 +233,18 @@ function Accepted_Payments() {
                                         <td className="border px-4 py-2">
                                             {formatDate(payment?.createdAt)}
                                         </td>
-                                        <td className="border px-4 py-2">
+                                        {/* <td className="border px-4 py-2">
                                             <button
                                                 onClick={() => {
                                                     Navigate(
-                                                        `/Courses_Payment/${payment?.id}`
+                                                        `/Payment/${payment?.id}`
                                                     );
                                                 }}
                                                 className="bg-blue-500 text-white px-4 py-2 rounded"
                                             >
                                                 View
                                             </button>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
                             </tbody>
