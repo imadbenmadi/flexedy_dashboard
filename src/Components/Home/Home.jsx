@@ -14,6 +14,8 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import { PiStudentBold } from "react-icons/pi";
+
 import { Line } from "react-chartjs-2";
 import dayjs from "dayjs";
 
@@ -180,7 +182,7 @@ function Home() {
                                 {data?.Students_nbr}
                             </div>
                             <div className=" shrink-0 text-blue-600 border border-gray_white px-2 py-1 flex items-center justify-center rounded-lg shadow-lg">
-                                <SiFreelancer className=" shrink-0 text-2xl" />
+                                <PiStudentBold className=" shrink-0 text-2xl" />
                             </div>
                         </div>
                     </div>

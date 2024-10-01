@@ -68,7 +68,7 @@ function Applications() {
         return (
             <div className="py-6 px-4">
                 <div className="text-xl font-semibold text-green_b pb-6">
-                    Payments Payment
+                    Courses Payment
                 </div>
                 {!payments || payments.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">

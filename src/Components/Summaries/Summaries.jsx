@@ -29,7 +29,7 @@ function Summaries() {
                     }
                 );
                 if (response.status === 200) {
-                    setSummaries(response.data.Summaries);
+                    setSummaries(response.data.Summary);
                 } else if (response.status === 401) {
                     Swal.fire("Error", "You should login again", "error");
                     navigate("/Login");
