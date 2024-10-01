@@ -21,6 +21,9 @@ import Upload_Vedio from "./Components/Courses/Upload_Vedio.jsx";
 import Summaries from "./Components/Summaries/Summaries.jsx";
 import Summaries_item from "./Components/Summaries/Item.jsx";
 
+import Accepted_Payments from "./Components/Payment/Accepted_Payments.jsx";
+import Rejected_Payments from "./Components/Payment/Rejected_Payments.jsx";
+
 import Contact from "./Components/Contact/Contact.jsx";
 import Not_Found from "./Components/Not_Found";
 import Not_Finished from "./Components/Not_Finished";
@@ -115,6 +118,15 @@ const routes = createBrowserRouter([
                 path: "/Summaries_Payment/:courseId",
                 element: <Summaries_Payment_item />,
                 errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Accepted_Payments",
+                element: <Accepted_Payments />,
+                errorElement: <ErrorElement />,
+            },
+            {
+                path: "/Rejected_Payments",
+                element: <Rejected_Payments />,
                 errorElement: <ErrorElement />,
             },
 

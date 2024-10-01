@@ -16,6 +16,7 @@ import { PiListFill } from "react-icons/pi";
 import { RiContactsLine } from "react-icons/ri";
 import { MdPayment } from "react-icons/md";
 import { IoMdPaper } from "react-icons/io";
+import { FaDollarSign } from "react-icons/fa";
 
 function Laptop() {
     const Navigate = useNavigate();
@@ -103,7 +104,6 @@ function Laptop() {
                     </Link>
                 </div>
             </div>
-            
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <IoMdPaper className=" text-lg" />
@@ -139,7 +139,7 @@ function Laptop() {
                         <span>Courses Payment</span>
                     </Link>
                 </div>
-                <div className=" flex flex-col gap-2 pl-2 ">
+                <div className=" flex flex-col gap-2 pl-2 -mb-4 ">
                     <Link
                         to={"/Summaries_Payment"}
                         className={` ${
@@ -152,7 +152,36 @@ function Laptop() {
                     </Link>
                 </div>
             </div>
-
+            <div>
+                <Link
+                    to={"/Accepted_Payments"}
+                    className={` ${
+                        Active_nav == "Accepted_Payments"
+                            ? "bg-blue_v text-white px-4 "
+                            : "bg-white hover:text-green_v"
+                    }  transition-all duration-150  cursor-pointer  select-none  w-fit rounded-full  
+                        font-semibold -mb-8  flex gap-2 items-center py-1 
+                        `}
+                >
+                    <FaDollarSign className=" text-lg  " />
+                    Accepted Payments
+                </Link>{" "}
+            </div>{" "}
+            <div>
+                <Link
+                    to={"/Rejected_Payments"}
+                    className={` ${
+                        Active_nav == "Rejected_Payments"
+                            ? "bg-blue_v text-white px-4 "
+                            : "bg-white hover:text-green_v"
+                    }  transition-all duration-150  cursor-pointer  select-none  w-fit rounded-full  
+                        font-semibold mb-2  flex gap-2 items-center py-1
+                        `}
+                >
+                    <FaDollarSign className=" text-lg  " />
+                    Rejected Payments
+                </Link>{" "}
+            </div>{" "}
             <div>
                 <div className=" font-semibold pb-4  flex gap-2 items-center ">
                     <RiContactsLine className=" text-lg" />
