@@ -122,9 +122,21 @@ function Payment() {
         }
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-
+    if (loading) {
+        return (
+            <div className=" w-screen h-[80vh] flex flex-col items-center justify-center">
+                <span className="loader"></span>
+            </div>
+        );
+    } else if (error) {
+        return (
+            <div className="w-screen h-[calc(100vh-60px)] flex items-center justify-center">
+                <div className="text-red-600 font-semibold">
+                    {error.message}
+                </div>
+            </div>
+        );
+    }
     return (
         <div className="py-6 px-4">
             <div className="text-xl font-semibold text-green_b pb-6">
