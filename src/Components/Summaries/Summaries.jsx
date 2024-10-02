@@ -6,7 +6,6 @@ import axios from "axios";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
-import { FaRegHandshake } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 
 function Summaries() {
@@ -17,6 +16,7 @@ function Summaries() {
     const formatDate = (dateString) => {
         return dayjs(dateString).format("DD  MMMM  YYYY");
     };
+
     useEffect(() => {
         setLoading(true);
         const fetchSummaries = async () => {
@@ -28,6 +28,7 @@ function Summaries() {
                         validateStatus: () => true,
                     }
                 );
+
                 if (response.status === 200) {
                     setSummaries(response.data.Summary);
                 } else if (response.status === 401) {
@@ -47,15 +48,9 @@ function Summaries() {
     }, []);
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [SummariesTypeFilter, setSummariesTypeFilter] = useState("");
-    const filteredSummariess = Summaries.filter((summarys) => {
-        const title = `${summarys.Title}`.toLowerCase();
+    const filteredSummariess = Summaries.filter((summary) => {
+        const title = `${summary.Title}`.toLowerCase();
         return title.includes(searchQuery.toLowerCase());
-    }).filter((summarys) => {
-        if (SummariesTypeFilter) {
-            return summarys.status === SummariesTypeFilter;
-        }
-        return true;
     });
 
     if (loading) {
@@ -83,25 +78,12 @@ function Summaries() {
                         <IoSearch className="w-fit shrink-0" />
                         <input
                             type="text"
-                            placeholder="Search by name or email"
+                            placeholder="Search by title"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             className="w-full"
                         />
                     </div>
-
-                    <select
-                        value={SummariesTypeFilter}
-                        onChange={(e) => setSummariesTypeFilter(e.target.value)}
-                        className="border p-2 w-fit mx-auto md:mx-0 rounded-md text-sm font-semibold"
-                    >
-                        <option value="">All</option>
-                        <option value="Payed">Payed</option>
-                        <option value="Rejected">Rejected</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Accepted">Accepted</option>
-                        <option value="Pending">Pending</option>
-                    </select>
                 </div>
                 {filteredSummariess.length === 0 ? (
                     <div className="text-center font-semibold text-sm text-gray-600 pt-6">
@@ -116,16 +98,10 @@ function Summaries() {
                                         Summary Title
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        Status{" "}
+                                        Category
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
-                                        DeadLine{" "}
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        Fees{" "}
-                                    </th>
-                                    <th className="px-4 py-2 border-l border-white">
-                                        Status Description{" "}
+                                        Price{" "}
                                     </th>
                                     <th className="px-4 py-2 border-l border-white">
                                         Created At
@@ -139,169 +115,16 @@ function Summaries() {
                                 {filteredSummariess.map((summary) => (
                                     <tr key={summary.id}>
                                         <td className="border px-4 py-2">
-                                            {`${summary?.Title}`}
+                                            {summary.Title}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {summary?.status}
+                                            {summary.Category}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {summary?.DeadLine ? (
-                                                summary?.DeadLine
-                                            ) : (
-                                                <div className="text-red-600">
-                                                    No Deadline
-                                                </div>
-                                            )}
+                                            {summary.Price}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {summary?.Money ? (
-                                                summary?.Money
-                                            ) : (
-                                                <div className="text-red-600">
-                                                    Not set
-                                                </div>
-                                            )}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {summary?.status === "Payed" &&
-                                            !summary?.isWorkUploaded ? (
-                                                <>
-                                                    <div className="">
-                                                        <span className="text-green_v">
-                                                            Payed :
-                                                        </span>{" "}
-                                                        payment accepted. <br />
-                                                        a Student is working on
-                                                        the summary
-                                                    </div>
-                                                </>
-                                            ) : summary?.status === "Payed" &&
-                                              summary?.isWorkUploaded &&
-                                              !summary?.isWorkRejected ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Uploaded :
-                                                    </span>{" "}
-                                                    The Student Upload the files
-                                                    of the summary .
-                                                </div>
-                                            ) : summary?.status === "Payed" &&
-                                              summary?.isWorkUploaded &&
-                                              summary?.isWorkRejected ? (
-                                                <div className="">
-                                                    <span className="text-red-500">
-                                                        Rejection Sent to the
-                                                        Student :
-                                                    </span>{" "}
-                                                    student is correcting the
-                                                    mentioned pointes .
-                                                </div>
-                                            ) : summary?.status ===
-                                              "Rejected" ? (
-                                                <div className="">
-                                                    <span className="text-red-600">
-                                                        Rejected :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        the summary has been
-                                                        rejected.
-                                                    </span>
-                                                </div>
-                                            ) : summary?.status ===
-                                              "Completed" ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Completed :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        the summary has been
-                                                        closed.
-                                                    </span>
-                                                </div>
-                                            ) : !summary?.isPayment_ScreenShot_uploaded &&
-                                              summary?.status === "Accepted" &&
-                                              summary?.FreelancerId ? (
-                                                <div className="">
-                                                    <span className="text-gray_v">
-                                                        Accepted :
-                                                    </span>{" "}
-                                                    <span className=" text-red-500">
-                                                        waiting teacher to pay
-                                                        the summary fees
-                                                    </span>
-                                                </div>
-                                            ) : summary?.isPayment_ScreenShot_uploaded &&
-                                              summary?.status === "Accepted" &&
-                                              summary?.FreelancerId &&
-                                              !summary?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className="text-green_v">
-                                                        Accepted :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        Waiting for payment
-                                                        Validation
-                                                    </span>
-                                                </div>
-                                            ) : summary?.isPayment_ScreenShot_uploaded &&
-                                              summary?.status === "Accepted" &&
-                                              summary?.FreelancerId &&
-                                              summary?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className="text-red-500">
-                                                        Payment Rejected :
-                                                    </span>{" "}
-                                                    <span className=" text-gray_v">
-                                                        Payment Rejected ,
-                                                        waiting for the Teacher
-                                                        to reupload the payment
-                                                        screenshot
-                                                    </span>
-                                                </div>
-                                            ) : summary?.isPayment_ScreenShot_uploaded &&
-                                              summary?.status === "Accepted" &&
-                                              summary?.FreelancerId &&
-                                              summary?.isPayment_ScreenShot_Rejected ? (
-                                                <div className="">
-                                                    <span className=" text-red-500">
-                                                        the payment has been
-                                                        rejected :{" "}
-                                                    </span>
-                                                    <span className="text-gray_v">
-                                                        Payment Rejected ,
-                                                        waiting for the Teacher
-                                                        to reupload the payment
-                                                        screenshot{" "}
-                                                    </span>{" "}
-                                                </div>
-                                            ) : summary?.status ===
-                                                  "Accepted" &&
-                                              !summary?.FreelancerId ? (
-                                                <div>
-                                                    <span className="text-green_v">
-                                                        Accepted
-                                                    </span>{" "}
-                                                    Searching For the Student
-                                                </div>
-                                            ) : summary?.status ===
-                                              "Pending" ? (
-                                                <div>
-                                                    <span className="text-green_v">
-                                                        Pending
-                                                    </span>{" "}
-                                                    <span className="">
-                                                        waiting for validation
-                                                    </span>
-                                                </div>
-                                            ) : null}
-                                            {/* {summary?.status} */}
-                                        </td>
-
-                                        <td className="border px-4 py-2">
-                                            {/* {new Date(
-                                            summary.createdAt
-                                        ).toLocaleDateString()} */}
-                                            {formatDate(summary?.createdAt)}
+                                            {formatDate(summary.createdAt)}
                                         </td>
                                         <td className="border px-4 py-2">
                                             <button

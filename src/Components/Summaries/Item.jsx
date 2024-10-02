@@ -1,305 +1,204 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { IoIosWarning } from "react-icons/io";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router-dom";
-import { Editor, EditorState, convertFromRaw, ContentState } from "draft-js";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { CiImageOn } from "react-icons/ci";
+import { FaStar, FaStarHalf } from "react-icons/fa";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import { useLocation } from "react-router-dom";
+
 dayjs.extend(customParseFormat);
-import { Link } from "react-router-dom";
-function Freelancer_Process_item() {
-    const Navigate = useNavigate();
-    // const [Rejections, SetRejections] = useState([]);
-    const location = useLocation();
-    const summaryId = location.pathname.split("/")[2];
-    const Naviagte = useNavigate();
+
+function Summary() {
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [summary, setSummary] = useState([]);
-    const [AcceptLoading, setAcceptLoading] = useState(false);
-    const [RejectLoading, setRejectLoading] = useState(false);
-    const [editorState, setEditorState] = useState(EditorState.createEmpty());
+    const [summary, setSummary] = useState();
+    const location = useLocation();
+    const summaryId = location.pathname.split("/")[2];
+    const [showDescription, setShowDescription] = useState(false);
 
-    // Function to format the date
-    const formatDate = (dateString) => {
-        return dayjs(dateString).format("DD  MMMM  YYYY");
-    };
+    function toggleDescription() {
+        setShowDescription(!showDescription);
+    }
 
-    const isDraftJSFormat = (str) => {
-        try {
-            const parsed = JSON.parse(str);
-            return parsed.blocks && parsed.entityMap;
-        } catch (e) {
-            return false;
-        }
-    };
     useEffect(() => {
-        setLoading(true);
-        const FetchSummary = async ({ setSummary, setLoading, setError }) => {
+        const fetchSummary = async () => {
             setLoading(true);
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/Admin/Summaries/requests/${summaryId}`,
+                    `http://localhost:3000/Admin/Summaries/${summaryId}`,
                     {
                         withCredentials: true,
                         validateStatus: () => true,
                     }
                 );
-
-                if (response.status == 200) {
-                    const Summary = response.data.summary;
-                    setSummary(Summary);
-                    let contentState;
-                    if (Summary?.Description) {
-                        // Ensure summary.Description is defined
-                        if (isDraftJSFormat(Summary?.Description)) {
-                            contentState = convertFromRaw(
-                                JSON.parse(Summary?.Description)
-                            );
-                        } else {
-                            contentState = ContentState.createFromText(
-                                Summary?.Description
-                            );
-                        }
-                        setEditorState(
-                            EditorState.createWithContent(contentState)
-                        );
-                    } else {
-                        setEditorState(EditorState.createEmpty());
-                    }
-                } else if (response.status == 401) {
-                    Swal.fire("Error", "you should login again", "error");
-                    Naviagte("/Login");
+                if (response.status === 200) {
+                    setSummary(response.data.Summary);
+                } else if (response.status === 401) {
+                    Swal.fire("Error", "You should log in again", "error");
+                    navigate("/Login");
                 } else {
                     setError(response.data);
                 }
             } catch (error) {
                 setError(error);
             } finally {
-                // setLoading(false);
+                setLoading(false);
             }
         };
-
-        FetchSummary({ setSummary, setLoading, setError }).then(() => {
-            // fetchRejections({ SetRejections }).then(() => {
-            setLoading(false);
-            // });
-        });
-    }, []);
+        fetchSummary();
+    }, [summaryId, navigate]);
 
     if (loading) {
         return (
-            <div className=" w-full h-[80vh] flex flex-col items-center justify-center">
+            <div className="w-screen h-[80vh] flex flex-col items-center justify-center">
                 <span className="loader"></span>
             </div>
         );
     }
-    // else if (error)
-    //     return (
-    //         <div className=" w-full h-screen flex items-center justify-center">
-    //             <div className="text-red-600 font-semibold">
-    //                 {error.message}
-    //             </div>
-    //         </div>
-    //     );
-    else
-        return (
-            <div className=" w-full h-full relative py-6 px-4">
-                <div className="text-xl font-semibold  text-green_b pb-6">
-                    Summary Details
-                </div>
-                <div className=" text-center font-semibold">
-                    {summary?.status === "Payed" && !summary?.isWorkUploaded ? (
-                        <>
-                            <div className="">
-                                <span className="text-green_v">Payed :</span>{" "}
-                                payment accepted. <br />a Student is working on
-                                the summary
-                            </div>
-                        </>
-                    ) : summary?.status === "Payed" &&
-                      summary?.isWorkUploaded &&
-                      !summary?.isWorkRejected ? (
-                        <div className="">
-                            <span className="text-green_v">Uploaded :</span> The
-                            Student Upload the files of the summary .
-                        </div>
-                    ) : summary?.status === "Payed" &&
-                      summary?.isWorkUploaded &&
-                      summary?.isWorkRejected ? (
-                        <div className="">
-                            <span className="text-red-500">
-                                Rejection Sent to the Student :
-                            </span>{" "}
-                            student is correcting the mentioned pointes .
-                        </div>
-                    ) : summary?.status === "Rejected" ? (
-                        <div className="">
-                            <span className="text-red-600">Rejected :</span>{" "}
-                            <span className=" text-gray_v">
-                                the summary has been rejected.
-                            </span>
-                        </div>
-                    ) : summary?.status === "Completed" ? (
-                        <div className="">
-                            <span className="text-green_v">Completed :</span>{" "}
-                            <span className=" text-gray_v">
-                                the summary has been closed.
-                            </span>
-                        </div>
-                    ) : !summary?.isPayment_ScreenShot_uploaded &&
-                      summary?.status === "Accepted" &&
-                      summary?.FreelancerId ? (
-                        <div className="">
-                            <span className="text-gray_v">Accepted :</span>{" "}
-                            <span className=" text-red-500">
-                                waiting teacher to pay the summary fees.
-                            </span>
-                        </div>
-                    ) : summary?.isPayment_ScreenShot_uploaded &&
-                      summary?.status === "Accepted" &&
-                      summary?.FreelancerId &&
-                      !summary?.isPayment_ScreenShot_Rejected ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div className="">
-                                <span className="text-green_v">Accepted :</span>{" "}
-                                <span className=" text-gray_v">
-                                    Waiting for payment Validation{" "}
-                                </span>
-                            </div>
-                            <Link
-                                to={`/Summaries_Payment/${summary.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                Validate the Payment{" "}
-                            </Link>
-                        </div>
-                    ) : summary?.isPayment_ScreenShot_uploaded &&
-                      summary?.status === "Accepted" &&
-                      summary?.FreelancerId &&
-                      summary?.isPayment_ScreenShot_Rejected ? (
-                        <div className="">
-                            <span className="text-red-500">
-                                Payment Rejected :
-                            </span>{" "}
-                            <span className=" text-gray_v">
-                                Payment Rejected , waiting for the Teacher to
-                                reupload the payment screenshot
-                            </span>
-                        </div>
-                    ) : summary?.status === "Accepted" &&
-                      !summary?.FreelancerId ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div>
-                                <span className="text-green_v">Accepted</span>{" "}
-                                Searching For the Student
-                            </div>
-                            <Link
-                                to={`/Summaries_Applications/${summary.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                View Applicants
-                            </Link>
-                        </div>
-                    ) : summary?.status === "Pending" ? (
-                        <div className=" flex justify-center items-center flex-col gap-4">
-                            <div>
-                                <span className="text-green_v">Pending</span>{" "}
-                                <span className="">waiting for validation</span>
-                            </div>
-                            <Link
-                                to={`/Summaries_Requests/${summary.id}`}
-                                className=" text-white bg-green_v py-2 w-fit px-4 rounded-xl "
-                            >
-                                Validate the summary
-                            </Link>
-                        </div>
-                    ) : null}
-                </div>
-                <div className="w-[90%] mx-auto max-w-[900px] pt-6">
-                    <div className="font-semibold text-gray_v text-2xl">
-                        {summary?.Title}
-                    </div>
 
-                    <div className=" my-6 ">
-                        <div className=" pb-2 font-semibold text-gray_v">
-                            Summary Details
-                        </div>
-                        <div className=" border p-4 rounded-lg">
-                            <div className=" flex gap-2 text-sm font-semibold">
-                                <div>Summary Title : </div>
-                                <div className=" text-gray_v">
-                                    {summary?.Title}
-                                </div>
-                            </div>
-                            <div className="text-sm  mb-2 font-semibold text-white">
-                                <div className=" flex gap-2">
-                                    {summary?.Field_is_Graphic_design && (
-                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            Graphic Design
-                                        </div>
-                                    )}
-                                    {summary?.Field_is_Content_creation && (
-                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            Content creation
-                                        </div>
-                                    )}
-                                    {summary?.Field_is_SEO_SIM && (
-                                        <div className="bg-green_v text-md rounded-lg py-1 mt-2 px-3 ">
-                                            SEO/SMM
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                            {summary?.Frelancer_Experiance && (
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-sm pt-2 text-gray_v">
-                                        requested frelancer experiance :{" "}
-                                        <span className=" font-semibold">
-                                            {summary?.Frelancer_Experiance}
-                                        </span>
-                                    </div>
-                                </div>
-                            )}
-                            <div className="flex items-center justify-between w-full pt-2 font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Expected Deadline : {summary?.Expected_Time}
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-between w-full  font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Teacher Bugdget : {summary?.Client_Budget}
-                                </div>
-                            </div>{" "}
-                            <div className="flex items-center justify-between w-full font-semibold">
-                                <div className="text-sm pt-1 text-gray_v">
-                                    Created at :{" "}
-                                    {/* {new Date(
-                                        summary?.createdAt
-                                    ).toLocaleDateString()} */}
-                                    {formatDate(summary?.createdAt)}
-                                    {/* const formattedDate = */}
-                                    {/* ; */}
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div className="text-sm font-semibold pt-4">
-                                Summary Description
-                            </div>
-                            <div className="text-sm font-semibold pl-6 py-6 text-gray_v">
-                                <Editor
-                                    editorState={editorState}
-                                    readOnly={true}
-                                />
-                            </div>
-                        </div>
-                    </div>
+    if (error) {
+        return (
+            <div className="w-screen h-[calc(100vh-60px)] flex items-center justify-center">
+                <div className="text-red-600 font-semibold">
+                    {error.message}
                 </div>
             </div>
         );
+    }
+
+    if (!summary) {
+        return (
+            <div className="flex flex-col gap-6 items-center justify-center">
+                <div className="pt-24 flex justify-center items-center gap-2 text-gray_v text-base font-semibold">
+                    <IoIosWarning />
+                    <h1>Summary Not Found</h1>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="flex flex-col items-center justify-center gap-6 p-4">
+            <div className="flex justify-between w-full">
+                <div className="w-[90%]">
+                    <div className="flex flex-col gap-2">
+                        <div className="flex gap-2">
+                            {summary?.Image ? (
+                                <img
+                                    className="w-[220px] h-[220px] object-cover"
+                                    src={`http://localhost:3000/${summary?.Image}`}
+                                    alt="Summary image"
+                                />
+                            ) : (
+                                <div className="flex items-center justify-center w-[220px] h-[220px] bg-gray-100">
+                                    <CiImageOn className="text-xl" />
+                                </div>
+                            )}
+                            <div>
+                                <div className="text-gray_v text-lg font-semibold">
+                                    {summary?.Title}
+                                </div>
+                                <div className="text-gray_v font-semibold">
+                                    {summary?.Category}
+                                </div>
+                                {summary?.Price && (
+                                    <div className="text-gray_v font-semibold">
+                                        {summary?.Price} DA
+                                    </div>
+                                )}
+                                <div className="text-gray_v font-semibold">
+                                    Created at:{" "}
+                                    {dayjs(summary?.createdAt).format(
+                                        "DD MMMM YYYY"
+                                    )}
+                                </div>
+                                <div className="flex gap-6 font-semibold text-gray_v pt-6">
+                                    <div className="flex gap-4">
+                                        <div className="flex gap-1">
+                                            {[...Array(5)].map((_, index) =>
+                                                index <
+                                                Math.floor(
+                                                    summary?.Rate || 0
+                                                ) ? (
+                                                    <FaStar
+                                                        key={index}
+                                                        className="text-yellow-400"
+                                                    />
+                                                ) : index <
+                                                  Math.ceil(
+                                                      summary?.Rate || 0
+                                                  ) ? (
+                                                    <FaStarHalf
+                                                        key={index}
+                                                        className="text-yellow-400"
+                                                    />
+                                                ) : (
+                                                    <FaStar
+                                                        key={index}
+                                                        className="text-gray-400"
+                                                    />
+                                                )
+                                            )}
+                                        </div>
+                                        <div>
+                                            {summary?.Students_count
+                                                ? `${summary?.Students_count} Enrolment`
+                                                : "0 Enrolment"}
+                                        </div>
+                                        <div>
+                                            {summary?.Pages_Count
+                                                ? `${summary?.Pages_Count} Pages`
+                                                : "0 Pages"}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="text-gray-600 font-semibold text-sm">
+                        {showDescription ? (
+                            <div className="w-[80%] pl-8 py-4">
+                                <div
+                                    className="select-none flex gap-2 items-center cursor-pointer"
+                                    onClick={toggleDescription}
+                                >
+                                    Show Description <FaArrowUp />
+                                </div>
+                                <div className="pb-4">
+                                    <p className="text-gray text-base">
+                                        {summary?.Description}
+                                    </p>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="w-[80%] pl-8 py-4">
+                                <div
+                                    className="select-none flex gap-2 items-center cursor-pointer"
+                                    onClick={toggleDescription}
+                                >
+                                    Show Description <FaArrowDown />
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+                <div className="w-[10%]">
+                    <Link
+                        to={`/Teacher/Summaries/${summary?.id}/Edit`}
+                        className="flex items-center justify-center font-bold p-2 mt-6 bg-gray-500 text-white cursor-pointer rounded-lg"
+                    >
+                        Edit Summary
+                    </Link>
+                </div>
+                
+            </div>
+        </div>
+    );
 }
 
-export default Freelancer_Process_item;
+export default Summary;
