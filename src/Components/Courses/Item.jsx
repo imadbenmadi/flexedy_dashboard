@@ -65,7 +65,7 @@ function Course() {
                     }
                 );
                 console.log(response);
-                
+
                 if (response.status == 200) {
                     const Course = response.data.Course;
                     setCourse(Course);
@@ -220,7 +220,9 @@ function Course() {
                                                             <div>
                                                                 {" "}
                                                                 {
-                                                                    Course?.Course_Video.length
+                                                                    Course
+                                                                        ?.Course_Video
+                                                                        .length
                                                                 }{" "}
                                                                 Vedios
                                                             </div>
