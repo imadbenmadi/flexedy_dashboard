@@ -152,8 +152,8 @@ function Courses() {
                                             {" DA"}
                                         </td>
                                         <td className="border px-4 py-2">
-                                            {course?.Course_Video ? (
-                                                course?.Course_Video.length
+                                            {course?.Course_Videos ? (
+                                                course?.Course_Videos.length
                                             ) : (
                                                 <div className="text-red-600">
                                                     0
