@@ -187,14 +187,14 @@ function Summary() {
                         )}
                     </div>
                 </div>
-                <div className="w-[10%]">
+                {/* <div className="w-[10%]">
                     <Link
-                        to={`/Teacher/Summaries/${summary?.id}/Edit`}
+                        to={`/Summaries/${summary?.id}/Edit`}
                         className="flex items-center justify-center font-bold p-2 mt-6 bg-gray-500 text-white cursor-pointer rounded-lg"
                     >
                         Edit Summary
                     </Link>
-                </div>
+                </div> */}
                 
             </div>
         </div>

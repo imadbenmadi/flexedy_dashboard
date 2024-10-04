@@ -43,6 +43,8 @@ function Accepted_Payments() {
                         }
                     ),
                 ]);
+                // console.log("coursesResponse", coursesResponse);
+                // console.log("summariesResponse", summariesResponse);
 
                 // Process courses payments
                 let coursesPayments = [];
@@ -57,7 +59,7 @@ function Accepted_Payments() {
                             );
                     }
                 } else if (coursesResponse.status === 401) {
-                    Swal.fire("Error", "You should login again", "error");
+                    Swal.fire("Error", "You should din again", "error");
                     Navigate("/Login");
                 } else {
                     setError(coursesResponse.data);
@@ -76,7 +78,7 @@ function Accepted_Payments() {
                             );
                     }
                 } else if (summariesResponse.status === 401) {
-                    Swal.fire("Error", "You should login again", "error");
+                    Swal.fire("Error", "You should din again", "error");
                     Navigate("/Login");
                 } else {
                     setError(summariesResponse.data);
@@ -87,9 +89,9 @@ function Accepted_Payments() {
                     ...coursesPayments,
                     ...summariesPayments,
                 ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                console.log("coursesResponse", coursesResponse);
-                console.log("summariesResponse", summariesResponse);
-                console.log("combinedData", combinedData);
+                // console.log("coursesResponse", coursesResponse);
+                // console.log("summariesResponse", summariesResponse);
+                // console.log("combinedData", combinedData);
 
                 setData(combinedData); // Set combined and sorted data
                 setFilteredData(combinedData); // Set initial filtered data
