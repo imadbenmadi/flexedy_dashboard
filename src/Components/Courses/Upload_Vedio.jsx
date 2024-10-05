@@ -117,10 +117,6 @@ function Upload_Video() {
                     setIsUploading(false); // Re-enable buttons
                 })
                 .catch((error) => {
-                    console.error(
-                        "Upload Error:",
-                        error.response || error.message
-                    );
                     if (error.response && error.response.status === 413) {
                         alert(
                             "File too large. Please upload a file smaller than 2GB."

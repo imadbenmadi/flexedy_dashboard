@@ -85,9 +85,7 @@ function Rejected_Payments() {
                     ...coursesPayments,
                     ...summariesPayments,
                 ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                console.log("coursesResponse", coursesResponse);
-                console.log("summariesResponse", summariesResponse);
-                console.log("combinedData", combinedData);
+
                 setData(combinedData); // Set combined and sorted data
                 setFilteredData(combinedData); // Set initial filtered data
             } catch (error) {

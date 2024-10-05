@@ -29,7 +29,6 @@ function Applications() {
                         validateStatus: () => true,
                     }
                 );
-                console.log(response);
 
                 if (response.status === 200) {
                     const paymentsData = response.data.summary_Purcase_Requests;

@@ -37,7 +37,6 @@ function Course() {
                     validateStatus: () => true,
                 }
             );
-            console.log(response);
             if (response.status == 200) {
                 Swal.fire("Success", "Course Deleted Successfully", "success");
                 setDeleteLoading(false);
@@ -47,7 +46,6 @@ function Course() {
                 setDeleteLoading(false);
             }
         } catch (error) {
-            console.log(error);
             Swal.fire("Error", error.message, "error");
             setDeleteLoading(false);
         }
@@ -64,7 +62,6 @@ function Course() {
                         validateStatus: () => true,
                     }
                 );
-                console.log(response);
 
                 if (response.status == 200) {
                     const Course = response.data.Course;

@@ -101,7 +101,6 @@ function Freelancer_Profile() {
                         validateStatus: () => true,
                     }
                 );
-                console.log(response.data);
                 if (response.status === 200) {
                     setUser(response.data.user);
                 } else if (response.status === 401) {

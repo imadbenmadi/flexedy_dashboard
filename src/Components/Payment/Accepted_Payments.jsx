@@ -43,10 +43,7 @@ function Accepted_Payments() {
                         }
                     ),
                 ]);
-                // console.log("coursesResponse", coursesResponse);
-                // console.log("summariesResponse", summariesResponse);
 
-                // Process courses payments
                 let coursesPayments = [];
                 if (coursesResponse.status === 200) {
                     if (coursesResponse.data.course_Purcase_Requests) {
@@ -89,9 +86,6 @@ function Accepted_Payments() {
                     ...coursesPayments,
                     ...summariesPayments,
                 ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-                // console.log("coursesResponse", coursesResponse);
-                // console.log("summariesResponse", summariesResponse);
-                // console.log("combinedData", combinedData);
 
                 setData(combinedData); // Set combined and sorted data
                 setFilteredData(combinedData); // Set initial filtered data
