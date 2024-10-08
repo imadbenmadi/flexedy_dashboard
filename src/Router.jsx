@@ -31,122 +31,121 @@ import ErrorElement from "./Components/ErrorElement";
 import Client_Profile from "./Components/Users/Teacher_Profile.jsx";
 import Freelancer_Profile from "./Components/Users/Student_Profile.jsx";
 const routes = createBrowserRouter([
-    {
-        path: "/",
-        element: <App />,
-        children: [
-            {
-                index: true,
-                element: <Default />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Home",
-                element: <Home />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Users",
-                element: <Users />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Users/Teachers/:userId",
-                element: <Client_Profile />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Users/Students/:userId",
-                element: <Freelancer_Profile />,
-                errorElement: <ErrorElement />,
-            },
-
-            {
-                path: "/Courses",
-                element: <Courses />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses/:id",
-                element: <Courses_item />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses/:id/Edit",
-                element: <Course_Edit />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses/:id/Add",
-                element: <Upload_Vedio />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses/:id/Vedios/:vedioId",
-                element: <Courses_Vedio />,
-                errorElement: <ErrorElement />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Summaries",
-                element: <Summaries />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Summaries/:id",
-                element: <Summaries_item />,
-                errorElement: <ErrorElement />,
-            },
-
-            {
-                path: "/Courses_Payment",
-                element: <Courses_Payment />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Courses_Payment/:courseId",
-                element: <Courses_Payment_item />,
-                errorElement: <ErrorElement />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Summaries_Payment",
-                element: <Summaries_Payment />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Summaries_Payment/:courseId",
-                element: <Summaries_Payment_item />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Accepted_Payments",
-                element: <Accepted_Payments />,
-                errorElement: <ErrorElement />,
-            },
-            {
-                path: "/Rejected_Payments",
-                element: <Rejected_Payments />,
-                errorElement: <ErrorElement />,
-            },
-
-            {
-                path: "/Contact",
-                element: <Contact />,
-                errorElement: <ErrorElement />,
-            },
-        ],
-    },
-    {
-        path: "/Login",
-        element: <Login />,
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Default />,
         errorElement: <ErrorElement />,
-    },
+      },
+      {
+        path: "/Home",
+        element: <Home />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Users",
+        element: <Users />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Users/Teachers/:userId",
+        element: <Client_Profile />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Users/Students/:userId",
+        element: <Freelancer_Profile />,
+        errorElement: <ErrorElement />,
+      },
 
-    {
-        path: "*",
-        element: <Not_Found />,
-    },
+      {
+        path: "/Courses",
+        element: <Courses />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Courses/:id",
+        element: <Courses_item />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Courses/:id/Edit",
+        element: <Course_Edit />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Courses/:id/Add",
+        element: <Upload_Vedio />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Courses/:id/Vedios/:vedioId",
+        element: <Courses_Vedio />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Summaries",
+        element: <Summaries />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Summaries/:id",
+        element: <Summaries_item />,
+        errorElement: <ErrorElement />,
+      },
+
+      {
+        path: "/Courses_Payment",
+        element: <Courses_Payment />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Courses_Payment/:courseId",
+        element: <Courses_Payment_item />,
+        errorElement: <ErrorElement />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Summaries_Payment",
+        element: <Summaries_Payment />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Summaries_Payment/:courseId",
+        element: <Summaries_Payment_item />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Accepted_Payments",
+        element: <Accepted_Payments />,
+        errorElement: <ErrorElement />,
+      },
+      {
+        path: "/Rejected_Payments",
+        element: <Rejected_Payments />,
+        errorElement: <ErrorElement />,
+      },
+
+      {
+        path: "/Contact",
+        element: <Contact />,
+        errorElement: <ErrorElement />,
+      },
+    ],
+  },
+  {
+    path: "/Login",
+    element: <Login />,
+    errorElement: <ErrorElement />,
+  },
+
+  {
+    path: "*",
+    element: <Not_Found />,
+  },
 ]);
 
 export default routes;
